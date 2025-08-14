@@ -1,0 +1,63 @@
+from pydantic import BaseModel
+
+class Registration(BaseModel):
+    last_name: str
+    first_name: str
+    middle_initial: str
+    pref_name: str
+    dob: str
+    gender: str
+    transgender: str
+    status_canada: str
+    country_origin: str
+    date_entry_canada: str
+    pref_language: str
+    pref_communication: str
+    marital_status: str
+    unit_num: int
+    street_num: int
+    street_name: str
+    city: str
+    province: str
+    postal_code: str
+    po_box: str
+    primary_phone: str
+    phone_num: str
+    email: str
+    labour_force: str
+    source_income: str
+    sin_num: str
+    desg_group: str
+    education: str
+    emp_type: str
+    emp_name: str
+    job_title: str
+    emp_start_date: str
+    emp_end_date: str
+    emp_country: str
+    pref_wage_method: str
+    wage_amount: int
+    hourly_wage: int
+    paid_hours_week: int
+    reason_leaving: str
+    date_registration: str
+    noc: str
+    naics: str
+
+class PrereqResponse(BaseModel):
+    ai_experence: str
+    in_person: str
+    online_programs: str
+    computer_req: str
+    business_owner: str
+    email: str
+
+class InquiryBody(BaseModel):
+    first_name: str
+    last_name: str
+    email: str
+    message: str
+
+class Test(BaseModel):
+    first_name: str
+    last_name: str
