@@ -25,4 +25,3 @@ dist-ssr
 
 frontend/READ_ME.md
 backend/test.py
-backend/email_api.py
