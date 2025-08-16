@@ -17,6 +17,16 @@ export const theme = {
             outer_lg: "64px",
             inner: "35px",
             line_width: "85px",
+        },
+        animation: {
+            'spin-slow': 'spin 60s linear infinite',
+            'spin-slow-reverse': 'spin-reverse 50s linear infinite',
+        },
+        keyframes: {
+            'spin-reverse': {
+            from: { transform: 'rotate(0deg)' },
+            to: { transform: 'rotate(-360deg)' },
+            },
         }
     },
 };

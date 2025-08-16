@@ -2,6 +2,14 @@ import React, { useState } from 'react';
 
 import { useModal } from '../context/PrereqModalContext.jsx'
 
+import course1 from '../assets/images/course1.png';
+import course2 from '../assets/images/course2.png';
+import course3 from '../assets/images/course3.png';
+import course4 from '../assets/images/course4.png';
+import course5 from '../assets/images/course5.png';
+
+const courseImages = [course1, course2, course3, course4, course5];
+
 const OurCourses = () => {
 
   const sectionWrapper = "w-full mx-auto px-6 lg:px-16";
@@ -63,9 +71,9 @@ const OurCourses = () => {
                       <div className="bg-card p-4 h-full opacity-100">
                         <div className="h-full flex items-center justify-center">
                           <img
-                            src={`../../public/masks/course${index+1}.png`}
+                            src={courseImages[index]}
                             loading="lazy"
-                            className={`w-full h-full object-cover ${isActive ? "rounded-4xl" : "rounded-full"} ${isActive ? "": "grayscale-100"}`}
+                            className={`w-full h-full object-cover ${isActive ? "rounded-4xl" : "rounded-full"} ${isActive ? "" : "grayscale-100"}`}
                           />
                         </div>
                       </div>
