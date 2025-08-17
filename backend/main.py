@@ -16,7 +16,7 @@ if os.getenv("ENVIRONMENT") == "development":
     ])    
 if os.getenv("FRONTEND_URL"):
     origins.append(os.getenv("FRONTEND_URL"))
-print(f'origins: {origins}')
+print(origins)
 
 app = FastAPI(debug=os.getenv("ENVIRONMENT") == "development")
 app.include_router(router)
