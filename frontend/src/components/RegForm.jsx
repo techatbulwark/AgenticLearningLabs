@@ -3,9 +3,8 @@ import axios from "axios";
 
 const API_BASE_URL = process.env.NODE_ENV === 'production' 
   ? (process.env.REACT_APP_API_URL || 'https://agenticlearninglabs-production.up.railway.app/')
-  : 'http://localhost:8000';
+  : 'https://agenticlearninglabs-production.up.railway.app/';
 
-// Form configuration - all your fields, validation, and options in one place
 const FORM_CONFIG = {
   personalInfo: {
     title: "Personal Information",
