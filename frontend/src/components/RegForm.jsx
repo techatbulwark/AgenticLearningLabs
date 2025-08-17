@@ -3,7 +3,7 @@ import axios from "axios";
 
 const API_BASE_URL = process.env.NODE_ENV === 'production' 
   ? (process.env.REACT_APP_API_URL || 'https://agenticlearninglabs-production.up.railway.app/')
-  : 'https://agenticlearninglabs-production.up.railway.app/';
+  : 'http://localhost:8000';
 
 const FORM_CONFIG = {
   personalInfo: {
@@ -656,7 +656,7 @@ const RegForm = () => {
       console.log('Sending registration data:', registrationData);
       
       const response = await axios.post(
-        "http://localhost:8000/register",
+        API_BASE_URL,
         registrationData,
         { 
           headers: { 
