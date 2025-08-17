@@ -1,8 +1,6 @@
 from supabase import create_client, Client
 from config import settings
 
-print(f'supabase env {settings.supabase_url, settings.supabase_secret_key}')
-
 SUPABASE_URL = settings.supabase_url
 SUPABASE_SECRET_KEY = settings.supabase_secret_key
 

@@ -1,21 +1,20 @@
 from fastapi import FastAPI, APIRouter
 from fastapi.middleware.cors import CORSMiddleware
-from dotenv import load_dotenv
 import uvicorn
-import os
 
 from api import router
 from email_api import email_router
 
-load_dotenv()
+from config import settings
+
 
 origins = []
-if os.getenv("ENVIRONMENT") == "development":
+if settings.environment == "development":
     origins.extend([
         'http://localhost:5173',
     ])    
-if os.getenv("FRONTEND_URL"):
-    origins.append(os.getenv("FRONTEND_URL"))
+if settings.frontend_url:
+    origins.append(settings.frontend_url)
     origins.append('http://localhost:4173')
 print(origins)
 

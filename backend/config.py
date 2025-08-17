@@ -35,15 +35,3 @@ def get_settings() -> Settings:
 
 # Global settings instance
 settings = get_settings()
-
-if __name__ == "__main__":
-    print(f"SUPABASE_URL loaded: {bool(settings.supabase_url)}")
-    print(f"SECRET_KEY loaded: {bool(settings.supabase_secret_key)}")
-    print(f"Environment: {settings.environment}")
-    print(f"Debug: {settings.debug}")
-    
-    # Print first few characters of URLs for verification
-    if settings.supabase_url:
-        print(f"Supabase URL: {settings.supabase_url[:30]}...")
-    if settings.supabase_secret_key:
-        print(f"Secret Key: {settings.supabase_secret_key[:30]}...")
