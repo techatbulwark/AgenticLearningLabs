@@ -15,7 +15,7 @@ if settings.environment == "[development]":
 if settings.frontend_url:
     origins.append(settings.frontend_url)
     origins.append('http://localhost:4173')
-print(origins)
+print(origins, settings.frontend_url, settings.supabase_url)
 
 app = FastAPI(debug=settings.environment == "development")
 app.include_router(router)
