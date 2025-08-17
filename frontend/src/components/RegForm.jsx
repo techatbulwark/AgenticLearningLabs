@@ -1,9 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 
-const API_BASE_URL = process.env.NODE_ENV === 'production' 
-  ? (process.env.REACT_APP_API_URL || 'https://agenticlearninglabs-production.up.railway.app/')
-  : 'http://localhost:8000';
+const API_BASE_URL = import.meta.env.MODE === 'development' 
+  ? import.meta.env.VITE_DEV_API : import.meta.env.VITE_PROD_API;
 
 const FORM_CONFIG = {
   personalInfo: {
@@ -13,14 +12,12 @@ const FORM_CONFIG = {
         id: "lastName",
         label: "Last name", 
         type: "text",
-        required: true,
         gridClass: "lg:col-span-2"
       },
       {
         id: "firstName",
         label: "First name",
         type: "text",
-        required: true,
         gridClass: "lg:col-span-2"
       },
       {
@@ -34,7 +31,6 @@ const FORM_CONFIG = {
         id: "prefName",
         label: "Preferred name",
         type: "text",
-        required: true,
         gridClass: "lg:col-span-2"
       },
       {
@@ -145,14 +141,12 @@ const FORM_CONFIG = {
         id: "streetNum", 
         label: "Street number",
         type: "number",
-        required: true,
         gridClass: "lg:col-span-1"
       },
       {
         id: "streetName",
         label: "Street name", 
         type: "text",
-        required: true,
         gridClass: "lg:col-span-2"
       },
       {
@@ -165,21 +159,18 @@ const FORM_CONFIG = {
         id: "city",
         label: "City",
         type: "text",
-        required: true,
         gridClass: "lg:col-span-2"
       },
       {
         id: "province",
         label: "Province",
         type: "text",
-        required: true,
         gridClass: "lg:col-span-1"
       },
       {
         id: "postalCode",
         label: "Postal code",
         type: "text",
-        required: true,
         gridClass: "lg:col-span-1"
       },
       {
@@ -400,7 +391,6 @@ const FORM_CONFIG = {
         id: "serviceParticipantName",
         label: "Participant's name", 
         type: "text",
-        required: true,
         gridClass: "lg:col-span-4"
       },
       {
@@ -431,7 +421,6 @@ const FORM_CONFIG = {
         id: "ministryParticipantName",
         label: "Participant's name", 
         type: "text",
-        required: true,
         gridClass: "lg:col-span-4"
       },
       {
@@ -624,9 +613,6 @@ const RegForm = () => {
     const errors = [];
     
     const requiredFields = [
-      'lastName', 'firstName', 'prefName', 'streetNum', 'streetName', 
-      'city', 'province', 'postalCode', 'serviceParticipantName', 
-      'ministryParticipantName'
     ];
     
     requiredFields.forEach(field => {
@@ -640,7 +626,8 @@ const RegForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(process.env.NODE_ENV)
+    console.log(import.meta.env.MODE)
+    console.log(import.meta.env.VITE_PROD_API, API_BASE_URL)
     
     // Validate form
     const errors = validateForm();
@@ -651,7 +638,6 @@ const RegForm = () => {
 
     try {
       console.log(`Registering ${formData.firstName} ${formData.lastName}`);
-      
       const registrationData = transformFormDataForAPI(formData);
       
       console.log('Sending registration data:', registrationData);

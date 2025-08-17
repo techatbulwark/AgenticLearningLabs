@@ -16,6 +16,7 @@ if os.getenv("ENVIRONMENT") == "development":
     ])    
 if os.getenv("FRONTEND_URL"):
     origins.append(os.getenv("FRONTEND_URL"))
+    origins.append('http://localhost:4173')
 print(origins)
 
 app = FastAPI(debug=os.getenv("ENVIRONMENT") == "development")

@@ -3,9 +3,6 @@ from functools import lru_cache
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from typing import Optional
 
-from dotenv import load_dotenv
-load_dotenv()
-
 class Settings(BaseSettings):
     # Database
     supabase_url: Optional[str] = None
