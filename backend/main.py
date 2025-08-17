@@ -5,18 +5,16 @@ import os
 
 from api import router
 from email_api import email_router
-
 from config import settings
 
 origins = []
+
 if settings.environment == "[development]":
     origins.extend([
         'http://localhost:5173',
     ])    
 if settings.frontend_url:
     origins.append(settings.frontend_url)
-    origins.append('http://localhost:4173')
-print(origins)
 
 app = FastAPI(debug=settings.environment == "development")
 app.include_router(router)

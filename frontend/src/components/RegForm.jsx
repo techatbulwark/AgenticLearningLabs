@@ -1,8 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 
-const API_BASE_URL = import.meta.env.MODE === 'development' 
-  ? import.meta.env.VITE_DEV_API : import.meta.env.VITE_PROD_API;
+const API_BASE_URL = import.meta.env.MODE === 'production' 
+  ? import.meta.env.VITE_PROD_API : import.meta.env.VITE_DEV_API;
 
 const FORM_CONFIG = {
   personalInfo: {
@@ -482,7 +482,6 @@ const RegForm = () => {
     }));
   };
 
-  // Reusable field renderer
   const renderField = (field) => {
     const commonClasses = "w-full px-4 py-1 border border-input bg-background rounded-md text-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent";
     
@@ -626,22 +625,15 @@ const RegForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(import.meta.env.MODE)
-    console.log(import.meta.env.VITE_PROD_API, API_BASE_URL)
-    
-    // Validate form
     const errors = validateForm();
     if (errors.length > 0) {
       alert('Please fill in all required fields:\n' + errors.join('\n'));
       return;
     }
-
     try {
       console.log(`Registering ${formData.firstName} ${formData.lastName}`);
       const registrationData = transformFormDataForAPI(formData);
-      
       console.log('Sending registration data:', registrationData);
-      
       const response = await axios.post(
         `${API_BASE_URL}/register`,
         registrationData,
@@ -651,13 +643,11 @@ const RegForm = () => {
           } 
         }
       );
-      
       console.log('Registration successful:', response.data);
       alert('Registration submitted successfully!');
       
     } catch (error) {
       console.error('Registration failed:', error);
-      
       if (error.response) {
         console.error('Server error:', error.response.data);
         alert('Registration failed. Please check the console for details.');

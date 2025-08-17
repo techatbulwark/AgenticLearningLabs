@@ -1,8 +1,7 @@
 from fastapi import APIRouter
 
-from database import get_client
 from models import Registration, PrereqResponse, Test
-
+from database import get_client
 from config import settings
 
 REGISTRATION_TABLE = 'sdf_registrations'
@@ -14,7 +13,6 @@ router = APIRouter()
 
 @router.post('/register')
 def register(registration: Registration):
-    print(f'Inserting {registration.first_name}')
     try:
         supabase = get_client()
         response = (
@@ -96,20 +94,4 @@ def submitPrereq(response: PrereqResponse):
     except Exception as e:
         print(e)
 
-
-
-@router.post('/test')
-def test(test: Test):
-    try:
-        supabase = get_client()
-        response = (
-            supabase.table(TEST_TABLE)
-            .insert({
-                'first_name': test.first_name,
-                'last_name': test.last_name,
-            }).execute()
-        )
-        return response
-    except Exception as e:
-        print(e)
 

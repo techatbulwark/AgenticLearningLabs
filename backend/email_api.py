@@ -1,10 +1,9 @@
 from fastapi import APIRouter, HTTPException
+from email.message import EmailMessage
 import aiosmtplib
 import ssl
-from email.message import EmailMessage
-from models import InquiryBody
-import os
 
+from models import InquiryBody
 from config import settings
 
 email_router = APIRouter()
@@ -24,7 +23,6 @@ async def send_email(inq: InquiryBody):
     try:
         # Create a secure SSL context
         ssl_context = ssl.create_default_context()
-
         await aiosmtplib.send(
             msg,
             hostname=settings.smtp_host,
@@ -34,7 +32,6 @@ async def send_email(inq: InquiryBody):
             password=settings.smtp_password,
             tls_context=ssl_context,
         )
-
         return {"status": "Email sent successfully"}
 
     except aiosmtplib.errors.SMTPException as e:
