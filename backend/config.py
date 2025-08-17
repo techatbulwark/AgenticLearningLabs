@@ -16,7 +16,6 @@ class Settings(BaseSettings):
     
     # URLs
     frontend_url: Optional[str] = None
-    react_app_api_url: Optional[str] = None
         
     # Environment
     environment: str = "development"
