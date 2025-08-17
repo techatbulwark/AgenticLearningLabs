@@ -7,9 +7,8 @@ from email_api import email_router
 
 from config import settings
 
-
 origins = []
-if settings.environment == "development":
+if settings.environment == "[development]":
     origins.extend([
         'http://localhost:5173',
     ])    
@@ -18,7 +17,7 @@ if settings.frontend_url:
     origins.append('http://localhost:4173')
 print(origins)
 
-app = FastAPI(debug=os.getenv("ENVIRONMENT") == "development")
+app = FastAPI(debug=settings.environment == "development")
 app.include_router(router)
 app.include_router(email_router)
 app.add_middleware(
