@@ -687,6 +687,7 @@ const RegForm = () => {
 
   return (
     <div className="min-h-screen max-w-[1600px] mx-auto relative overflow-hidden flex flex-col bg-white">
+      {console.log(process.env.NODE_ENV)}
       <div className={`${sectionWrapper} bg-card my-20`}>
         <h1 className="[font-family:'Unageo-SemiBold'] text-3xl text-black text-foreground text-center mb-8">
           Skills Development Fund Training Stream (SDF-TS) Participant Registration
