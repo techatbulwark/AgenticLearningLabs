@@ -6,7 +6,7 @@ from typing import Optional
 class Settings(BaseSettings):
     # Database
     supabase_url: Optional[str] = None
-    secret_key: Optional[str] = None
+    supbase_secret_key: Optional[str] = None
     
     # Email
     smtp_host: Optional[str] = None
