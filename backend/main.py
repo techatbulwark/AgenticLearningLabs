@@ -1,18 +1,22 @@
 from fastapi import FastAPI, APIRouter
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
+import os
 
 from api import router
 from email_api import email_router
 
-origins = [
-    'http://localhost:5173',
-]
+origins = []
+if os.getenv("ENVIRONMENT") == "development":
+    origins.extend([
+        'http://localhost:5173',
+    ])
+if os.getenv("FRONTEND_URL"):
+    origins.append(os.getenv("FRONTEND_URL"))
 
-app = FastAPI(debug=True)
+app = FastAPI(debug=os.getenv("ENVIRONMENT") == "development")
 app.include_router(router)
 app.include_router(email_router)
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
