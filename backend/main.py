@@ -15,7 +15,7 @@ if settings.environment == "[development]":
     ])    
 if settings.frontend_url:
     origins.append(settings.frontend_url)
-    origins.append('http://localhost:4173/register')
+    origins.append('http://localhost:4173')
 print(origins)
 
 app = FastAPI(debug=settings.environment == "development")
