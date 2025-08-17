@@ -36,13 +36,23 @@ class Registration(BaseModel):
     emp_end_date: str
     emp_country: str
     pref_wage_method: str
-    wage_amount: int
-    hourly_wage: int
-    paid_hours_week: int
+    wage_amount: str
+    hourly_wage: str
+    paid_hours_week: str
     reason_leaving: str
-    date_registration: str
     noc: str
     naics: str
+    service_acknowledge: str
+    service_participant_name: str
+    service_participant_date: str
+    service_guardian_name: str
+    service_guardian_date: str
+    ministry_acknowledge: str
+    ministry_participant_name: str
+    ministry_participant_date: str
+    ministry_guardian_name: str
+    ministry_guardian_date: str
+    
 
 class PrereqResponse(BaseModel):
     ai_experence: str

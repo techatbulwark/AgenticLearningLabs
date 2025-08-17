@@ -77,7 +77,7 @@ const FORM_CONFIG = {
           { value: "temporary-resident", label: "Naturalized Canadian Citizen" },
           { value: "refugee", label: "Protected Persons" },
           { value: "prefer-not-to-answer", label: "Prefer not to answer" },
-          { value: "other", label: "Another gender identity", hasInput: true },
+          { value: "other", label: "Other", hasInput: true },
         ]
       },
       {
@@ -89,7 +89,7 @@ const FORM_CONFIG = {
       {
         id: "dateEntryCanada",
         label: "Date of Entry to Canada",
-        type: "text",
+        type: "date",
         gridClass: "lg:col-span-1"
       },
       {
@@ -98,8 +98,8 @@ const FORM_CONFIG = {
         type: "radio",
         gridClass: "col-span-full",
         options: [
-          { value: "english", label: "Yes" },
-          { value: "french", label: "No" },
+          { value: "english", label: "English" },
+          { value: "french", label: "French" },
         ]
       },
       {
@@ -108,9 +108,9 @@ const FORM_CONFIG = {
         type: "radio",
         gridClass: "col-span-full",
         options: [
-          { value: "phone", label: "Yes" },
-          { value: "email", label: "No" },
-          { value: "hardCopy", label: "No" },
+          { value: "phone", label: "Phone" },
+          { value: "email", label: "Email" },
+          { value: "hardCopy", label: "Hard Copy" },
         ]
       },
       {
@@ -164,7 +164,6 @@ const FORM_CONFIG = {
         type: "text",
         required: true,
         gridClass: "lg:col-span-2"
-
       },
       {
         id: "province",
@@ -182,19 +181,26 @@ const FORM_CONFIG = {
       },
       {
         id: "primaryPhone",
-        label: "Primary phone number",
+        label: "Primary phone type",
         type: "radio",
         gridClass: "col-span-full",
         options: [
-          { value: "home", label: "Yes" },
-          { value: "mobile", label: "No" },
-          { value: "other", label: "No" },
+          { value: "home", label: "Home" },
+          { value: "mobile", label: "Mobile" },
+          { value: "other", label: "Other" },
         ]
+      },
+      {
+        id: "phoneNum",
+        label: "Telephone number",
+        type: "text",
+        maxLength: 15,
+        gridClass: "lg:col-span-2"
       },
       {
         id: "email",
         label: "Email",
-        type: "text",
+        type: "email",
         gridClass: "lg:col-span-2"
       },
     ]
@@ -208,16 +214,14 @@ const FORM_CONFIG = {
         type: "radio",
         gridClass: "col-span-full ",
         options: [
-          { value: "employed", label: "Employed" },
-          { value: "employed", label: "Employed" },
-          { value: "employed", label: "Employed" },
-          { value: "employed", label: "Employed" },
-          { value: "employed", label: "Employed" },
-          { value: "employed", label: "Employed" },
-          { value: "employed", label: "Employed" },
-          { value: "employed", label: "Employed" },
-          { value: "employed", label: "Employed" },
-          { value: "employed", label: "Employed" },
+          { value: "employed-full-time", label: "Employed Full-time" },
+          { value: "employed-part-time", label: "Employed Part-time" },
+          { value: "unemployed", label: "Unemployed" },
+          { value: "underemployed", label: "Underemployed" },
+          { value: "not-in-labour-force", label: "Not in Labour Force" },
+          { value: "student", label: "Student" },
+          { value: "retired", label: "Retired" },
+          { value: "self-employed", label: "Self-employed" },
         ]
       },
       {
@@ -232,15 +236,15 @@ const FORM_CONFIG = {
           { value: "social-assistance", label: "Social Assistance" },
           { value: "pension", label: "Pension" },
           { value: "investment", label: "Investment" },
-          { value: "other", label: "Another gender identity", hasInput: true },
+          { value: "other", label: "Other", hasInput: true },
         ]
       },
       {
         id: "sinNum",
         label: "Social insurance number",
-        type: "number",
-        maxLength: 1,
-        gridClass: "lg:col-span-1"
+        type: "text",
+        maxLength: 11,
+        gridClass: "lg:col-span-2"
       },
       {
         id: "desgGroup",
@@ -265,11 +269,10 @@ const FORM_CONFIG = {
     fields: [
       {
         id: "education",
-        label: "Indicate your Hhghest level of education/qualification",
+        label: "Indicate your highest level of education/qualification",
         type: "radio",
         gridClass: "col-span-full ",
         options: [
-          { value: "", label: "Select education level" },
           { value: "no-formal", label: "No formal education" },
           { value: "elementary", label: "Elementary school" },
           { value: "high-school", label: "High school" },
@@ -292,10 +295,10 @@ const FORM_CONFIG = {
         type: "radio",
         gridClass: "col-span-full",
         options: [
-          { value: "paid", label: "Yes" },
-          { value: "selfEmployed", label: "No" },
-          { value: "unpaid", label: "Questioning" },
-          { value: "volunteer", label: "Prefer not to answer" }
+          { value: "paid", label: "Paid Employment" },
+          { value: "selfEmployed", label: "Self-employed" },
+          { value: "unpaid", label: "Unpaid Work" },
+          { value: "volunteer", label: "Volunteer Work" }
         ]
       },
       {
@@ -303,25 +306,23 @@ const FORM_CONFIG = {
         label: "Name of employer",
         type: "text",
         gridClass: "col-span-2",
-
       },
       {
         id: "jobTitle",
         label: "Job Title",
         type: "text",
         gridClass: "col-span-2",
-
       },
       {
         id: "empStartDate",
         label: "Employment start date",
-        type: "text",
+        type: "date",
         gridClass: "col-span-2",
       },
       {
         id: "empEndDate",
         label: "Employment end date", 
-        type: "text",
+        type: "date",
         gridClass: "col-span-2",
       },
       {
@@ -336,72 +337,114 @@ const FORM_CONFIG = {
         type: "radio",
         gridClass: "col-span-full",
         options: [
-          { value: "hourly", label: "Yes" },
-          { value: "weekly", label: "No" },
-          { value: "biweekly", label: "Questioning" },
-          { value: "monthly", label: "Prefer not to answer" }
+          { value: "hourly", label: "Hourly" },
+          { value: "weekly", label: "Weekly" },
+          { value: "biweekly", label: "Bi-weekly" },
+          { value: "monthly", label: "Monthly" }
         ]
       },
       {
         id: "wageAmount",
-        label: "Wage amount",
+        label: "Wage amount ($)",
         type: "number",
         gridClass: "col-span-full",
-        required: true,
+        step: "0.01"
       },
       {
         id: "hourlyWage",
         label: "Hourly wage (including tips and commissions) ($)",
         type: "number",
         gridClass: "col-span-full",
-        required: true,
+        step: "0.01"
       },
       {
         id: "paidHoursWeek",
         label: "Average paid hours per week (excluding overtime)",
         type: "number",
         gridClass: "col-span-full",
-        required: true,
+        step: "0.1"
       },
       {
         id: "reasonLeaving",
         label: "Reason for leaving",
         type: "text",
         gridClass: "md:col-span-full"
-      }
+      },      
+      {
+        id: "noc",
+        label: "NOC",
+        type: "text",
+        gridClass: "md:col-span-full"
+      },      
+      {
+        id: "naics",
+        label: "NAICS",
+        type: "text",
+        gridClass: "md:col-span-full"
+      },      
     ]
   },
   signatures: {
     title: "Signatures",
     fields: [
       {
-        id: "ackServiceProvider",
+        id: "serviceAcknowledge",
         label: "I/we acknowledge that my Service Provider has explained its use and disclosure of my personal information for its purpose",
         type: "checkbox", 
         gridClass: "lg:col-span-full"
       },
       {
-        id: "participantName",
+        id: "serviceParticipantName",
         label: "Participant's name", 
         type: "text",
         required: true,
         gridClass: "lg:col-span-4"
       },
       {
-        id: "dateParticipantName",
+        id: "serviceParticipantDate",
         label: "Date",
         type: "date",
         gridClass: "lg:col-span-1"
       },
       {
-        id: "guardianName",
+        id: "serviceGuardianName",
         label: "Parent's/guardian's name (if participant is under 18) ", 
+        type: "text",
+        gridClass: "lg:col-span-4"
+      },
+      {
+        id: "serviceGuardianDate",
+        label: "Date",
+        type: "date", 
+        gridClass: "lg:col-span-1"
+      },
+      {
+        id: "ministryAcknowledge",
+        label: "I/we acknowledge that my Service Provider has explained its use and disclosure of my personal information for its purpose",
+        type: "checkbox", 
+        gridClass: "lg:col-span-full"
+      },
+      {
+        id: "ministryParticipantName",
+        label: "Participant's name", 
         type: "text",
         required: true,
         gridClass: "lg:col-span-4"
       },
       {
-        id: "dateGuardianName",
+        id: "ministryParticipantDate",
+        label: "Date",
+        type: "date",
+        gridClass: "lg:col-span-1"
+      },
+      {
+        id: "ministryGuardianName",
+        label: "Parent's/guardian's name (if participant is under 18) ", 
+        type: "text",
+        gridClass: "lg:col-span-4"
+      },
+      {
+        id: "ministryGuardianDate",
         label: "Date",
         type: "date", 
         gridClass: "lg:col-span-1"
@@ -416,12 +459,13 @@ const RegForm = () => {
   // Initialize form data from config with proper data types
   const initializeFormData = () => {
     const initialData = {};
-    const integerFields = ['unitNum', 'streetNum', 'wageAmount', 'hourlyWage', 'paidHoursWeek'];
     
     Object.values(FORM_CONFIG).forEach(section => {
       section.fields.forEach(field => {
-        if (integerFields.includes(field.id)) {
-          initialData[field.id] = null;
+        if (field.type === 'number') {
+          initialData[field.id] = '';
+        } else if (field.type === 'checkbox') {
+          initialData[field.id] = false;
         } else {
           initialData[field.id] = '';
         }
@@ -436,6 +480,13 @@ const RegForm = () => {
     setFormData(prev => ({
       ...prev,
       [fieldId]: value
+    }));
+  };
+
+  const handleCheckboxChange = (fieldId, checked) => {
+    setFormData(prev => ({
+      ...prev,
+      [fieldId]: checked
     }));
   };
 
@@ -459,6 +510,7 @@ const RegForm = () => {
             maxLength={field.maxLength}
             step={field.step}
             className={commonClasses}
+            required={field.required}
           />
         );        
       case 'radio':
@@ -481,7 +533,8 @@ const RegForm = () => {
                     {option.hasInput && (
                       <input 
                         type="text" 
-                        className="border border-input rounded-md text-foreground px-2 py-2"
+                        className="ml-2 border border-input rounded-md text-foreground px-2 py-1"
+                        placeholder="Please specify"
                       />
                     )}
                   </label>
@@ -506,7 +559,8 @@ const RegForm = () => {
                       {option.hasInput && (
                         <input 
                           type="text" 
-                          className="border border-input rounded-md text-foreground px-2"
+                          className="ml-2 border border-input rounded-md text-foreground px-2 py-1"
+                          placeholder="Please specify"
                         />
                       )}
                     </label>
@@ -520,8 +574,13 @@ const RegForm = () => {
         return (
           <div className="space-y-2">
             <div className="flex flex-row items-center space-x-2">
-              <input type="checkbox" id="terms" required />
-              <label htmlFor="terms">{field.title}</label>
+              <input 
+                type="checkbox" 
+                id={field.id}
+                checked={formData[field.id]}
+                onChange={(e) => handleCheckboxChange(field.id, e.target.checked)}
+              />
+              <label htmlFor={field.id}>{field.label}</label>
             </div>
           </div>
         );
@@ -531,26 +590,26 @@ const RegForm = () => {
     }
   };
 
-  // Helper function to convert camelCase to snake_case
   const toSnakeCase = (str) => {
     return str.replace(/([A-Z])/g, '_$1').toLowerCase();
   };
 
-  // Helper function to ensure correct data types for API
   const transformFormDataForAPI = (data) => {
     const transformed = {};
     
     Object.entries(data).forEach(([key, value]) => {
       const snakeKey = toSnakeCase(key);
       
-      // Handle integer fields that should be numbers, not strings
-      const integerFields = ['unit_num', 'street_num', 'wage_amount', 'hourly_wage', 'paid_hours_week'];
-      
-      if (integerFields.includes(snakeKey)) {
-        // Convert to integer, default to 0 if empty or invalid
+      if (['unit_num', 'street_num'].includes(snakeKey)) {
         transformed[snakeKey] = value === '' || value === null ? 0 : parseInt(value, 10) || 0;
-      } else {
-        // For string fields, ensure we send empty string instead of null
+      }
+      else if (['wage_amount', 'hourly_wage', 'paid_hours_week'].includes(snakeKey)) {
+        transformed[snakeKey] = value === '' || value === null ? '' : String(value);
+      }
+      else if (typeof value === 'boolean') {
+        transformed[snakeKey] = String(value);
+      }
+      else {
         transformed[snakeKey] = value === null || value === undefined ? '' : String(value);
       }
     });
@@ -558,8 +617,34 @@ const RegForm = () => {
     return transformed;
   };
 
+  const validateForm = () => {
+    const errors = [];
+    
+    const requiredFields = [
+      'lastName', 'firstName', 'prefName', 'streetNum', 'streetName', 
+      'city', 'province', 'postalCode', 'serviceParticipantName', 
+      'ministryParticipantName'
+    ];
+    
+    requiredFields.forEach(field => {
+      if (!formData[field] || formData[field].trim() === '') {
+        errors.push(`${field} is required`);
+      }
+    });
+    
+    return errors;
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    
+    // Validate form
+    const errors = validateForm();
+    if (errors.length > 0) {
+      alert('Please fill in all required fields:\n' + errors.join('\n'));
+      return;
+    }
+
     try {
       console.log(`Registering ${formData.firstName} ${formData.lastName}`);
       
@@ -578,24 +663,20 @@ const RegForm = () => {
       );
       
       console.log('Registration successful:', response.data);
-      
-      // Optionally reset form or show success message
-      // setFormData(initializeFormData());
+      alert('Registration submitted successfully!');
       
     } catch (error) {
       console.error('Registration failed:', error);
       
-      // Handle specific error cases
       if (error.response) {
-        // Server responded with error status
         console.error('Server error:', error.response.data);
-        // Show user-friendly error message
+        alert('Registration failed. Please check the console for details.');
       } else if (error.request) {
-        // Request was made but no response received
         console.error('Network error:', error.request);
+        alert('Network error. Please check your connection.');
       } else {
-        // Something else happened
         console.error('Error:', error.message);
+        alert('An error occurred during registration.');
       }
     }
   };
@@ -623,6 +704,7 @@ const RegForm = () => {
                       htmlFor={field.id} 
                       className="block text-md text-left text-foreground">
                       {field.label}
+                      {field.required && <span className="text-red-500 ml-1">*</span>}
                     </label>
                     {renderField(field)}
                   </div>

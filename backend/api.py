@@ -3,6 +3,8 @@ from fastapi import APIRouter
 from database import get_client
 from models import Registration, PrereqResponse, Test
 
+from config import settings
+
 REGISTRATION_TABLE = 'sdf_registrations'
 PREREQ_TABLE = 'prereq_responses'
 SDF_TABLE = 'sdf_test'
@@ -12,6 +14,7 @@ router = APIRouter()
 
 @router.post('/register')
 def register(registration: Registration):
+    print(f'Inserting {registration.first_name}')
     try:
         supabase = get_client()
         response = (
@@ -56,14 +59,23 @@ def register(registration: Registration):
                 'hourly_wage': registration.hourly_wage,
                 'paid_hours_week': registration.paid_hours_week,
                 'reason_leaving': registration.reason_leaving,
-                'date_registration': registration.date_registration,
                 'noc': registration.noc,
                 'naics': registration.naics,
+                'service_acknowledge': registration.service_acknowledge,
+                'service_participant_name': registration.service_participant_name,
+                'service_participant_date': registration.service_participant_date,
+                'service_guardian_name': registration.service_guardian_name,
+                'service_guardian_date': registration.service_guardian_date,
+                'ministry_acknowledge': registration.ministry_acknowledge,
+                'ministry_participant_name': registration.ministry_participant_name,
+                'ministry_participant_date': registration.ministry_participant_date,
+                'ministry_guardian_name': registration.ministry_guardian_name,
+                'ministry_guardian_date': registration.ministry_guardian_date,
             }).execute()
         )
         return response
-    except:
-        print('Error occurred during POST operation to database')
+    except Exception as e:
+        print(f'Error occurred during POST operation to database: {e}')
 
 @router.post('/prereq')
 def submitPrereq(response: PrereqResponse):

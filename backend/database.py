@@ -1,11 +1,10 @@
 from supabase import create_client, Client
+from config import settings
 
-SUPABASE_URL = 'https://tjgpobxeunwvixporebl.supabase.co'
-SECRET_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRqZ3BvYnhldW53dml4cG9yZWJsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA3ODQzNTEsImV4cCI6MjA2NjM2MDM1MX0.pAXi7Ha_-hm61ET1lgphfgBjkmyQnefQkPsV_yvsmHg'
+SUPABASE_URL = settings.supabase_url
+SECRET_KEY = settings.secret_key
 
-url = SUPABASE_URL
-key = SECRET_KEY
-supabase_client: Client = create_client(url, key)
+supabase_client: Client = create_client(SUPABASE_URL, SECRET_KEY)
 
 def get_client():
     return supabase_client

@@ -1,5 +1,6 @@
 fastapi
 uvicorn
-aiosmtplib
 pydantic
+pydantic_settings
 supabase
+aiosmtplib
