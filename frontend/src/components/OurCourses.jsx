@@ -21,14 +21,14 @@ const OurCourses = () => {
   const tabs = [
     { 
       title: 'Our courses', 
-      content: 'Learn the basics of artificial intelligence, machine learning concepts, and how AI is transforming industries.',
+      content: "In just four weeks, gain real-world, practical AI skills that help you stand out, get hired, or move up in your career. Whether you're looking for a new job, re-entering the workforce, or aiming for a promotion Agentic Learning Labs can help you level up fast.",
     },
     { 
-      title: 'AI for Data Analytics and Decision Making', 
+      title: 'AI for Data Analytics for Decision Making', 
       content: 'Use AI to turn data into knowledge and knowledge into action.  This course turns spreadsheet users into confident data analysts. Learn how to use AI to visualize data for reporting and support real-time decision-making including market trend analysis, demand forecasting, and supplier management. Great for people in logistics, admin and analyst roles.',
     },
     { 
-      title: 'AI for Customer Experience and Product Innovation', 
+      title: 'AI for Customer Experience & Product Innovation', 
       content: 'Use AI to better design products, services and experiences. Learn how to use AI to brainstorm, test and pitch product and service ideas that meet real customer needs, improve the customer experience and drive product innovation.  Great for creative thinkers, innovators and product developers.',
    },
     { 
@@ -36,8 +36,8 @@ const OurCourses = () => {
       content: 'Drive sales and reach new customers with an AI-powered business strategy. Learn how to use AI to directly improve sales, marketing, and business development. Develop go-to-market plans, personalized marketing campaigns, and customer segmentation. Great for sales reps, marketers, public relations pros, and business builders.',
     },
     { 
-      title: 'Career Catalyst ', 
-      content: 'Participate in the Career Catalyst program which provides career planning, including resume best practices, interview coaching, networking tips and in-person workshops to ensure you land your dream job or promotion. ',
+      title: 'Career Catalyst', 
+      content: 'Participate in our Career Catalyst program which teaches you about career planning, resume best practices, interview coaching, networking tips and in-person workshops to ensure you land your dream job or promotion.',
     },
   ];
 

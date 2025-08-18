@@ -70,7 +70,6 @@ const Home = () => {
         </div>
 
         <div className="flex flex-col lg:flex-row w-full h-full lg:h-[600px]">
-          {/* left image */}
           <div className="relative w-full lg:w-1/2 h-full">
             <img src={bg5} loading="lazy" className="w-full h-full object-cover" />
             <div className="absolute inset-0 flex flex-col items-start justify-start p-4 space-y-4">
@@ -78,11 +77,13 @@ const Home = () => {
               <img src={img2} loading="lazy" className="absolute w-[400px] right-[-80px]" />
             </div>
           </div>
-          {/* right text */}
-          <div className={`${sectionWrapper} relative w-full lg:w-1/2 h-[400px] lg:h-[600px] bg-brand_gray flex flex-col justify-center text-left`}>
+          <div className={`${sectionWrapper} relative w-full lg:w-1/2 h-[600px] bg-brand_gray flex flex-col justify-center text-left`}>
             <h2 className="[font-family:'Unageo-SemiBold'] text-4xl lg:text-5xl text-white mb-8">AI is not a fad!</h2>
             <p className="text-xl text-white leading-relaxed mb-8">
-              Companies need talent who understand how to use AI to help them drive business results. Agentic Learning Labs teaches you how to use AI to solve real business problems, whether you’re launching a product, closing a sale, or analyzing data.
+              Thanks to funding from Employment Ontario as well as funding from the Government of Ontario and Government of Canada, these courses are free for residents of Ontario.
+            </p>
+            <p className="text-xl text-white leading-relaxed mb-8">
+              Companies need talent who understand how to use AI to help them drive business results.  Agentic Learning Labs teaches you how to use AI to solve real business problems, whether you're launching a product, closing a sale, or analyzing data. Learn how to use it and get ahead of the competition.
             </p>
           </div>
         </div>

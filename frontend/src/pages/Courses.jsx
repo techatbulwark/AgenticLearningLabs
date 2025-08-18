@@ -25,12 +25,12 @@ const Courses = () => {
     {
         title: "AI for Customer Experience and Product Innovation",
         subtitle: "Use AI to better design products, services and experiences.",
-        body: "Learn how to use AI to brainstorm, test and pitch product and service ideas that meet real customer needs, improve the customer experience and drive product innovation.  Great for creative thinkers, innovators and product development.",
+        body: "Learn how to use AI to brainstorm, test and pitch products and service ideas that meet real customer needs, improve the customer experience and drive product innovation.  Great for creative thinkers, innovators and product developers.",
     },
     {
-        title: "AI for Data Analytics and Decision Making",
+        title: "Data Analytics for Decision Making",
         subtitle: "Use AI to turn data into knowledge and knowledge into action.",
-        body: "In business, data is power. This course will teach practical skills on how to apply AI to analytical data and use it for real time decision making, such as market trend analysis, demand forecasting, supplier management, and streamlining of logistics and distribution to better handle logistical constraints and to maximize production capacity. Leveraging your new AI skills, you will bring new tools and perspectives to deliver efficiency and optimization for your employer.",
+        body: "In business, data is power. Learn the practical skills on how to apply AI to analytical data and use it for real time decision making, such as market trend analysis, demand forecasting, supplier management, and streamlining of logistics and distribution. Great for logistics, admin and analyst roles.",
     },
     ];
 
@@ -82,10 +82,10 @@ const Courses = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-20 gap-y-10 items-start my-15">
                     {/* heading */}
                     <p className="text-left text-xl">
-                        AI is changing how we work. With Agentic, from Day 1, learners go beyond theory and get hands-on, crafting smart AI prompts, and testing outputs in tools like ChatGPT, Google Studio, Lovable.
+                        From day one, learners go beyond theory exploring real datasets, crafting smart AI prompts, and testing outputs in tools like ChatGPT and Google Sheets. The first three weeks include self-paced weekly video lessons and hands-on AI assignments, plus live online workshops for real-time practice.
                     </p>
                     <p className="text-left text-xl">
-                        Over 4 weeks, you'll complete online classes at your pace with one in-person workshop each week to practice and learn together. Expect hands-on coaching, peer feedback, and a final demo you’ll be proud to add to your portfolio and post on LinkedIn.
+                        Throughout the four weeks, learners will come together for weekly in-person workshops held at the TribalScale office where teams will build and launch a working AI-powered tool. Expect hands-on coaching, peer feedback and a final demo you will be proud to post on LinkedIn. This is where experimentation meets execution and where your portfolio starts taking shape.
                     </p>
                 </div>
             </section>

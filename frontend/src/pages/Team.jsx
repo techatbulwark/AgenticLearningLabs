@@ -13,6 +13,10 @@ import course_header1 from '../assets/images/course_header1.jpg';
 import team1 from '../assets/images/team1.png';
 import team2 from '../assets/images/team2.png';
 
+import headshot_br from '../assets/images/headshot_br.jpg';
+import headshot_hp from '../assets/images/headshot_hp.jpg';
+import headshot_sj from '../assets/images/headshot_sj.png';
+
 
 const Team = () => {
     
@@ -24,24 +28,31 @@ const Team = () => {
         {
             name: "Brad Ross",
             title: "AI Expert Program Lead",
-            intro: "For more than 20 years, Brad has built intelligent products and taught AI at the graduate level. He helps teams go from prototype to production, fast. He is also the  director of the Agentics Foundation which is dedicated to AI education and innovation.",
+            intro: "For more than 20 years, Brad has built intelligent products and taught AI at the graduate level. He helps teams go from prototype to production, fast. He is also the director of the Agentics Foundation which is dedicated to AI education and innovation.",
             link: "",
+            img: headshot_br,
         },
         {
             name: "Heather Page",
             title: "Tech-enabled People Leader",
             intro: "Heather is the Chief of Staff at TribalScale, a global digital innovation firm. She is an expert at leading people and building successful teams working in technology. She will help ensure you are job or promotion ready when you finish.",
+            link: "",
+            img: headshot_hp,
+        },
+        {
+            name: "Sheetal Jaitly",
+            title: "Advisor",
+            intro: "Sheetal is an entrepreneur and seasoned tech veteran with a passion for innovation and digital transformation. He is the CEO of TribalScale and an avid investor who brings a unique perspective to support and guide companies through their digital evolution.",
+            link: "",
+            img: headshot_sj,
         },
         {
             name: "Karim Rahemtulla",
             title: "Advisor",
             intro: "A global business strategist known for creating innovative technology solutions to drive business impact. As Principal at Bulwark Impact, Karim helps businesses build practical skills to harness new technologies, including AI, to achieve their objectives and adapt in a rapidly changing world.",
-        },
-        {
-            name: "Sheetal Jaitly",
-            title: "Advisor",
-            intro: "Shetal is an entrepreneur and seasoned tech veteran with a passion for innovation and digital transformation. He is the CEO of TribalScale and an avid investor who brings a unique perspective to support and guide companies through their digital evolution.",
-        },
+            link: "",
+            img: bg5,
+},
     ];
 
     const toggle = (index) => {
@@ -83,13 +94,13 @@ const Team = () => {
             </section>
             <section className={`${sectionWrapper} relative bg-brand_gray border-t-2`}>
                 <div className="flex flex-col gap-20 items-center lg:items-start my-20 text-white lg:px-inner">
-                    <h2 className="[font-family:'Unageo-SemiBold'] text-5xl text-left leading-20">Our Leadership</h2>
+                    <h2 className="[font-family:'Unageo-SemiBold'] text-5xl text-left leading-20">Our Team</h2>
                     <div className="w-full flex flex-col lg:flex-row justify-between">
                         {instructors.map((instructor, index) => (
                         <span
                             onClick={() => toggle(index)}
                             className="relative flex flex-col items-center">
-                            <img src={bg5} loading="lazy" className={`${index == selected ? "w-75 h-75" : "w-60 h-60"} mb-10 lg:mb-0 rounded-full transition-all duration-300`} />
+                            <img src={instructor.img} loading="lazy" className={`${index == selected ? "w-75 h-75" : "w-60 h-60"} mb-10 lg:mb-0 rounded-full transition-all duration-300`} />
                             <span className="absolute top-5 -right-6 w-20 h-20 bg-brand_yellow rounded-full border-6 border-brand_gray hidden lg:inline-flex justify-center items-center ml-auto p-5">
                                 <div
                                     className={`absolute top-2 right-3 text-black text-6xl rounded-2xl transform transition-transform duration-300 ${selected === index ? "rotate-90" : "rotate-135"}`}>
