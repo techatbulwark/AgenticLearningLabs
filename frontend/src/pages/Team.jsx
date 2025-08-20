@@ -85,10 +85,10 @@ const Team = () => {
                         <img src={team2} loading="lazy" className="w-[510px] h-[280px] object-cover lg:top-0" />
                     </div>
                     <div className="">
-                        <img src={bulwarkLogoA} loading="lazy" className="absolute w-[250px] rotate-0 lg:hidden top-50 right-0" />
-                        <img src={bulwarkLogoA} loading="lazy" className="absolute w-[200px] rotate-0 hidden md:hidden lg:block top-0 right-70" />
-                        <img src={bulwarkLogoL} loading="lazy" className="absolute w-[150px] h-[150px] rotate-20 hidden lg:block top-100 -left-10 " />
-                        <img src={bulwarkLogoL} loading="lazy" className="absolute w-[150px] h-[150px] rotate-270 hidden lg:block bottom-20 right-100  " />
+                        <img src={bulwarkLogoA} loading="lazy" className="absolute w-[250px] rotate-0 lg:hidden top-50 right-0 animate-spin-slow" />
+                        <img src={bulwarkLogoA} loading="lazy" className="absolute w-[200px] rotate-0 hidden md:hidden lg:block top-0 right-70 animate-spin-slow" />
+                        <img src={bulwarkLogoL} loading="lazy" className="absolute w-[150px] h-[150px] rotate-20 hidden lg:block top-100 -left-10 animate-spin-slow" />
+                        <img src={bulwarkLogoL} loading="lazy" className="absolute w-[150px] h-[150px] rotate-270 hidden lg:block bottom-20 right-100 animate-spin-reverse" />
                     </div>
                 </div>
             </section>

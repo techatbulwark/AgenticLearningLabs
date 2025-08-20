@@ -18,6 +18,10 @@ export const theme = {
             inner: "35px",
             line_width: "85px",
         },
+        animation: {
+            'spin-slow': 'spin 50s linear infinite',
+            'spin-reverse': 'spin 40s linear infinite reverse',
+        }
     },
 };
 export const plugins = [];

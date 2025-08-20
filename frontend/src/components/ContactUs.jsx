@@ -31,7 +31,7 @@ const ContactUs = () => {
         }
     }
     return (
-        <div className={`${sectionWrapper} relative z-10 flex flex-col lg:flex-row justify-center items-center bg-brand_black bg-[radial-gradient(#2B2B2B_5px,transparent_1px)] [background-size:45px_45px] py-16 border-t-2 border-white`}>
+        <div id="contactus" className={`${sectionWrapper} relative z-10 flex flex-col lg:flex-row justify-center items-center bg-brand_black bg-[radial-gradient(#2B2B2B_5px,transparent_1px)] [background-size:45px_45px] py-16 border-t-2 border-white`}>
             <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent" />
             <div className="flex flex-col z-10 w-full lg:w-1/2 my-10 items-start text-white">
                 <h2 className="[font-family:'Unageo-SemiBold'] text-5xl text-left leading-15 mb-10">Questions?<br />Reach out to us!</h2>

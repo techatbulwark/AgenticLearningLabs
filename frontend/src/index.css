@@ -30,6 +30,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Unageo-Italic';
+  src: url('./assets/fonts/Unageo-Regular-Italic.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
 :root {
   /*font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;*/
   font-family: 'Unageo', sans-serif;

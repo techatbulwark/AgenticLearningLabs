@@ -37,7 +37,7 @@ const FORM_CONFIG = {
         id: "dob",
         label: "Date of birth",
         type: "date",
-        gridClass: "lg:col-span-2"
+        gridClass: "lg:col-span-1"
       },
       {
         id: "gender",
@@ -45,13 +45,21 @@ const FORM_CONFIG = {
         type: "radio",
         gridClass: "col-span-full",
         options: [
-          { value: "man", label: "Man" },
-          { value: "woman", label: "Woman" },
-          { value: "gender-non-binary", label: "Gender non-binary" },
-          { value: "two-spirit", label: "Two-spirit" },
-          { value: "other", label: "Another gender identity", hasInput: true },
-          { value: "prefer-not-to-answer", label: "Prefer not to answer" },
+          { value: "Man", label: "Man" },
+          { value: "Woman", label: "Woman" },
+          { value: "Gender non-binary", label: "Gender non-binary" },
+          { value: "two_spirit", label: "Two-spirit" },
+          { value: "other", label: "Another gender identity (specify)", hasInput: true },
+          { value: "prefer_not_to_answer", label: "Prefer not to answer" },
         ],
+      },
+      {
+        id: "transgender_definition",
+        label: "Transgender is an umbrella term that refers to people whose gender identity, expression or behaviour is different from those typically associated with their assigned sex at birth. Identities considered to fall under this umbrella can include trans, transsexual, non-binary, gender fluid, and genderqueer - as well as many more.",
+        type: "paragraph",
+        style: "italic",
+        gridClass: "col-span-full",
+
       },
       {
         id: "transgender",
@@ -62,38 +70,45 @@ const FORM_CONFIG = {
           { value: "yes", label: "Yes" },
           { value: "no", label: "No" },
           { value: "questioning", label: "Questioning" },
-          { value: "prefer-not-to-answer", label: "Prefer not to answer" }
-        ]
+          { value: "prefer_not_to_answer", label: "Prefer not to answer" }
+        ],
       },
       {
         id: "statusCanada",
-        label: "Status in Canada",
+        label: "Status in Canada:",
         type: "radio",
         gridClass: "col-span-full",
         options: [
-          { value: "citizen", label: "Canadian Citizen" },
-          { value: "permanent-resident", label: "Permanent Resident" },
-          { value: "temporary-resident", label: "Naturalized Canadian Citizen" },
-          { value: "refugee", label: "Protected Persons" },
-          { value: "prefer-not-to-answer", label: "Prefer not to answer" },
+          { value: "canadian_citizen", label: "Canadian citizen" },
+          { value: "permanent_resident", label: "Permanent resident" },
+          { value: "naturalized_canadian_citizen", label: "Naturalized Canadian citizen" },
+          { value: "protected_persons", label: "Protected Persons" },
+          { value: "prefer_not_to_say", label: "Prefer not to say" },
           { value: "other", label: "Other", hasInput: true },
         ]
+      },
+      {
+        id: "immigrated_to_canada",
+        label: "If you have immigrated to Canada, please indicate:",
+        type: "paragraph",
+        gridClass: "col-span-full",
+
       },
       {
         id: "countryOrigin",
         label: "Country of origin",
         type: "text",
-        gridClass: "lg:col-span-2"
+        gridClass: "lg:col-span-3"
       },
       {
         id: "dateEntryCanada",
-        label: "Date of Entry to Canada",
+        label: "Date of entry into Canada",
         type: "date",
-        gridClass: "lg:col-span-1"
+        gridClass: "lg:col-span-2"
       },
       {
         id: "prefLanguage",
-        label: "Preferred language",
+        label: "Preferred language:",
         type: "radio",
         gridClass: "col-span-full",
         options: [
@@ -103,27 +118,28 @@ const FORM_CONFIG = {
       },
       {
         id: "prefCommunication",
-        label: "Preferred communication",
+        label: "Preferred communication:",
         type: "radio",
         gridClass: "col-span-full",
         options: [
           { value: "phone", label: "Phone" },
           { value: "email", label: "Email" },
-          { value: "hardCopy", label: "Hard Copy" },
+          { value: "hardCopy", label: "Hard copy" },
         ]
       },
       {
         id: "maritalStatus",
-        label: "Marital status",
+        label: "Marital status:",
         type: "radio",
         gridClass: "col-span-full",
         options: [
-          { value: "single", label: "Single" },
           { value: "married", label: "Married" },
+          { value: "common_law", label: "Common law" },
+          { value: "separated", label: "Separated" },
           { value: "divorced", label: "Divorced" },
           { value: "widowed", label: "Widowed" },
-          { value: "separated", label: "Separated" },
-          { value: "common-law", label: "Common-law" }
+          { value: "single", label: "Single" },
+          { value: "prefer_not_to_say", label: "Prefer not to say" },
         ]
       },
     ]
@@ -131,6 +147,13 @@ const FORM_CONFIG = {
   addresscontactInfo: {
     title: "Participant Address and Contact Information",
     fields: [
+      {
+        id: "primary_mailing_address",
+        label: "Primary Mailing Address",
+        type: "paragraph",
+        style: "bold",
+        gridClass: "col-span-full",
+      },
       {
         id: "unitNum",
         label: "Unit number",
@@ -153,7 +176,7 @@ const FORM_CONFIG = {
         id: "poBox",
         label: "P.O. box",
         type: "text",
-        gridClass: "md:col-span-1"
+        gridClass: "lg:col-span-1"
       },
       {
         id: "city",
@@ -165,7 +188,7 @@ const FORM_CONFIG = {
         id: "province",
         label: "Province",
         type: "text",
-        gridClass: "lg:col-span-1"
+        gridClass: "lg:col-span-2"
       },
       {
         id: "postalCode",
@@ -174,10 +197,59 @@ const FORM_CONFIG = {
         gridClass: "lg:col-span-1"
       },
       {
-        id: "primaryPhone",
-        label: "Primary phone type",
-        type: "radio",
+        id: "alternate_mailing_address",
+        label: "Alternate Mailing Address",
+        type: "paragraph",
+        style: "bold",
         gridClass: "col-span-full",
+      },
+      {
+        id: "altUnitNum",
+        label: "Unit number",
+        type: "number",
+        gridClass: "lg:col-span-1"
+      },
+      {
+        id: "altStreetNum", 
+        label: "Street number",
+        type: "number",
+        gridClass: "lg:col-span-1"
+      },
+      {
+        id: "altStreetName",
+        label: "Street name", 
+        type: "text",
+        gridClass: "lg:col-span-2"
+      },
+      {
+        id: "altPoBox",
+        label: "P.O. box",
+        type: "text",
+        gridClass: "lg:col-span-1"
+      },
+      {
+        id: "altCity",
+        label: "City",
+        type: "text",
+        gridClass: "lg:col-span-2"
+      },
+      {
+        id: "altProvince",
+        label: "Province",
+        type: "text",
+        gridClass: "lg:col-span-1"
+      },
+      {
+        id: "altPostalCode",
+        label: "Postal code",
+        type: "text",
+        gridClass: "lg:col-span-1"
+      },
+      {
+        id: "primaryPhone",
+        label: "Primary phone number",
+        type: "radio",
+        gridClass: "col-span-3",
         options: [
           { value: "home", label: "Home" },
           { value: "mobile", label: "Mobile" },
@@ -188,6 +260,24 @@ const FORM_CONFIG = {
         id: "phoneNum",
         label: "Telephone number",
         type: "text",
+        maxLength: 11,
+        gridClass: "lg:col-span-2"
+      },
+      {
+        id: "altPhone",
+        label: "Alternate phone number",
+        type: "radio",
+        gridClass: "col-span-3",
+        options: [
+          { value: "home", label: "Home" },
+          { value: "mobile", label: "Mobile" },
+          { value: "other", label: "Other" },
+        ]
+      },
+      {
+        id: "altPhoneNum",
+        label: "Telephone number",
+        type: "text",
         maxLength: 15,
         gridClass: "lg:col-span-2"
       },
@@ -195,7 +285,7 @@ const FORM_CONFIG = {
         id: "email",
         label: "Email",
         type: "email",
-        gridClass: "lg:col-span-2"
+        gridClass: "lg:col-span-full"
       },
     ]
   },
@@ -204,18 +294,25 @@ const FORM_CONFIG = {
     fields: [
       {
         id: "labourForce",
-        label: "Labour force attachment*",
+        label: "Labour force attachment",
         type: "radio",
         gridClass: "col-span-full ",
         options: [
-          { value: "employed-full-time", label: "Employed Full-time" },
-          { value: "employed-part-time", label: "Employed Part-time" },
+          { value: "employed", label: "Employed" },
+          { value: "self_employed", label: "Self-employed" },
+          { value: "employed_on_leave", label: "Employed, but currently on a leave" },
           { value: "unemployed", label: "Unemployed" },
-          { value: "underemployed", label: "Underemployed" },
-          { value: "not-in-labour-force", label: "Not in Labour Force" },
-          { value: "student", label: "Student" },
-          { value: "retired", label: "Retired" },
-          { value: "self-employed", label: "Self-employed" },
+          { value: "not_employed_looking", label: "Not employed and looking for work" },
+          { value: "not_employed_offer", label: "Not employed with an employment offer" },
+          { value: "not_employed_not_looking", label: "Not employed and not looking for work" },
+          { value: "not_employed_unable", label: "Not employed and unable to work" },
+          { value: "attending_school_elementary_highschool", label: "Attending a school (elementary, high school or equivalent)" },
+          { value: "attending_university", label: "Attending a university" },
+          { value: "attending_college", label: "Attending a college" },
+          { value: "registered_apprenticeship_program", label: "Registered in an apprenticeship program" },
+          { value: "training_skills_development_program", label: "In other training or skills development program" },
+          { value: "not_sure", label: "Not sure" },
+          { value: "prefer_not_to_say", label: "Prefer not to say" },
         ]
       },
       {
@@ -224,25 +321,34 @@ const FORM_CONFIG = {
         type: "radio",
         gridClass: "col-span-full ",
         options: [
-          { value: "employment", label: "Employment" },
-          { value: "self-employment", label: "Self-employment" },
-          { value: "ei", label: "Employment Insurance" },
-          { value: "social-assistance", label: "Social Assistance" },
-          { value: "pension", label: "Pension" },
-          { value: "investment", label: "Investment" },
+          { value: "employment_insurance", label: "Employment Insurance (EI) *" },
+          { value: "ontario_works", label: "Ontario Works (OW)" },
+          { value: "crown_ward_extended_care_maintenance", label: "Crown Ward Extended Care and Maintenance" },
+          { value: "dependent_ow_odsp", label: "Dependent of OW/ODSP" },
+          { value: "no_income", label: "No income" },
+          { value: "employed_with_employer", label: "Employed with employer" },
+          { value: "self_employed", label: "Self-Employed" },
+          { value: "non_ei", label: "Non-EI (other)", },
           { value: "other", label: "Other", hasInput: true },
         ]
+      },
+      {
+        id: "selected_ei",
+        label: "*Note for individuals who selected EI: Your Social Insurance Number will be used by Canada to help monitor and assess the EI program and the Service Provider to request approval to continue to receive regular EI benefits in order to take part in training programs and other employment activities.",
+        type: "paragraph",
+        style: "italic",
+        gridClass: "col-span-full",
       },
       {
         id: "sinNum",
         label: "Social insurance number",
         type: "text",
-        maxLength: 11,
+        maxLength: 9,
         gridClass: "lg:col-span-2"
       },
       {
         id: "desgGroup",
-        label: "Designated group",
+        label: "Please complete if you wish to self-identify as a member of a designated group(s). Your response to this question is entirely voluntary and will not affect your eligibility. This information will be used by the Governments of Ontario and Canada for policy analysis and statistical purposes related to employment programs and services. (You may select more than one option):",
         type: "radio",
         gridClass: "col-span-full ",
         options: [
@@ -263,19 +369,22 @@ const FORM_CONFIG = {
     fields: [
       {
         id: "education",
-        label: "Indicate your highest level of education/qualification",
+        label: "Indicate your highest level of education/qualification:",
         type: "radio",
         gridClass: "col-span-full ",
         options: [
-          { value: "no-formal", label: "No formal education" },
-          { value: "elementary", label: "Elementary school" },
-          { value: "high-school", label: "High school" },
-          { value: "some-post-secondary", label: "Some post-secondary" },
-          { value: "certificate-diploma", label: "Certificate/Diploma" },
-          { value: "bachelors", label: "Bachelor's degree" },
-          { value: "masters", label: "Master's degree" },
-          { value: "doctoral", label: "Doctoral degree" },
-          { value: "professional", label: "Professional degree" }
+          { value: "0_8", label: "Grade 0 - 8" },
+          { value: "9", label: "Grade 9" },
+          { value: "10", label: "Grade 10" },
+          { value: "11", label: "Grade 11" },
+          { value: "12", label: "Grade 12 (or equivalent)" },
+          { value: "oac", label: "OAC" },
+          { value: "certificate_apprenticeship", label: "Certificate of Apprenticeship" },
+          { value: "journeyperson", label: "Journeyperson" },
+          { value: "certificate_diploma", label: "Certificate/Diploma" },
+          { value: "bachelors_degree", label: "Bachelor's Degree" },
+          { value: "post_graduate", label: "Post Graduate" },
+          { value: "other", label: "Other" },
         ]
       },
     ]
@@ -284,28 +393,41 @@ const FORM_CONFIG = {
     title: "Employment",
     fields: [
       {
+        id: "selected_ei",
+        label: "List your work experience, including volunteer work. Start with the most recent job/volunteer activity",
+        type: "paragraph",
+        gridClass: "col-span-full",
+      },
+      {
+        id: "work_experience",
+        label: "Work experience 1",
+        type: "paragraph",
+        style: "bold",
+        gridClass: "col-span-full",
+      },
+      {
         id: "empType",
         label: "Employment type",
         type: "radio",
         gridClass: "col-span-full",
         options: [
-          { value: "paid", label: "Paid Employment" },
-          { value: "selfEmployed", label: "Self-employed" },
-          { value: "unpaid", label: "Unpaid Work" },
-          { value: "volunteer", label: "Volunteer Work" }
+          { value: "paid", label: "Paid" },
+          { value: "self_employed", label: "Self-Employed" },
+          { value: "unpaid", label: "Unpaid" },
+          { value: "volunteer", label: "Volunteer" },
         ]
       },
       {
         id: "empName",
         label: "Name of employer",
         type: "text",
-        gridClass: "col-span-2",
+        gridClass: "col-span-full",
       },
       {
         id: "jobTitle",
-        label: "Job Title",
+        label: "Job Title/Duties",
         type: "text",
-        gridClass: "col-span-2",
+        gridClass: "col-span-full",
       },
       {
         id: "empStartDate",
@@ -323,7 +445,7 @@ const FORM_CONFIG = {
         id: "empCountry",
         label: "Country of employment",
         type: "text",
-        gridClass: "col-span-2",
+        gridClass: "col-span-full",
       },
       {
         id: "prefWageMethod",
@@ -341,21 +463,21 @@ const FORM_CONFIG = {
         id: "wageAmount",
         label: "Wage amount ($)",
         type: "number",
-        gridClass: "col-span-full",
+        gridClass: "col-span-3",
         step: "0.01"
       },
       {
         id: "hourlyWage",
         label: "Hourly wage (including tips and commissions) ($)",
         type: "number",
-        gridClass: "col-span-full",
+        gridClass: "col-span-3",
         step: "0.01"
       },
       {
         id: "paidHoursWeek",
         label: "Average paid hours per week (excluding overtime)",
         type: "number",
-        gridClass: "col-span-full",
+        gridClass: "col-span-3",
         step: "0.1"
       },
       {
@@ -365,16 +487,104 @@ const FORM_CONFIG = {
         gridClass: "md:col-span-full"
       },      
       {
+        id: "additional_work_experience",
+        label: "Additional work experience (if applicable)",
+        type: "paragraph",
+        style: "bold",
+        gridClass: "col-span-full",
+      },
+      {
+        id: "additionalEmpType",
+        label: "Employment type",
+        type: "radio",
+        gridClass: "col-span-full",
+        options: [
+          { value: "paid", label: "Paid Employment" },
+          { value: "selfEmployed", label: "Self-employed" },
+          { value: "unpaid", label: "Unpaid Work" },
+          { value: "volunteer", label: "Volunteer Work" }
+        ]
+      },
+      {
+        id: "additionalEmpName",
+        label: "Name of employer",
+        type: "text",
+        gridClass: "col-span-full",
+      },
+      {
+        id: "additionalJobTitle",
+        label: "Job Title",
+        type: "text",
+        gridClass: "col-span-full",
+      },
+      {
+        id: "additionalEmpStartDate",
+        label: "Employment start date",
+        type: "date",
+        gridClass: "col-span-2",
+      },
+      {
+        id: "additionalEmpEndDate",
+        label: "Employment end date", 
+        type: "date",
+        gridClass: "col-span-2",
+      },
+      {
+        id: "additionalEmpCountry",
+        label: "Country of employment",
+        type: "text",
+        gridClass: "col-span-full",
+      },
+      {
+        id: "additionalPrefWageMethod",
+        label: "Preferred method of reporting wage:",
+        type: "radio",
+        gridClass: "col-span-full",
+        options: [
+          { value: "hourly", label: "Hourly" },
+          { value: "weekly", label: "Weekly" },
+          { value: "biweekly", label: "Bi-weekly" },
+          { value: "monthly", label: "Monthly" }
+        ]
+      },
+      {
+        id: "additionalWageAmount",
+        label: "Wage amount ($)",
+        type: "number",
+        gridClass: "col-span-3",
+        step: "0.01"
+      },
+      {
+        id: "additionalHourlyWage",
+        label: "Hourly wage (including tips and commissions) ($)",
+        type: "number",
+        gridClass: "col-span-3",
+        step: "0.01"
+      },
+      {
+        id: "additionalPaidHoursWeek",
+        label: "Average paid hours per week (excluding overtime)",
+        type: "number",
+        gridClass: "col-span-3",
+        step: "0.1"
+      },
+      {
+        id: "additionalReasonLeaving",
+        label: "Reason for leaving",
+        type: "text",
+        gridClass: "md:col-span-full"
+      },      
+      {
         id: "noc",
         label: "NOC",
         type: "text",
-        gridClass: "md:col-span-full"
+        gridClass: "md:col-span-1"
       },      
       {
         id: "naics",
         label: "NAICS",
         type: "text",
-        gridClass: "md:col-span-full"
+        gridClass: "md:col-span-1"
       },      
     ]
   },
@@ -383,7 +593,7 @@ const FORM_CONFIG = {
     fields: [
       {
         id: "serviceAcknowledge",
-        label: "I/we acknowledge that my Service Provider has explained its use and disclosure of my personal information for its purpose",
+        label: "I/we acknowledge that my Service Provider has explained its use and disclosure of my personal information for its purpose.",
         type: "checkbox", 
         gridClass: "lg:col-span-full"
       },
@@ -413,7 +623,7 @@ const FORM_CONFIG = {
       },
       {
         id: "ministryAcknowledge",
-        label: "I/we acknowledge that my Service Provider has explained its use and disclosure of my personal information for its purpose",
+        label: "I/we give consent to the Ministry to indirectly collect, use and disclose my personal information for the purposes set out above.",
         type: "checkbox", 
         gridClass: "lg:col-span-full"
       },
@@ -448,7 +658,6 @@ const FORM_CONFIG = {
 const RegForm = () => {
   const sectionWrapper = "w-full mx-auto px-outer_sm lg:px-outer_lg";
 
-  // Initialize form data from config with proper data types
   const initializeFormData = () => {
     const initialData = {};
     
@@ -507,9 +716,9 @@ const RegForm = () => {
       case 'radio':
         return (
           <div className="space-y-2">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-2">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-y-5">
               {field.options.slice(0, 4).map(option => (
-                <div key={option.value} className="flex items-center space-x-2">
+                <div key={option.value} className={`${option.hasInput ? "col-span-2" : "col-span-1"} flex items-center text-left space-x-2`}>
                   <input
                     type="radio"
                     id={`${field.id}-${option.value}`}
@@ -524,8 +733,7 @@ const RegForm = () => {
                     {option.hasInput && (
                       <input 
                         type="text" 
-                        className="ml-2 border border-input rounded-md text-foreground px-2 py-1"
-                        placeholder="Please specify"
+                        className="ml-5 border border-input rounded-md text-foreground px-2 py-1"
                       />
                     )}
                   </label>
@@ -533,9 +741,9 @@ const RegForm = () => {
               ))}
             </div>
             {field.options.length > 4 && (
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-2">
+              <div className="grid grid-cols-1 lg:grid-cols-4 gap-y-5">
                 {field.options.slice(4).map(option => (
-                  <div key={option.value} className="flex items-center space-x-2">
+                  <div key={option.value} className={`${option.hasInput ? "col-span-2" : "col-span-1"} flex items-center text-left space-x-2`}>
                     <input
                       type="radio"
                       id={`${field.id}-${option.value}`}
@@ -550,8 +758,7 @@ const RegForm = () => {
                       {option.hasInput && (
                         <input 
                           type="text" 
-                          className="ml-2 border border-input rounded-md text-foreground px-2 py-1"
-                          placeholder="Please specify"
+                          className="ml-5 border border-input rounded-md text-foreground px-2 py-1"
                         />
                       )}
                     </label>
@@ -575,10 +782,21 @@ const RegForm = () => {
             </div>
           </div>
         );
-        
-      default:
-        return null;
-    }
+
+      case 'paragraph':
+        return (
+          <div className="space-y-2">
+            <div className="flex flex-row items-center space-x-2">
+              <p
+                className={`text-black text-md text-foreground text-left
+                ${field.style === "bold" ? "[font-family:'Unageo-Bold']": ""}
+                ${field.style === "italic" ? "[font-family:'Unageo-Italic']": ""}`}>
+                  {field.label}
+              </p>
+              </div>
+            </div>
+        )
+      }
   };
 
   const toSnakeCase = (str) => {
@@ -610,7 +828,6 @@ const RegForm = () => {
 
   const validateForm = () => {
     const errors = [];
-    
     const requiredFields = [
     ];
     
@@ -631,9 +848,8 @@ const RegForm = () => {
       return;
     }
     try {
-      console.log(`Registering ${formData.firstName} ${formData.lastName}`);
+      //console.log('Sending registration data:', registrationData);
       const registrationData = transformFormDataForAPI(formData);
-      console.log('Sending registration data:', registrationData);
       const response = await axios.post(
         `${API_BASE_URL}/register`,
         registrationData,
@@ -662,30 +878,38 @@ const RegForm = () => {
   };
 
   return (
-    <div className="min-h-screen max-w-[1600px] mx-auto relative overflow-hidden flex flex-col bg-white">
-      <div className={`${sectionWrapper} bg-card my-20`}>
+    <div className="min-h-screen relative overflow-hidden flex flex-col bg-white">
+      <div className="max-w-6xl mx-auto my-20 px-10 bg-card">
         <h1 className="[font-family:'Unageo-SemiBold'] text-3xl text-black text-foreground text-center mb-8">
           Skills Development Fund Training Stream (SDF-TS) Participant Registration
         </h1>
-        
+        <p className="text-black text-lg text-left mb-5">
+          Thank you for your interest in the Agentic Learning Labs' AI courses. These courses are offered at no cost to Ontario residents thanks to support from the Ontario Government and Government of Canada.
+          As part of our commitment to deliver fully accessible and no cost programs, learners need to complete the attached form for Employment Ontario. Your information is kept <b className="[font-family:'Unageo-Bold']">secure and confidential</b>, and is only used to monitor the program's success which helps us continue to offer it for free.
+        </p>
+        <p className="[font-family:'Unageo-Bold'] text-black text-lg text-left mb-10">
+          Please take a few minutes to complete this form.
+        </p>
         <form onSubmit={handleSubmit} className="space-y-8 text-black">
           {Object.entries(FORM_CONFIG).map(([sectionKey, section]) => (
             <div key={sectionKey} className="space-y-2">
-              <h3 className="[font-family:'Unageo-SemiBold'] text-2xl text-left text-foreground">
+              <h3 className="[font-family:'Unageo-SemiBold'] text-2xl text-left text-foreground mb-5">
                 {section.title}
               </h3>
-              
-              <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 mb-20">
+              <div className="grid grid-cols-1 lg:grid-cols-5 gap-7 mb-20">
                 {section.fields.map(field => (
                   <div 
                     key={field.id} 
                     className={`space-y-2 ${field.gridClass || ''}`}>
+                    {field.type !== 'paragraph' && field.type !== 'checkbox'?
                     <label 
                       htmlFor={field.id} 
                       className="block text-md text-left text-foreground">
                       {field.label}
                       {field.required && <span className="text-red-500 ml-1">*</span>}
                     </label>
+                    : null
+                    }
                     {renderField(field)}
                   </div>
                 ))}
@@ -693,10 +917,10 @@ const RegForm = () => {
             </div>
           ))}
           
-          <div className="flex flex-col">
+          <div className="flex flex-col items-center lg:items-end">
             <button
               type="submit"
-              className="w-[250px] bg-black text-white text-lg py-3 px-6 rounded-2xl hover:opacity-85 transition-colors ml-auto">
+              className="w-[250px] bg-black text-white text-lg py-3 px-6 rounded-2xl hover:opacity-85 transition-colors">
               Submit
             </button>
           </div>

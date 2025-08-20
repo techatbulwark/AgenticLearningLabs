@@ -9,12 +9,14 @@ from config import settings
 
 origins = []
 
-if settings.environment == "[development]":
+if settings.environment == "development":
     origins.extend([
         'http://localhost:5173',
     ])    
-if settings.frontend_url:
+else:
     origins.append(settings.frontend_url)
+
+print(origins)
 
 app = FastAPI(debug=settings.environment == "development")
 app.include_router(router)

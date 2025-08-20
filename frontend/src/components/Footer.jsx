@@ -3,8 +3,13 @@ import React, { useEffect, useState } from "react";
 import agentics from '../assets/images/agentics.png';
 import instagram from '../assets/images/instagram.png';
 import linkedin from '../assets/images/linkedin.png';
+import { Link } from "react-router-dom";
+import { useModal } from "../context/PrereqModalContext";
+
 
 const Footer = () => {
+
+const { openModal } = useModal();
 
   const pageLinks = [
     {
@@ -27,15 +32,11 @@ const Footer = () => {
   const extLinks = [
     {
       name: "Contact us",
-      link: "/",
+      link: "/team#contactus",
     },
     {
       name: "1-866-852-1603",
-      link: "/",
-    },
-    {
-      name: "Register now",
-      link: "/",
+      link: "/tel:18668521603",
     },
 
   ]
@@ -71,6 +72,7 @@ const Footer = () => {
                     <a href={item.link} className="hover:opacity-80">{item.name}</a>
                 )
             })}
+            <a onClick={openModal} className="hover:text-gray-400">Register now</a>
         </div>
 
         {/* small screen layout */}
@@ -100,15 +102,14 @@ const Footer = () => {
                     </a>
                 </div>
             </div>
-            {/* Right Column (always visible) */}
             <div className="flex flex-col space-y-2 text-lg">
                 {extLinks.map((item, index) => {
                     return (
-                        <a href={item.link} className="hover:opacity-80">{item.name}</a>
+                        <Link to={item.link} className="hover:opacity-80">{item.name}</Link>
                     )
                 })}
+                <a onClick={openModal} className="hover:text-gray-400">Register now</a>
             </div>
-
         </div>
         <div className="flex flex-col items-center gap-10 lg:hidden w-full">
             <div className="flex gap-4">

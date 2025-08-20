@@ -6,8 +6,6 @@ from config import settings
 
 REGISTRATION_TABLE = 'sdf_registrations'
 PREREQ_TABLE = 'prereq_responses'
-SDF_TABLE = 'sdf_test'
-TEST_TABLE = 'test_table'
 
 router = APIRouter()
 
@@ -16,7 +14,7 @@ def register(registration: Registration):
     try:
         supabase = get_client()
         response = (
-            supabase.table(SDF_TABLE)
+            supabase.table(REGISTRATION_TABLE)
             .insert({
                 'last_name': registration.last_name,
                 'first_name': registration.first_name,

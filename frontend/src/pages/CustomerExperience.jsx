@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import { useModal } from '../context/PrereqModalContext.jsx'
 
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from '../components/Header.jsx';
+import Footer from '../components/Footer.jsx';
 
-import bulwarkWhite from '../assets/images/bulwark_white.png';
-import tribalLogo from "../assets/images/tribal1.png";
-import course_header1 from '../assets/images/course_header1.jpg';
+import customer_experience from '../assets/images/customer_experience.png';
 import data from '../assets/images/data.png';
 import dataMobile from '../assets/images/data_mobile.png';
-import HeaderLogo from '../components/HeaderLogo';
+import HeaderLogo from '../components/HeaderLogo.jsx';
 
-const DataAnalytics = () => {
+const CustomerExperience = () => {
     
     const sectionWrapper = "w-full mx-auto px-outer_sm lg:px-outer_lg";
 
@@ -27,13 +25,13 @@ const DataAnalytics = () => {
             <section className={`${sectionWrapper} relative flex flex-col mt-30 pb-20`}>
                 <div className="grid grid-cols-1 lg:grid-cols-3 text-left">
                     <div className="col-span-1 hidden lg:block">
-                        <img src={course_header1} loading="lazy" className="relative w-[350px] h-[250px]" />
+                        <img src={customer_experience} loading="lazy" className="relative w-[350px] h-[250px]" />
                     </div>
                     <div className="col-span-2 flex flex-col gap-8 z-10">
-                        <h2 className="[font-family:'Unageo-Bold'] text-7xl text-left leading-20 lg:-ml-40">AI for Data Analytics for<br/>Decision Making</h2>
+                        <h2 className="[font-family:'Unageo-Bold'] text-7xl text-left leading-20 lg:-ml-40">AI for Customer Experience<br/>& Product Innovation</h2>
                         <div className="w-line_width h-2 bg-yellow-500 rounded-full"></div>
-                        <h3 className="[font-family:'Unageo-SemiBold'] text-3xl">Use AI to turn data into knowledge<br/>and knowledge into action.</h3>
-                        <p className="text-xl">This course will teach you practical skills to apply AI to analytical data and how to use it for real time decision making. Think easier access to market trend analysis, demand forecasting, supplier management and streamlining of logistics and distribution to better handle logistical constraints and to maximize production capacity. In business, data is power. Leveraging your new AI skills, you will bring new tools and perspectives to deliver efficiency and optimization for your employer.</p>
+                        <h3 className="[font-family:'Unageo-SemiBold'] text-3xl">Use AI to better design products, services and<br/>experiences.</h3>
+                        <p className="text-xl">In this course, learn how to use AI to brainstorm, test and pitch product and service ideas that meet real customer needs, improve the customer experience and drive product innovation.</p>
                         <a
                             onClick={openModal}
                             className="shrink-0 bg-brand_yellow hover:bg-white lg:bg-white lg:hover:bg-brand_yellow text-black text-xl w-56 h-10 px-6 flex items-center justify-center rounded-full transition self-center lg:self-end">
@@ -58,9 +56,9 @@ const DataAnalytics = () => {
                     <div className="flex flex-col gap-5">
                         <h2 className="[font-family:'Unageo-SemiBold'] text-4xl">Weekly learnings</h2>
                         <ul className="text-xl text-left">
-                            <li>Week 1: AI-assisted data narratives and reports</li>
-                            <li>Week 2: AI-augmented analytics</li>
-                            <li>Week 3: Structured data input, data clearing and data visualization</li>
+                            <li>Week 1: Customized solutions/Product design</li>
+                            <li>Week 2: Data first research for product evaluation</li>
+                            <li>Week 3: Product development planning and MVP creation</li>
                             <li>Week 4: Career Catalyst</li>
                         </ul>
                     </div>
@@ -142,4 +140,4 @@ const DataAnalytics = () => {
     );
 };
 
-export default DataAnalytics;
+export default CustomerExperience;
