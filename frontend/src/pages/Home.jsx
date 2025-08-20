@@ -38,7 +38,7 @@ const Home = () => {
       {/* headings */}
       <section className={`${sectionWrapper} relative z-10 flex flex-col lg:flex-row items-center justify-between py-24`}>
         <div className="flex-shrink-0 w-auto text-left">
-          <h1 className="[font-family:'Unageo-SemiBold'] text-7xl max-w-3/4 lg:max-w-full mb-5 leading-tight tracking-tight">
+          <h1 className="[font-family:'Unageo-SemiBold'] text-6xl lg:text-7xl max-w-3/4 lg:max-w-full mb-5 leading-tight tracking-tight">
             AGENTIC<br />LEARNING LABS
           </h1>
           <h2 className="[font-family:'Unageo-SemiBold'] text-4xl font-light tracking-wide">
@@ -52,7 +52,7 @@ const Home = () => {
           </a>
         </div>
         <div className="flex justify-center">
-          <img src={bulwarkLogoA} loading="lazy" className="absolute w-[250px] rotate-0 lg:hidden top-50 -right-20 animate-spin-slow" />
+          <img src={bulwarkLogoA} loading="lazy" className="absolute w-[350px] rotate-0 lg:hidden top-50 -right-20 animate-spin-slow" />
           <img src={bulwarkLogoA} loading="lazy" className="absolute w-[500px] rotate-0 hidden lg:block top-20 right-50 animate-spin-slow" />
           <img src={bulwarkLogoL} loading="lazy" className="absolute w-[220px] rotate-270 hidden lg:block bottom-30 right-0 animate-spin-reverse" />
           <img src={bulwarkLogoL} loading="lazy" className="absolute w-[220px] rotate-20 hidden lg:block bottom-0 right-70 animate-spin-slow" />
