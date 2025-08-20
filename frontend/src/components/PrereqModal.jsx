@@ -74,7 +74,7 @@ const PrereqModal = () => {
       {isSubmitted ? (
         <form
           onSubmit={handleUpdateSubmit}
-          className="relative flex flex-col items-start max-w-3xl bg-white rounded-2xl p-25  ">
+          className="relative flex flex-col items-start max-w-3xl max-h-[90vh] bg-white rounded-2xl p-15">
           <div className="flex flex-col gap-y-10">
             <h2 className="[font-family:'Unageo-SemiBold'] text-3xl text-black">Thanks for your interest in Agentic Learning Labs.</h2>
             <p className="text-lg text-black text-left">You have answered no to one or more of the requirements.  If you are still interested in our training please provide your email and we will get in touch to help you find an accommodation to participate if possible.  Please watch for an email from <b className="[font-family:'Unageo-Bold']">info@agenticlearninglabs.com.</b></p>
