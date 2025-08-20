@@ -52,8 +52,8 @@ const Home = () => {
           </a>
         </div>
         <div className="flex justify-center">
-          <img src={bulwarkLogoA} loading="lazy" className="absolute w-[250px] rotate-0 lg:hidden top-30 -right-20 animate-spin-slow" />
-          <img src={bulwarkLogoA} loading="lazy" className="absolute w-[500px] rotate-0 hidden lg:block top-20 right-50 animate-spin-slow" />
+          <img src={bulwarkLogoA} loading="lazy" className="absolute w-[250px] lg:hidden top-30 -right-20 animate-spin-slow" />
+          <img src={bulwarkLogoA} loading="lazy" className="absolute w-[500px] hidden lg:block top-20 right-50 animate-spin-slow" />
           <img src={bulwarkLogoL} loading="lazy" className="absolute w-[220px] rotate-270 hidden lg:block bottom-30 right-0 animate-spin-reverse" />
           <img src={bulwarkLogoL} loading="lazy" className="absolute w-[220px] rotate-20 hidden lg:block bottom-0 right-70 animate-spin-slow" />
         </div>
@@ -62,7 +62,7 @@ const Home = () => {
       {/* partner logos */}
       <section className="relative bg-brand_black">
         <div className="w-full bg-white py-20 lg:py-10">
-          <div className="flex flex-wrap justify-center items-center gap-5 lg:gap-20">
+          <div className="flex flex-wrap justify-between lg:justify-center px-5 gap-5 lg:gap-20">
             {partners.map((img, i) => (
               <img key={i} src={img} loading="lazy" className="w-16 lg:w-28 object-contain" />
             ))}

@@ -70,7 +70,7 @@ const Team = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-3 text-left">
                     <img src={course_header1} loading="lazy" className="absolute w-[360px] h-[250px] top-10 lg:top-0 lg:left-20 right-0" />
                     <div className="flex flex-col col-span-2 px-6 lg:px-16 gap-y-10 lg:mt-30 lg:ml-30 z-10">
-                        <h2 className="[font-family:'Unageo-Bold'] text-6xl text-left text-white leading-20 max-w-3/4 lg:max-w-full z-10">THE TEAM BEHIND AGENTIC LEARNING LABS</h2>
+                        <h2 className="[font-family:'Unageo-Bold'] text-6xl lg:text-7xl text-left text-white leading-20 max-w-3/4 lg:max-w-full z-10">THE TEAM BEHIND AGENTIC LEARNING LABS</h2>
                         <div className="w-line_width h-2 bg-brand_red rounded-full"></div>
                         <p className="text-xl">
                             Agentic Learning Labs is powered by TribalScale and Bulwark Impact. Their teams comprise committed experts who help people and businesses adapt and thrive in the digital era.
@@ -85,7 +85,7 @@ const Team = () => {
                         <img src={team2} loading="lazy" className="w-[510px] h-[280px] object-cover lg:top-0" />
                     </div>
                     <div className="">
-                        <img src={bulwarkLogoA} loading="lazy" className="absolute w-[250px] rotate-0 lg:hidden top-50 right-0 animate-spin-slow" />
+                        <img src={bulwarkLogoA} loading="lazy" className="absolute w-[250px] rotate-0 lg:hidden top-50 -right-20 animate-spin-slow" />
                         <img src={bulwarkLogoA} loading="lazy" className="absolute w-[200px] rotate-0 hidden md:hidden lg:block top-0 right-70 animate-spin-slow" />
                         <img src={bulwarkLogoL} loading="lazy" className="absolute w-[150px] h-[150px] rotate-20 hidden lg:block top-100 -left-10 animate-spin-slow" />
                         <img src={bulwarkLogoL} loading="lazy" className="absolute w-[150px] h-[150px] rotate-270 hidden lg:block bottom-20 right-100 animate-spin-reverse" />

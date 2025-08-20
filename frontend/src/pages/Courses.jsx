@@ -53,7 +53,7 @@ const Courses = () => {
             <section className={`${sectionWrapper} relative pb-10 flex flex-col mt-30`}>
                 <div className="grid grid-cols-1 lg:grid-cols-3 text-left text-white">
                     <div className="relative flex flex-col gap-10">
-                        <h2 className="[font-family:'Unageo-SemiBold'] text-7xl leading-25 mb-10">OUR<br />COURSES</h2>
+                        <h2 className="[font-family:'Unageo-SemiBold'] text-6xl lg:text-7xl leading-25 mb-10">OUR<br />COURSES</h2>
                         <div className="hidden lg:block relative w-full">
                             <img src={course_header1} loading="lazy" className="relative w-[300px] h-[200px] -right-25" />
                             <div className="absolute -top-8 z-10">
@@ -73,9 +73,9 @@ const Courses = () => {
                             <h2 className="[font-family:'Unageo-SemiBold'] text-4xl leading-12 z-10">AI for Sales, Marketing<br />& Business Development </h2>
                         </div>
                     </div>
-                    <div className="">
-                        <img src={bulwarkLogoA} loading="lazy" className="absolute w-[350px] lg:hidden -top-10 -right-20" />
-                        <img src={bulwarkLogoA} loading="lazy" className="absolute w-[240px] hidden md:hidden lg:block -top-20 right-0 animate-spin-reverse" />
+                    <div>
+                        <img src={bulwarkLogoA} loading="lazy" className="absolute w-[250px] lg:hidden top-20 right-0 animate-spin-slow" />
+                        <img src={bulwarkLogoA} loading="lazy" className="absolute w-[240px] hidden lg:block -top-20 right-0 animate-spin-slow" />
                         <img src={bulwarkLogoL} loading="lazy" className="absolute w-[150px] rotate-20 hidden lg:block top-100 -left-10 animate-spin-slow" />
                         <img src={bulwarkLogoL} loading="lazy" className="absolute w-[150px] rotate-270 hidden lg:block top-0 left-220 animate-spin-slow" />
                     </div>

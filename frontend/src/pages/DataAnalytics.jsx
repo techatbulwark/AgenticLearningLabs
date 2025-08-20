@@ -28,7 +28,7 @@ const DataAnalytics = () => {
                         <img src={course_header1} loading="lazy" className="relative w-[350px] h-[250px]" />
                     </div>
                     <div className="col-span-2 flex flex-col gap-8 z-10">
-                        <h2 className="[font-family:'Unageo-Bold'] text-7xl text-left leading-20 lg:-ml-40">AI for Data Analytics for<br/>Decision Making</h2>
+                        <h2 className="[font-family:'Unageo-Bold'] text-6xl lg:text-7xl text-left leading-20 lg:-ml-40">AI for Data Analytics for<br/>Decision Making</h2>
                         <div className="w-line_width h-2 bg-yellow-500 rounded-full"></div>
                         <h3 className="[font-family:'Unageo-SemiBold'] text-3xl">Use AI to turn data into knowledge<br/>and knowledge into action.</h3>
                         <p className="text-xl">This course will teach you practical skills to apply AI to analytical data and how to use it for real time decision making. Think easier access to market trend analysis, demand forecasting, supplier management and streamlining of logistics and distribution to better handle logistical constraints and to maximize production capacity. In business, data is power. Leveraging your new AI skills, you will bring new tools and perspectives to deliver efficiency and optimization for your employer.</p>
@@ -112,29 +112,29 @@ const DataAnalytics = () => {
                         Register now
                     </a>
                 </div>
-                    {/* calendar */}
-                    <div className="bg-gray-100 text-black flex items-center justify-center mt-6">
-                        <img src={data} className="hidden lg:block object-cover" />
-                        <img src={dataMobile} className="lg:hidden object-cover" />
-                    </div>
+                {/* calendar */}
+                <div className="bg-gray-100 text-black flex items-center justify-center mt-6">
+                    <img src={data} className="hidden lg:block object-cover" />
+                    <img src={dataMobile} className="lg:hidden object-cover" />
+                </div>
             </section>
-                <div className="w-full px-outer_lg py-20 relative bg-brand_gray border-t border-white">
-                    <div className="flex flex-col justify-between items-start lg:px-inner">
-                        <div className="w-full lg:w-1/2 text-left">
-                            <h2 className="[font-family:'Unageo-SemiBold'] text-4xl mb-5">Please notify me of new course dates when they are available</h2>
-                        </div>
-                        <div className="flex flex-row items-center w-full lg:w-4/5 gap-5">
-                            <input className="flex-grow h-10 bg-white rounded-md text-black p-3" placeholder="Email"></input>
-                            <button
-                                onClick={() => toggleTab(index)}
-                                className="flex bg-brand_yellow rounded-full 
-                                w-12 h-12 text-black text-3xl items-center justify-center 
-                                transition-all duration-300 ease-in-out">
-                                →
-                            </button>
-                        </div>
+            <div className="w-full lg:px-outer_lg py-20 relative bg-brand_gray border-t border-white">
+                <div className="flex flex-col justify-between items-start px-inner">
+                    <div className="w-full lg:w-1/2 text-left">
+                        <h2 className="[font-family:'Unageo-SemiBold'] text-4xl mb-5">Please notify me of new course dates when they are available</h2>
+                    </div>
+                    <div className="flex flex-row items-center w-full lg:w-4/5 gap-5">
+                        <input className="flex-grow h-10 bg-white rounded-md text-black p-3" placeholder="Email"></input>
+                        <button
+                            onClick={() => toggleTab(index)}
+                            className="flex bg-brand_yellow rounded-full 
+                            w-12 h-12 text-black text-3xl items-center justify-center 
+                            transition-all duration-300 ease-in-out">
+                            →
+                        </button>
                     </div>
                 </div>
+            </div>
             <Footer />
         </div>
     );
