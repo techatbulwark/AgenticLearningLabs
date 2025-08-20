@@ -28,8 +28,8 @@ const CustomerExperience = () => {
                         <img src={customer_experience} loading="lazy" className="relative w-[350px] h-[250px]" />
                     </div>
                     <div className="col-span-2 flex flex-col gap-8 z-10">
-                        <h2 className="[font-family:'Unageo-Bold'] text-5xl lg:text-7xl text-left leading-20 lg:-ml-40">AI for Customer Experience<br/>& Product Innovation</h2>
-                        <div className="w-line_width h-2 bg-yellow-500 rounded-full"></div>
+                        <h2 className="[font-family:'Unageo-Bold'] text-5xl lg:text-7xl text-left leading-15 lg:leading-20 lg:-ml-40">AI for Customer Experience<br/>& Product Innovation</h2>
+                        <div className="w-line_width h-2 bg-yellow-500 rounded-full" />
                         <h3 className="[font-family:'Unageo-SemiBold'] text-3xl">Use AI to better design products, services and<br/>experiences.</h3>
                         <p className="text-xl">In this course, learn how to use AI to brainstorm, test and pitch product and service ideas that meet real customer needs, improve the customer experience and drive product innovation.</p>
                         <a

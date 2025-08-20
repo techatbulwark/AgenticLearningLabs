@@ -192,7 +192,7 @@ const PrereqModal = () => {
                 <input
                   type="checkbox" 
                   id="updatePref"
-                  className="mt-2 mr-2 scale-200 lg:scale-100"
+                  className="mt-2 mr-3 scale-200 lg:scale-100"
                   onChange={() => setUpdatePref(!updatePref)}/>
                 <label className="text-lg">I want to register and would like updates on Agentics Learning Labs courses and training</label>
               </div>

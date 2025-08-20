@@ -28,8 +28,8 @@ const SalesMarketing = () => {
                         <img src={course_header3} loading="lazy" className="relative w-[350px] h-[250px]" />
                     </div>
                     <div className="col-span-2 flex flex-col gap-8 z-10">
-                        <h2 className="[font-family:'Unageo-Bold'] text-5xl lg:text-7xl text-left leading-20 lg:-ml-40">AI for Sales, Marketing<br/>& Business Development</h2>
-                        <div className="w-line_width h-2 bg-yellow-500 rounded-full"></div>
+                        <h2 className="[font-family:'Unageo-Bold'] text-5xl lg:text-7xl text-left leading-15 lg:leading-20 lg:-ml-40">AI for Sales, Marketing<br/>& Business Development</h2>
+                        <div className="w-line_width h-2 bg-yellow-500 rounded-full" />
                         <h3 className="[font-family:'Unageo-SemiBold'] text-3xl">Drive sales and reach new customers with an AI-<br/>powered business strategy.</h3>
                         <p className="text-xl">In this course learn how to apply AI tools to build sales and marketing campaigns, generate leads, and personalize outreach to grow the success of sales and marketing campaigns.</p>
                         <a
