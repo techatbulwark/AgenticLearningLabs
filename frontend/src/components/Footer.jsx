@@ -36,7 +36,7 @@ const { openModal } = useModal();
     },
     {
       name: "1-866-852-1603",
-      link: "/tel:18668521603",
+      link: "tel:18668521603",
     },
 
   ]

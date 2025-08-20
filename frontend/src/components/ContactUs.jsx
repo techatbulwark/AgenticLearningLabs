@@ -70,8 +70,7 @@ const ContactUs = () => {
                     />
                     <button
                         type="submit"
-                        className="bg-brand_yellow hover:bg-white text-black py-2 px-24 ml-auto rounded-full transition-colors"
-                    >
+                        className="bg-brand_yellow hover:bg-white text-black py-2 px-24 mx-auto lg:ml-auto rounded-full transition-colors">
                         Send
                     </button>
                 </form>
