@@ -10,6 +10,7 @@ import DataAnalytics from './pages/DataAnalytics'
 import PrereqModal from './components/PrereqModal'
 import ScrollLink from './components/ScrollLink'
 import CustomerExperience from './pages/CustomerExperience'
+import SalesMarketing from './pages/SalesMarketing'
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
         <Route path='/faqs' element={<FAQ/>}/>
         <Route path='/data-analytics' element={<DataAnalytics/>}/>
         <Route path='/customer-experience' element={<CustomerExperience/>}/>
+        <Route path='/sales-marketing' element={<SalesMarketing/>}/>
         <Route path='/register' element={<Register/>}/>
       </Routes>
       <PrereqModal />

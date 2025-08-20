@@ -52,7 +52,7 @@ const Home = () => {
           </a>
         </div>
         <div className="flex justify-center">
-          <img src={bulwarkLogoA} loading="lazy" className="absolute w-[350px] rotate-0 lg:hidden top-15 -right-20 animate-spin-slow" />
+          <img src={bulwarkLogoA} loading="lazy" className="absolute w-[300px] rotate-0 lg:hidden top-30 -right-20 animate-spin-slow" />
           <img src={bulwarkLogoA} loading="lazy" className="absolute w-[500px] rotate-0 hidden lg:block top-20 right-50 animate-spin-slow" />
           <img src={bulwarkLogoL} loading="lazy" className="absolute w-[220px] rotate-270 hidden lg:block bottom-30 right-0 animate-spin-reverse" />
           <img src={bulwarkLogoL} loading="lazy" className="absolute w-[220px] rotate-20 hidden lg:block bottom-0 right-70 animate-spin-slow" />
@@ -62,22 +62,21 @@ const Home = () => {
       {/* partner logos */}
       <section className="relative bg-brand_black">
         <div className="w-full bg-white py-20 lg:py-10">
-          <div className="flex flex-wrap justify-center items-center gap-10 lg:gap-20">
+          <div className="flex flex-wrap justify-center items-center gap-5 lg:gap-20">
             {partners.map((img, i) => (
               <img key={i} src={img} loading="lazy" className="w-16 lg:w-28 object-contain" />
             ))}
           </div>
         </div>
-
-        <div className="flex flex-col lg:flex-row w-full h-full lg:h-[600px]">
-          <div className="relative w-full lg:w-1/2 h-full">
+        <div className="flex flex-col lg:flex-row w-full h-full lg:h-[800px]">
+          <div className="relative w-full lg:w-1/2 h-[800px]">
             <img src={bg5} loading="lazy" className="w-full h-full object-cover" />
             <div className="absolute inset-0 flex flex-col items-start justify-start p-4 space-y-4">
               <img src={img1} loading="lazy" className="absolute w-[380px] top-[-30px] left-[-80px]" />
-              <img src={img2} loading="lazy" className="absolute w-[400px] right-[-80px]" />
+              <img src={img2} loading="lazy" className="absolute w-[400px] top-[150px] right-[-80px]" />
             </div>
           </div>
-          <div className={`${sectionWrapper} relative w-full lg:w-1/2 h-[600px] bg-brand_gray flex flex-col justify-center text-left`}>
+          <div className={`${sectionWrapper} relative w-full lg:w-1/2 h-[800px] bg-brand_gray flex flex-col justify-center text-left`}>
             <h2 className="[font-family:'Unageo-SemiBold'] text-4xl lg:text-5xl text-white mb-8">AI is not a fad!</h2>
             <p className="text-xl text-white leading-relaxed mb-8">
               Thanks to funding from Employment Ontario as well as funding from the Government of Ontario and Government of Canada, these courses are free for residents of Ontario.

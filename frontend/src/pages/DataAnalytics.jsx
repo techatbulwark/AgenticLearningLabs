@@ -4,8 +4,6 @@ import { useModal } from '../context/PrereqModalContext.jsx'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-import bulwarkWhite from '../assets/images/bulwark_white.png';
-import tribalLogo from "../assets/images/tribal1.png";
 import course_header1 from '../assets/images/course_header1.jpg';
 import data from '../assets/images/data.png';
 import dataMobile from '../assets/images/data_mobile.png';
@@ -68,7 +66,7 @@ const DataAnalytics = () => {
                         <h2 className="[font-family:'Unageo-SemiBold'] text-4xl">Format</h2>
                         <div className="flex flex-col gap-5">
                             <p className="text-xl">This is a four week hybrid course that goes beyond theory to provide you with practical hands-on experience.</p>
-                            <p className="[font-family:'Unageo-Bold'] text-2xl">Weeks one to three: online + in-person learning</p>
+                            <p className="[font-family:'Unageo-Bold'] text-xl">Weeks one to three: online + in-person learning</p>
                             <p className="text-xl">Each week, you'll complete 6-10 hours (depending on your learning style) of self-paced learning online that includes:</p>
                             <ul className="list-disc pl-7 text-xl text-left">
                                 <li>Interactive readings and video lessons packed with case studies and hands-on practice assignments</li>
@@ -77,7 +75,7 @@ const DataAnalytics = () => {
                                 <li>Plus, two optional “office hours” with your instructor where you can ask questions or explore topics more deeply to ensure you never feel stuck.</li>
                             </ul>
                             <p className="text-xl">Plus, each week, you will join your class peers for a day-long, in-person workshop to practice new skills and apply what you are learning in a collaborative and supportive setting.</p>
-                            <p className="[font-family:'Unageo-Bold'] text-2xl">Week four: Final in-person workshop + Career Catalyst (one day)</p>
+                            <p className="[font-family:'Unageo-Bold'] text-xl">Week four: Final in-person workshop + Career Catalyst (one day)</p>
                             <p className="text-xl">In the last week, attend your final in-person workshop where you'll showcase your skills and present your own AI-powered product. Plus, participate in Career Catalyst where you will learn job hunting best practices and how to use AI to land your dream or promotion including:</p>
                             <ul className="list-disc pl-7 text-xl text-left">
                                 <li>Updating your resume and cover letter</li>
@@ -115,7 +113,7 @@ const DataAnalytics = () => {
                     </a>
                 </div>
                     {/* calendar */}
-                    <div className="bg-gray-100 text-black flex items-center justify-center text-2xl font-bold mt-6">
+                    <div className="bg-gray-100 text-black flex items-center justify-center mt-6">
                         <img src={data} className="hidden lg:block object-cover" />
                         <img src={dataMobile} className="lg:hidden object-cover" />
                     </div>

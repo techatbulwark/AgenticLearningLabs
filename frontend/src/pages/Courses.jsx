@@ -21,16 +21,19 @@ const Courses = () => {
         title: "AI for Sales, Marketing & Business Development",
         subtitle: "Drive sales and reach new customers with an AI-powered business strategy.",
         body: "Learn how to use AI to directly improve sales, marketing, and business development. Develop go-to-market plans, personalized marketing campaigns, and customer segmentation. Great for sales reps, marketers, public relations pros, and business builders.",
+        link: "/sales-marketing",
     },
     {
         title: "AI for Customer Experience and Product Innovation",
         subtitle: "Use AI to better design products, services and experiences.",
         body: "Learn how to use AI to brainstorm, test and pitch products and service ideas that meet real customer needs, improve the customer experience and drive product innovation.  Great for creative thinkers, innovators and product developers.",
+        link: "/customer-experience",
     },
     {
         title: "Data Analytics for Decision Making",
         subtitle: "Use AI to turn data into knowledge and knowledge into action.",
         body: "In business, data is power. Learn the practical skills on how to apply AI to analytical data and use it for real time decision making, such as market trend analysis, demand forecasting, supplier management, and streamlining of logistics and distribution. Great for logistics, admin and analyst roles.",
+        link: "/data-analytics",
     },
     ];
 
@@ -113,7 +116,7 @@ const Courses = () => {
                                 <p className="[font-family:'Unageo-SemiBold'] text-3xl">{course.subtitle}</p>
                                 <p className="text-lg">{course.body}</p>
                                 <a
-                                    href="/data-analytics"
+                                    href={course.link}
                                     className="shrink-0 text-black bg-brand_yellow hover:text-white hover:bg-brand_black lg:text-white lg:bg-brand_black lg:hover:text-black lg:hover:bg-brand_yellow w-56 h-10 px-6 flex items-center justify-center rounded-full transition mx-auto lg:mr-0">
                                     Learn more
                                 </a>

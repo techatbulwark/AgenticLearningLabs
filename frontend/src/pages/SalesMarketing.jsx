@@ -4,12 +4,12 @@ import { useModal } from '../context/PrereqModalContext.jsx'
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 
-import customer_experience from '../assets/images/customer_experience.png';
-import product from '../assets/images/product.png';
-import productMobile from '../assets/images/product_mobile.png';
+import course_header3 from '../assets/images/course_header3.jpg';
+import business from '../assets/images/business.png';
+import businessMobile from '../assets/images/business_mobile.png';
 import HeaderLogo from '../components/HeaderLogo.jsx';
 
-const CustomerExperience = () => {
+const SalesMarketing = () => {
     
     const sectionWrapper = "w-full mx-auto px-outer_sm lg:px-outer_lg";
 
@@ -25,13 +25,13 @@ const CustomerExperience = () => {
             <section className={`${sectionWrapper} relative flex flex-col mt-30 pb-20`}>
                 <div className="grid grid-cols-1 lg:grid-cols-3 text-left">
                     <div className="col-span-1 hidden lg:block">
-                        <img src={customer_experience} loading="lazy" className="relative w-[350px] h-[250px]" />
+                        <img src={course_header3} loading="lazy" className="relative w-[350px] h-[250px]" />
                     </div>
                     <div className="col-span-2 flex flex-col gap-8 z-10">
-                        <h2 className="[font-family:'Unageo-Bold'] text-7xl text-left leading-20 lg:-ml-40">AI for Customer Experience<br/>& Product Innovation</h2>
+                        <h2 className="[font-family:'Unageo-Bold'] text-7xl text-left leading-20 lg:-ml-40">AI for Sales, Marketing<br/>& Business Development</h2>
                         <div className="w-line_width h-2 bg-yellow-500 rounded-full"></div>
-                        <h3 className="[font-family:'Unageo-SemiBold'] text-3xl">Use AI to better design products, services and<br/>experiences.</h3>
-                        <p className="text-xl">In this course, learn how to use AI to brainstorm, test and pitch product and service ideas that meet real customer needs, improve the customer experience and drive product innovation.</p>
+                        <h3 className="[font-family:'Unageo-SemiBold'] text-3xl">Drive sales and reach new customers with an AI-<br/>powered business strategy.</h3>
+                        <p className="text-xl">In this course learn how to apply AI tools to build sales and marketing campaigns, generate leads, and personalize outreach to grow the success of sales and marketing campaigns.</p>
                         <a
                             onClick={openModal}
                             className="shrink-0 bg-brand_yellow hover:bg-white lg:bg-white lg:hover:bg-brand_yellow text-black text-xl w-56 h-10 px-6 flex items-center justify-center rounded-full transition self-center lg:self-end">
@@ -45,28 +45,28 @@ const CustomerExperience = () => {
                     <div className="flex flex-col gap-5">
                         <h2 className="[font-family:'Unageo-SemiBold'] text-4xl">Learn how to:</h2>
                         <ul className="list-disc pl-7 text-xl text-left">
-                            <li>Create AI prompts and solve for business questions</li>
-                            <li>Build dashboards and visualize data for reporting</li>
-                            <li>Analyze market trends and forecast demand </li>
-                            <li>Streamline supply chain logistics and distribution</li>
-                            <li>Create AI-generated reports to support real-time decision-making</li>
-                            <li>Automate manual data tasks to save time and improve accuracy</li>
+                            <li>Create go-to-market strategies and marketing message alignment</li>
+                            <li>Research and segment customers</li>
+                            <li>Build personalized marketing and sales content</li>
+                            <li>Create sales proposals and promotional materials</li>
+                            <li>Forecast engagement trends and campaign opportunities</li>
                         </ul>
                     </div>
+                    
                     <div className="flex flex-col gap-5">
                         <h2 className="[font-family:'Unageo-SemiBold'] text-4xl">Weekly learnings</h2>
                         <ul className="text-xl text-left">
-                            <li>Week 1: Customized solutions/Product design</li>
-                            <li>Week 2: Data first research for product evaluation</li>
-                            <li>Week 3: Product development planning and MVP creation</li>
+                            <li>Week 1: Customer segmentation and targeting</li>
+                            <li>Week 2: Marketing message alignment</li>
+                            <li>Week 3: Sales proposal development and personalized content</li>
                             <li>Week 4: Career Catalyst</li>
                         </ul>
                     </div>
-                    <div className="flex flex-col gap-5">
+                     <div className="flex flex-col gap-5">
                         <h2 className="[font-family:'Unageo-SemiBold'] text-4xl">Format</h2>
                         <div className="flex flex-col gap-5">
                             <p className="text-xl">This is a four week hybrid course that goes beyond theory to provide you with practical hands-on experience.</p>
-                            <p className="[font-family:'Unageo-Bold'] text-xl">Weeks one to three: online + in-person learning</p>
+                            <p className="[font-family:'Unageo-Bold'] text-2xl">Weeks one to three: online + in-person learning</p>
                             <p className="text-xl">Each week, you'll complete 6-10 hours (depending on your learning style) of self-paced learning online that includes:</p>
                             <ul className="list-disc pl-7 text-xl text-left">
                                 <li>Interactive readings and video lessons packed with case studies and hands-on practice assignments</li>
@@ -75,7 +75,7 @@ const CustomerExperience = () => {
                                 <li>Plus, two optional “office hours” with your instructor where you can ask questions or explore topics more deeply to ensure you never feel stuck.</li>
                             </ul>
                             <p className="text-xl">Plus, each week, you will join your class peers for a day-long, in-person workshop to practice new skills and apply what you are learning in a collaborative and supportive setting.</p>
-                            <p className="[font-family:'Unageo-Bold'] text-xl">Week four: Final in-person workshop + Career Catalyst (one day)</p>
+                            <p className="[font-family:'Unageo-Bold'] text-2xl">Week four: Final in-person workshop + Career Catalyst (one day)</p>
                             <p className="text-xl">In the last week, attend your final in-person workshop where you'll showcase your skills and present your own AI-powered product. Plus, participate in Career Catalyst where you will learn job hunting best practices and how to use AI to land your dream or promotion including:</p>
                             <ul className="list-disc pl-7 text-xl text-left">
                                 <li>Updating your resume and cover letter</li>
@@ -114,8 +114,8 @@ const CustomerExperience = () => {
                 </div>
                     {/* calendar */}
                     <div className="bg-gray-100 text-black flex items-center justify-center text-2xl font-bold mt-6">
-                        <img src={product} className="hidden lg:block object-cover" />
-                        <img src={productMobile} className="lg:hidden object-cover" />
+                        <img src={business} className="hidden lg:block object-cover" />
+                        <img src={businessMobile} className="lg:hidden object-cover" />
                     </div>
             </section>
                 <div className="w-full px-outer_lg py-20 relative bg-brand_gray border-t border-white">
@@ -140,4 +140,4 @@ const CustomerExperience = () => {
     );
 };
 
-export default CustomerExperience;
+export default SalesMarketing;
