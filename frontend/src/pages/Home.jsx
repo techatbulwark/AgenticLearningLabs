@@ -64,7 +64,7 @@ const Home = () => {
         <div className="w-full bg-white py-20 lg:py-10">
           <div className="flex flex-wrap justify-between lg:justify-center px-5 gap-5 lg:gap-20">
             {partners.map((img, i) => (
-              <img key={i} src={img} loading="lazy" className="w-16 lg:w-28 object-contain" />
+              <img key={i} src={img} loading="lazy" className="w-12 lg:w-28 object-contain" />
             ))}
           </div>
         </div>

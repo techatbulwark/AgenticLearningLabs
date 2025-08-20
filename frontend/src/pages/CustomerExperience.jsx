@@ -118,8 +118,8 @@ const CustomerExperience = () => {
                         <img src={productMobile} className="lg:hidden object-cover" />
                     </div>
             </section>
-                <div className="w-full px-outer_lg py-20 relative bg-brand_gray border-t border-white">
-                    <div className="flex flex-col justify-between items-start lg:px-inner">
+                <div className="w-full lg:px-outer_lg py-20 relative bg-brand_gray border-t border-white">
+                    <div className="flex flex-col justify-between items-start px-inner">
                         <div className="w-full lg:w-1/2 text-left">
                             <h2 className="[font-family:'Unageo-SemiBold'] text-4xl mb-5">Please notify me of new course dates when they are available</h2>
                         </div>
