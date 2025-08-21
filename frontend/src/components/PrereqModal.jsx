@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { useModal } from '../context/PrereqModalContext.jsx';
 import axios from 'axios';
 
+const API_BASE_URL = import.meta.env.MODE === 'production' 
+  ? import.meta.env.VITE_PROD_API : import.meta.env.VITE_DEV_API;
+
 const PrereqModal = () => {
   const requirements = [
     {
@@ -35,10 +38,8 @@ const PrereqModal = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-
     try {
-      await axios.post("http://localhost:8000/prereq", {
+      await axios.post(`${API_BASE_URL}/prereq`, {
         in_person: answers[0].answer,
         online_programs: answers[1].answer,
         email: email,
@@ -49,10 +50,15 @@ const PrereqModal = () => {
 
     // course update preferences -> info@agentics
     if (updatePref && email !== "") {
-      
+      try {
+        await axios.post(`${API_BASE_URL}/course_updates`, {
+          email: email,
+        });
+      } catch (error) {
+        console.error(error);
+      }
     }
 
-    console.log(answers);
     if (answers.every((ans) => ans.answer === "yes")) {
       closeModal();
       resetForm();

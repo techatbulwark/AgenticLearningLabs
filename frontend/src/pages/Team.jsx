@@ -114,7 +114,7 @@ const Team = () => {
                                 <h3 className="[font-family:'Unageo-SemiBold'] text-2xl text-foreground mb-5">
                                     {instructor.title}
                                 </h3>   
-                                <p className="mb-5 text-left">{instructor.intro}</p>
+                                <p className="mb-5 text-xl text-left">{instructor.intro}</p>
                                 <div className="mr-auto mb-20">
                                     <a
                                         href={instructor.link}

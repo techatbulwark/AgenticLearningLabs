@@ -55,11 +55,8 @@ class Registration(BaseModel):
     
 
 class PrereqResponse(BaseModel):
-    ai_experence: str
     in_person: str
     online_programs: str
-    computer_req: str
-    business_owner: str
     email: str
 
 class InquiryBody(BaseModel):

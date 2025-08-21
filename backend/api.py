@@ -80,11 +80,8 @@ def submitPrereq(response: PrereqResponse):
         response = (
             supabase.table(PREREQ_TABLE)
             .insert({
-                'has_ai_experience': response.ai_experence,
                 'in_person_availability': response.in_person,
                 'complete_online_programs': response.online_programs,
-                'meets_computer_requirements': response.computer_req,
-                'is_business_owner': response.business_owner,
                 'email': response.email,
             }).execute()
         )
