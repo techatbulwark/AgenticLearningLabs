@@ -37,18 +37,18 @@ const Home = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent" />
       {/* headings */}
       <section className={`${sectionWrapper} relative z-10 flex flex-col lg:flex-row items-center justify-between py-24`}>
-        <div className="flex-shrink-0 w-auto text-left">
-          <h1 className="[font-family:'Unageo-SemiBold'] text-6xl lg:text-7xl max-w-3/4 lg:max-w-full mb-5 leading-tight tracking-tight">
+        <div className="flex-shrink-0 w-auto text-left z-10">
+          <h1 className="[font-family:'Unageo-SemiBold'] text-6xl lg:text-7xl max-w-3/4 lg:max-w-full leading-tight tracking-tight mb-5">
             AGENTIC<br />LEARNING LABS
           </h1>
-          <h2 className="[font-family:'Unageo-SemiBold'] text-4xl font-light tracking-wide">
+          <h2 className="[font-family:'Unageo-SemiBold'] text-4xl font-light tracking-wide mb-5">
             Learn AI. Get hired. Get promoted.
           </h2>
-          <img src={callout1} loading="lazy" className="w-full lg:w-3xl lg:-ml-5" />
+          <img src={callout1} loading="lazy" className="w-full lg:w-3xl lg:-ml-5 mb-5" />
           <a
             href="/courses"
-            className="w-[300px] h-[50px] flex items-center justify-center mx-auto lg:mx-0 bg-brand_yellow hover:bg-white rounded-full transition-all duration-300 ease-in-out my-5">
-            <h3 className="[font-family:'Unageo'] text-2xl text-black">Learn more</h3>
+            className="w-[300px] h-[50px] flex items-center justify-center mx-auto lg:mx-0 bg-brand_yellow hover:bg-white rounded-full transition-all duration-300 ease-in-out">
+            <h3 className="[font-family:'Unageo'] text-xl lg:text-2xl text-black">Learn more</h3>
           </a>
         </div>
         <div className="flex justify-center">

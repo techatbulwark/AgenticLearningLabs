@@ -4,6 +4,9 @@ import axios from 'axios';
 import img3 from '../assets/images/img3.png';
 import contactus from '../assets/images/contactus.png';
 
+const API_BASE_URL = import.meta.env.MODE === 'production' 
+  ? import.meta.env.VITE_PROD_API : import.meta.env.VITE_DEV_API;
+
 const ContactUs = () => {
 
     const sectionWrapper = "w-full mx-auto px-6 lg:px-16";
@@ -18,7 +21,7 @@ const ContactUs = () => {
         try {
         console.log('Sending inquiry message');
         const response = await axios.post(
-            "http://localhost:8000/send_inquiry",
+            `${API_BASE_URL}/send_inquiry`,
             {
             'first_name': firstName,
             'last_name': lastName,

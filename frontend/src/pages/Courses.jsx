@@ -53,7 +53,7 @@ const Courses = () => {
             <section className={`${sectionWrapper} relative pb-10 flex flex-col mt-30`}>
                 <div className="grid grid-cols-1 lg:grid-cols-3 text-left text-white">
                     <div className="relative flex flex-col gap-10">
-                        <h2 className="[font-family:'Unageo-SemiBold'] text-6xl lg:text-7xl leading-25 mb-10">OUR<br />COURSES</h2>
+                        <h2 className="[font-family:'Unageo-SemiBold'] text-6xl lg:text-7xl leading-tight tracking-tight mb-10">OUR<br />COURSES</h2>
                         <div className="hidden lg:block relative w-full">
                             <img src={course_header1} loading="lazy" className="relative w-[300px] h-[200px] -right-25" />
                             <div className="absolute -top-8 z-10">

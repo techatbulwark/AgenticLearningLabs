@@ -11,7 +11,9 @@ const HeaderLogo = () => {
     return (
         <div>
             <div className={`${sectionWrapper} hidden z-10 lg:flex relative top-10 items-center space-x-4`}>
-                <img src={bulwarkWhite} className="h-10" alt="Bulwark White" />
+                <a href="/">
+                    <img src={bulwarkWhite} className="h-10" alt="Bulwark White" />
+                </a>
                 <div className="text-sm text-gray-300">Powered By</div>
                 <img src={tribalLogo} className="h-4 mb-1" alt="Tribal Logo" />
             </div>

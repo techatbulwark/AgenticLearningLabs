@@ -13,7 +13,7 @@ async def send_email(inq: InquiryBody):
     msg = EmailMessage()
     msg["From"] = settings.smtp_user
     msg["To"] = "jennifer@bulwarkimpact.org"
-    msg["Subject"] = f"{inq.first_name} {inq.last_name} submitted an inquiry"
+    msg["Subject"] = f"Agentic Learning Labs received a inquiry from [{inq.first_name} {inq.last_name}]"
     msg.set_content(
         f"Name: {inq.first_name} {inq.last_name}\n"
         f"Email: {inq.email}\n"

@@ -29,28 +29,28 @@ const Team = () => {
             name: "Brad Ross",
             title: "AI Expert Program Lead",
             intro: "For more than 20 years, Brad has built intelligent products and taught AI at the graduate level. He helps teams go from prototype to production, fast. He is also the director of the Agentics Foundation which is dedicated to AI education and innovation.",
-            link: "",
+            link: "https://www.linkedin.com/in/bradaross/",
             img: headshot_br,
         },
         {
             name: "Heather Page",
             title: "Tech-enabled People Leader",
             intro: "Heather is the Chief of Staff at TribalScale, a global digital innovation firm. She is an expert at leading people and building successful teams working in technology. She will help ensure you are job or promotion ready when you finish.",
-            link: "",
+            link: "https://www.linkedin.com/in/heatherkpage/",
             img: headshot_hp,
         },
         {
             name: "Sheetal Jaitly",
             title: "Advisor",
             intro: "Sheetal is an entrepreneur and seasoned tech veteran with a passion for innovation and digital transformation. He is the CEO of TribalScale and an avid investor who brings a unique perspective to support and guide companies through their digital evolution.",
-            link: "",
+            link: "https://www.linkedin.com/in/sheetaljaitly/",
             img: headshot_sj,
         },
         {
             name: "Karim Rahemtulla",
             title: "Advisor",
             intro: "A global business strategist known for creating innovative technology solutions to drive business impact. As Principal at Bulwark Impact, Karim helps businesses build practical skills to harness new technologies, including AI, to achieve their objectives and adapt in a rapidly changing world.",
-            link: "",
+            link: "https://www.linkedin.com/in/karimrahemtulla/",
             img: bg5,
 },
     ];
@@ -70,7 +70,7 @@ const Team = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-3 text-left">
                     <img src={course_header1} loading="lazy" className="absolute w-[360px] h-[250px] top-10 lg:top-0 lg:left-20 right-0" />
                     <div className="flex flex-col col-span-2 px-6 lg:px-16 gap-y-10 lg:mt-30 lg:ml-30 z-10">
-                        <h2 className="[font-family:'Unageo-Bold'] text-6xl lg:text-7xl text-left text-white leading-20 max-w-3/4 lg:max-w-full z-10">THE TEAM BEHIND AGENTIC LEARNING LABS</h2>
+                        <h2 className="[font-family:'Unageo-SemiBold'] text-6xl lg:text-7xl text-left text-white leading-tight tracking-tight max-w-3/4 lg:max-w-full z-10">THE TEAM BEHIND AGENTIC LEARNING LABS</h2>
                         <div className="w-line_width h-2 bg-brand_red rounded-full"></div>
                         <p className="text-xl">
                             Agentic Learning Labs is powered by TribalScale and Bulwark Impact. Their teams comprise committed experts who help people and businesses adapt and thrive in the digital era.

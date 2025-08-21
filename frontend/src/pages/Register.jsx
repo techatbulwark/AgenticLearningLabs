@@ -1,8 +1,8 @@
-import RegForm from "../components/RegForm"
+import RegistrationForm from "../components/RegForm"
 
 const Register = () => {
     return (
-        <RegForm/>
+        <RegistrationForm/>
     )
 }
 

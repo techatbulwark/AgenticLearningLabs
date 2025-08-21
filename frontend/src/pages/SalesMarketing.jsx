@@ -28,7 +28,7 @@ const SalesMarketing = () => {
                         <img src={course_header3} loading="lazy" className="relative w-[350px] h-[250px]" />
                     </div>
                     <div className="col-span-2 flex flex-col gap-8 z-10">
-                        <h2 className="[font-family:'Unageo-Bold'] text-5xl lg:text-7xl text-left leading-15 lg:leading-20 lg:-ml-40">AI for Sales, Marketing<br/>& Business Development</h2>
+                        <h2 className="[font-family:'Unageo-SemiBold'] text-5xl lg:text-7xl text-left leading-tight tracking-tight lg:-ml-40">AI for Sales, Marketing<br/>& Business Development</h2>
                         <div className="w-line_width h-2 bg-yellow-500 rounded-full" />
                         <h3 className="[font-family:'Unageo-SemiBold'] text-3xl">Drive sales and reach new customers with an AI-<br/>powered business strategy.</h3>
                         <p className="text-xl">In this course learn how to apply AI tools to build sales and marketing campaigns, generate leads, and personalize outreach to grow the success of sales and marketing campaigns.</p>
@@ -66,7 +66,7 @@ const SalesMarketing = () => {
                         <h2 className="[font-family:'Unageo-SemiBold'] text-4xl">Format</h2>
                         <div className="flex flex-col gap-5">
                             <p className="text-xl">This is a four week hybrid course that goes beyond theory to provide you with practical hands-on experience.</p>
-                            <p className="[font-family:'Unageo-Bold'] text-2xl">Weeks one to three: online + in-person learning</p>
+                            <p className="[font-family:'Unageo-Bold'] text-xl">Weeks one to three: online + in-person learning</p>
                             <p className="text-xl">Each week, you'll complete 6-10 hours (depending on your learning style) of self-paced learning online that includes:</p>
                             <ul className="list-disc pl-7 text-xl text-left">
                                 <li>Interactive readings and video lessons packed with case studies and hands-on practice assignments</li>
@@ -75,7 +75,7 @@ const SalesMarketing = () => {
                                 <li>Plus, two optional “office hours” with your instructor where you can ask questions or explore topics more deeply to ensure you never feel stuck.</li>
                             </ul>
                             <p className="text-xl">Plus, each week, you will join your class peers for a day-long, in-person workshop to practice new skills and apply what you are learning in a collaborative and supportive setting.</p>
-                            <p className="[font-family:'Unageo-Bold'] text-2xl">Week four: Final in-person workshop + Career Catalyst (one day)</p>
+                            <p className="[font-family:'Unageo-Bold'] text-xl">Week four: Final in-person workshop + Career Catalyst (one day)</p>
                             <p className="text-xl">In the last week, attend your final in-person workshop where you'll showcase your skills and present your own AI-powered product. Plus, participate in Career Catalyst where you will learn job hunting best practices and how to use AI to land your dream or promotion including:</p>
                             <ul className="list-disc pl-7 text-xl text-left">
                                 <li>Updating your resume and cover letter</li>

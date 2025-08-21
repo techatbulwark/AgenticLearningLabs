@@ -6,42 +6,42 @@ import linkedin from '../assets/images/linkedin.png';
 import { Link } from "react-router-dom";
 import { useModal } from "../context/PrereqModalContext";
 
+const INSTAGRAM_URL = "https://www.instagram.com/agenticlabs/";
+const LINKEDIN_URL = "https://www.instagram.com/agenticlabs/";
 
 const Footer = () => {
 
 const { openModal } = useModal();
+    const pageLinks = [
+    {
+        name: "About",
+        link: "/",
+    },
+    {
+        name: "Courses",
+        link: "/courses",
+    },
+    {
+        name: "Meet the team",
+        link: "/team",
+    },
+    {
+        name: "FAQ",
+        link: "/faqs",
+    },
+    ]
+    const extLinks = [
+    {
+        name: "Contact us",
+        link: "/team#contactus",
+    },
+    {
+        name: "1-866-852-1603",
+        link: "tel:18668521603",
+    },
+    ]
 
-  const pageLinks = [
-    {
-      name: "About",
-      link: "/",
-    },
-    {
-      name: "Courses",
-      link: "/courses",
-    },
-    {
-      name: "Meet the team",
-      link: "/team",
-    },
-    {
-      name: "FAQ",
-      link: "/faqs",
-    },
-  ]
-  const extLinks = [
-    {
-      name: "Contact us",
-      link: "/team#contactus",
-    },
-    {
-      name: "1-866-852-1603",
-      link: "tel:18668521603",
-    },
-
-  ]
-  
-  return (
+    return (
     <footer className="bg-brand_black z-20 text-white border-t border-white w-full p-12">
         <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-10 text-center md:text-left">
 
@@ -54,12 +54,14 @@ const { openModal } = useModal();
         </div>
 
         <div className="hidden lg:flex flex-col items-center gap-10">
-            <img src={agentics} loading="lazy" className="w-28 h-auto" />
+            <a href="/">
+                <img src={agentics} loading="lazy" className="w-28 h-auto" />
+            </a>
             <div className="flex gap-5">
-            <a href="#" aria-label="Instagram" className="hover:text-gray-400">
+            <a href={INSTAGRAM_URL} aria-label="Instagram" className="hover:text-gray-400">
                 <img src={instagram} className="w-5 h-5" />
             </a>
-            <a href="#" aria-label="LinkedIn" className="hover:text-gray-400">
+            <a href={LINKEDIN_URL} aria-label="LinkedIn" className="hover:text-gray-400">
                 <img src={linkedin} className="w-5 h-5" />
             </a>
             </div>
@@ -85,23 +87,6 @@ const { openModal } = useModal();
                 })}
             </div>
 
-            <div className="hidden lg:flex flex-col items-center">
-                {/* logo */}
-                <img src={agentics} loading="lazy" className="w-28 h-auto" />
-                {/* socials */}
-                <div className="flex gap-10">
-                    <a href="#" aria-label="Instagram" className="hover:text-gray-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="20" height="20" viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="3.5" />
-                        </svg>
-                    </a>
-                    <a href="#" aria-label="LinkedIn" className="hover:text-gray-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="20" height="20" viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="3.5" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
             <div className="flex flex-col space-y-2 text-lg">
                 {extLinks.map((item, index) => {
                     return (
@@ -113,10 +98,10 @@ const { openModal } = useModal();
         </div>
         <div className="flex flex-col items-center gap-10 lg:hidden w-full">
             <div className="flex gap-4">
-                <a href="#" aria-label="Instagram" className="hover:text-gray-400">
+                <a href={INSTAGRAM_URL} aria-label="Instagram" className="hover:text-gray-400">
                     <img src={instagram} className="w-5 h-5" />
                 </a>
-                <a href="#" aria-label="LinkedIn" className="hover:text-gray-400">
+                <a href={LINKEDIN_URL} aria-label="LinkedIn" className="hover:text-gray-400">
                     <img src={linkedin} className="w-5 h-5" />
                 </a>
             </div>

@@ -655,7 +655,7 @@ const FORM_CONFIG = {
   },
 };
 
-const RegForm = () => {
+const RegistrationForm = () => {
   const sectionWrapper = "w-full mx-auto px-outer_sm lg:px-outer_lg";
 
   const initializeFormData = () => {
@@ -826,27 +826,8 @@ const RegForm = () => {
     return transformed;
   };
 
-  const validateForm = () => {
-    const errors = [];
-    const requiredFields = [
-    ];
-    
-    requiredFields.forEach(field => {
-      if (!formData[field] || formData[field].trim() === '') {
-        errors.push(`${field} is required`);
-      }
-    });
-    
-    return errors;
-  };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const errors = validateForm();
-    if (errors.length > 0) {
-      alert('Please fill in all required fields:\n' + errors.join('\n'));
-      return;
-    }
     try {
       //console.log('Sending registration data:', registrationData);
       const registrationData = transformFormDataForAPI(formData);
@@ -930,4 +911,4 @@ const RegForm = () => {
   );
 };
 
-export default RegForm;
+export default RegistrationForm;

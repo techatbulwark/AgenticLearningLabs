@@ -95,14 +95,14 @@ const FAQ = () => {
                             {program.map((content, index) => (
                                 <div className="">
                                     <h3 className="[font-family:'Unageo-SemiBold'] text-3xl mb-5">{content.q}</h3>
-                                    <p className="text-base">{content.a}</p>
+                                    <p className="text-xl">{content.a}</p>
                                 </div>
                             ))}
                             <div className="w-line_width h-2 bg-brand_yellow rounded-full my-15"></div>
                             {format.map((content, index) => (
                                 <div>
                                     <h3 className="[font-family:'Unageo-SemiBold'] text-3xl mb-5">{content.q}</h3>
-                                    <p className="text-base">{content.a}</p>
+                                    <p className="text-xl">{content.a}</p>
                                     {content.b && (
                                         <ul className="list-disc list-inside mt-3 space-y-1 ml-5">
                                             {content.b.map((bullet, bulletIndex) => (
@@ -116,21 +116,21 @@ const FAQ = () => {
                             {cost.map((content, index) => (
                                 <div>
                                     <h3 className="[font-family:'Unageo-SemiBold'] text-3xl mb-5">{content.q}</h3>
-                                    <p className="text-base">{content.a}</p>
+                                    <p className="text-xl">{content.a}</p>
                                 </div>
                             ))}
                             <div className="w-line_width h-2 bg-brand_yellow rounded-full my-15"></div>
                             {outcomes.map((content, index) => (
                                 <div>
                                     <h3 className="[font-family:'Unageo-SemiBold'] text-3xl mb-5">{content.q}</h3>
-                                    <p className="text-base">{content.a}</p>
+                                    <p className="text-xl">{content.a}</p>
                                 </div>
                             ))}
                             <div className="w-line_width h-2 bg-brand_yellow rounded-full my-15"></div>
                             {process.map((content, index) => (
                                 <div>
                                     <h3 className="[font-family:'Unageo-SemiBold'] text-3xl mb-5">{content.q}</h3>
-                                    <p className="text-base">{content.a}</p>
+                                    <p className="text-xl">{content.a}</p>
                                 </div>
                             ))}
                             <div className="w-line_width h-2 bg-brand_yellow rounded-full my-15"></div>
