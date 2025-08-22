@@ -4,7 +4,7 @@ const ModalContext = createContext();
 
 export const InquiryModalProvider = ({ children }) => {
 
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
