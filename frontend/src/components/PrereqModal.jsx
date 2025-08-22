@@ -58,12 +58,12 @@ const PrereqModal = () => {
         await axios.post(`${API_BASE_URL}/course_updates`, {
           email: email,
         });
+        console.log(`email ${email}`)
       } catch (error) {
         console.error(error);
       }
     }
     setIsLoading(false);
-    console.log(`email ${email}`)
     if (answers.every((ans) => ans.answer === "yes")) {
       closeModal();
       resetForm();
@@ -81,13 +81,13 @@ const PrereqModal = () => {
         email: email,
       });
       setIsSecondarySubmitted(true);
+      console.log(`email ${email}`)
     } catch (error) {
       console.error(error);
       alert('There was an error submitting your email. Please try again.');
     }
     setIsLoading(false);
   }
-  console.log(`email ${email}`)
   if (!isModalOpen) return null;
 
   return (
