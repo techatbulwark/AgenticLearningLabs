@@ -12,6 +12,7 @@ class Settings(BaseSettings):
     smtp_port: Optional[int] = 587
     smtp_user: Optional[str] = None
     smtp_password: Optional[str] = None
+    recipient_email: Optional[str] = None
     
     # url
     frontend_url: Optional[str] = None

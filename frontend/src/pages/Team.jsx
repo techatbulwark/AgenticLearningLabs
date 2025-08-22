@@ -16,6 +16,7 @@ import team2 from '../assets/images/team2.png';
 import headshot_br from '../assets/images/headshot_br.jpg';
 import headshot_hp from '../assets/images/headshot_hp.jpg';
 import headshot_sj from '../assets/images/headshot_sj.png';
+import headshot_kr from '../assets/images/headshot_kr.jpg';
 
 
 const Team = () => {
@@ -51,7 +52,7 @@ const Team = () => {
             title: "Advisor",
             intro: "A global business strategist known for creating innovative technology solutions to drive business impact. As Principal at Bulwark Impact, Karim helps businesses build practical skills to harness new technologies, including AI, to achieve their objectives and adapt in a rapidly changing world.",
             link: "https://www.linkedin.com/in/karimrahemtulla/",
-            img: bg5,
+            img: headshot_kr,
 },
     ];
 
@@ -85,10 +86,10 @@ const Team = () => {
                         <img src={team2} loading="lazy" className="w-[510px] h-[280px] object-cover lg:top-0" />
                     </div>
                     <div className="">
-                        <img src={bulwarkLogoA} loading="lazy" className="absolute w-[250px] rotate-0 lg:hidden top-80 -right-20 animate-spin-slow" />
-                        <img src={bulwarkLogoA} loading="lazy" className="absolute w-[200px] rotate-0 hidden md:hidden lg:block top-0 right-70 animate-spin-slow" />
-                        <img src={bulwarkLogoL} loading="lazy" className="absolute w-[150px] h-[150px] rotate-20 hidden lg:block top-100 -left-10 animate-spin-slow" />
-                        <img src={bulwarkLogoL} loading="lazy" className="absolute w-[150px] h-[150px] rotate-270 hidden lg:block bottom-20 right-100 animate-spin-reverse" />
+                        <img src={bulwarkLogoA} loading="lazy" className="absolute w-[250px] rotate-0 lg:hidden top-80 -right-20" />
+                        <img src={bulwarkLogoA} loading="lazy" className="absolute w-[200px] rotate-0 hidden md:hidden lg:block top-0 right-70" />
+                        <img src={bulwarkLogoL} loading="lazy" className="absolute w-[150px] h-[150px] rotate-20 hidden lg:block top-100 -left-10" />
+                        <img src={bulwarkLogoL} loading="lazy" className="absolute w-[150px] h-[150px] rotate-270 hidden lg:block bottom-20 right-100" />
                     </div>
                 </div>
             </section>
@@ -139,7 +140,7 @@ const Team = () => {
                         </div>
                         {selected >= 0 ? <div className="flex ml-auto items-end">
                             <a
-                                href="#"
+                                href={instructors[selected].link}
                                 className="shrink-0 bg-white hover:bg-brand_yellow text-black text-xl w-56 h-10 px-6 flex items-center justify-center rounded-full transition">
                                 Learn more
                             </a>

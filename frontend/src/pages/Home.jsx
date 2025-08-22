@@ -53,7 +53,7 @@ const Home = () => {
         </div>
         <div className="flex justify-center">
           <img src={bulwarkLogoA} loading="lazy" className="absolute w-[250px] lg:hidden top-30 -right-20 animate-spin-slow" />
-          <img src={bulwarkLogoA} loading="lazy" className="absolute w-[500px] hidden lg:block top-20 right-50 animate-spin-slow" />
+          <img src={bulwarkLogoA} loading="lazy" className="absolute w-[550px] hidden lg:block top-20 right-50 animate-spin-slow" />
           <img src={bulwarkLogoL} loading="lazy" className="absolute w-[220px] rotate-270 hidden lg:block bottom-30 right-0 animate-spin-reverse" />
           <img src={bulwarkLogoL} loading="lazy" className="absolute w-[220px] rotate-20 hidden lg:block bottom-0 right-70 animate-spin-slow" />
         </div>

@@ -74,10 +74,10 @@ const Courses = () => {
                         </div>
                     </div>
                     <div>
-                        <img src={bulwarkLogoA} loading="lazy" className="absolute w-[250px] lg:hidden top-20 -right-20 animate-spin-slow" />
-                        <img src={bulwarkLogoA} loading="lazy" className="absolute w-[240px] hidden lg:block -top-20 right-0 animate-spin-slow" />
-                        <img src={bulwarkLogoL} loading="lazy" className="absolute w-[150px] rotate-20 hidden lg:block top-100 -left-10 animate-spin-slow" />
-                        <img src={bulwarkLogoL} loading="lazy" className="absolute w-[150px] rotate-270 hidden lg:block top-0 left-220 animate-spin-slow" />
+                        <img src={bulwarkLogoA} loading="lazy" className="absolute w-[250px] lg:hidden top-20 -right-20" />
+                        <img src={bulwarkLogoA} loading="lazy" className="absolute w-[240px] hidden lg:block -top-20 right-0" />
+                        <img src={bulwarkLogoL} loading="lazy" className="absolute w-[150px] rotate-20 hidden lg:block top-100 -left-10" />
+                        <img src={bulwarkLogoL} loading="lazy" className="absolute w-[150px] rotate-270 hidden lg:block top-0 left-220" />
                     </div>
 
                 </div>

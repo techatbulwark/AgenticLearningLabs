@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from models import Registration, PrereqResponse, Test
+from models import Registration, PrereqResponse
 from database import get_client
 from config import settings
 

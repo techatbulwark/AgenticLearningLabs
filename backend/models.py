@@ -65,6 +65,5 @@ class InquiryBody(BaseModel):
     email: str
     message: str
 
-class Test(BaseModel):
-    first_name: str
-    last_name: str
+class Email(BaseModel):
+    email: str

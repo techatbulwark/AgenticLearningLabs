@@ -21,7 +21,9 @@ const PrereqModal = () => {
   const [answers, setAnswers] = useState(requirements);
   const [email, setEmail] = useState("");
   const [updatePref, setUpdatePref] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSecondarySubmitted, setIsSecondarySubmitted] = useState(false);
   const { isModalOpen, closeModal } = useModal();
   const navigate = useNavigate();
 
@@ -34,10 +36,12 @@ const PrereqModal = () => {
   const resetForm = () => {
     setAnswers(requirements);
     setIsSubmitted(false);
+    setIsSecondarySubmitted(false);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
     try {
       await axios.post(`${API_BASE_URL}/prereq`, {
         in_person: answers[0].answer,
@@ -58,7 +62,7 @@ const PrereqModal = () => {
         console.error(error);
       }
     }
-
+    setIsLoading(false);
     if (answers.every((ans) => ans.answer === "yes")) {
       closeModal();
       resetForm();
@@ -70,20 +74,68 @@ const PrereqModal = () => {
 
   const handleUpdateSubmit = async(event) => {
     event.preventDefault();
-    // accomodation email -> info@agentics
+    setIsLoading(true);
+    try {
+      await axios.post(`${API_BASE_URL}/participant_accomodation`, {
+        email: email,
+      });
+      setIsSecondarySubmitted(true);
+    } catch (error) {
+      console.error(error);
+      alert('There was an error submitting your email. Please try again.');
+    }
+    setIsLoading(false);
   }
 
   if (!isModalOpen) return null;
 
   return (
     <div className="fixed inset-0 flex items-center justify-center backdrop-blur-sm z-50">
-      {isSubmitted ? (
+      {isSecondarySubmitted ? (
+        <div className="relative max-w-3xl lg:max-w-xl max-h-[90vh] bg-white rounded-2xl p-15">
+          <div className="flex flex-col gap-y-10 items-center">
+            <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+              <svg 
+                className="w-8 h-8 text-green-600" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24">
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M5 13l4 4L19 7"/>
+              </svg>
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                resetForm();
+                closeModal();
+              }}
+              aria-label="Close modal"
+              className="absolute top-5 right-5 p-2 rounded-full hover:bg-gray-200 transition">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                stroke="currentColor"
+                className="w-6 h-6 text-black">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <h2 className="[font-family:'Unageo-SemiBold'] text-3xl text-black">We received your email!</h2>
+            <p className="text-lg text-black text-left">We will promptly be in touch to help you find an accommodation to participate if possible.  Please watch for an email from <b className="[font-family:'Unageo-Bold']">info@agenticlearninglabs.com.</b></p>
+          </div>
+        </div>
+      ) : isSubmitted ? (
         <form
           onSubmit={handleUpdateSubmit}
-          className="relative flex flex-col items-start max-w-3xl max-h-[90vh] bg-white rounded-2xl p-15">
+          className="relative max-w-3xl lg:max-w-xl max-h-[90vh] bg-white rounded-2xl p-15">
           <div className="flex flex-col gap-y-10">
             <h2 className="[font-family:'Unageo-SemiBold'] text-3xl text-black">Thanks for your interest in Agentic Learning Labs.</h2>
-            <p className="text-lg text-black text-left">You have answered no to one or more of the requirements.  If you are still interested in our training please provide your email and we will get in touch to help you find an accommodation to participate if possible.  Please watch for an email from <b className="[font-family:'Unageo-Bold']">info@agenticlearninglabs.com.</b></p>
+            <p className="text-lg text-black text-left">You have answered no to one or more of the requirements. If you are still interested in our training please provide your email and we will get in touch to help you find an accommodation to participate if possible.</p>
             <button
               type="button"
               onClick={() => {
@@ -114,8 +166,9 @@ const PrereqModal = () => {
               />
               <button
                 type="submit"
-                className="text-lg text-black bg-brand_yellow hover:text-white hover:bg-brand_black rounded-3xl w-[226px] py-2 transition duration-200">
-                Submit
+                className={`text-lg rounded-3xl w-[226px] py-2 transition duration-200
+                ${isLoading ? "bg-gray-200" : "text-black bg-brand_yellow hover:text-white hover:bg-brand_black"}`}>
+                {isLoading ? "Submitting..." : "Submit"}
               </button>
             </div>
           </div>
@@ -123,7 +176,7 @@ const PrereqModal = () => {
       ) : (
         <form
           onSubmit={handleSubmit}
-          className="relative flex flex-col max-w-3xl max-h-[90vh] overflow-y-auto items-start bg-white rounded-2xl p-15">
+          className="relative max-w-3xl max-h-[90vh] overflow-y-auto bg-white rounded-2xl p-15">
           <div className="flex justify-between w-full mb-7">
             <h2 className="[font-family:'Unageo-SemiBold'] text-4xl text-black">
               What you need to register
@@ -207,8 +260,9 @@ const PrereqModal = () => {
           <div className="flex justify-center lg:justify-end space-x-4 w-full">
             <button
               type="submit"
-              className="text-lg text-black bg-brand_yellow hover:text-white hover:bg-brand_black rounded-3xl w-[226px] py-2 transition duration-200">
-              Submit
+              className={`text-lg rounded-3xl w-[226px] py-2 transition duration-200
+              ${isLoading ? "bg-gray-200" : "text-black bg-brand_yellow hover:text-white hover:bg-brand_black"}`}>
+              {isLoading ? "Submitting..." : "Submit"}
             </button>
           </div>
         </form>
