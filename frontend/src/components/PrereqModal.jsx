@@ -63,6 +63,7 @@ const PrereqModal = () => {
       }
     }
     setIsLoading(false);
+    console.log(`email ${email}`)
     if (answers.every((ans) => ans.answer === "yes")) {
       closeModal();
       resetForm();
@@ -86,7 +87,7 @@ const PrereqModal = () => {
     }
     setIsLoading(false);
   }
-
+  console.log(`email ${email}`)
   if (!isModalOpen) return null;
 
   return (
