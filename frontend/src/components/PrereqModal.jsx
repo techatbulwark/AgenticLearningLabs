@@ -58,7 +58,6 @@ const PrereqModal = () => {
         await axios.post(`${API_BASE_URL}/course_updates`, {
           email: email,
         });
-        console.log(`email ${email}`)
       } catch (error) {
         console.error(error);
       }
@@ -81,7 +80,6 @@ const PrereqModal = () => {
         email: email,
       });
       setIsSecondarySubmitted(true);
-      console.log(`email ${email}`)
     } catch (error) {
       console.error(error);
       alert('There was an error submitting your email. Please try again.');
