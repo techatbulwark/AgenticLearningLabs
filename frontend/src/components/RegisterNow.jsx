@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { useModal } from '../context/PrereqModalContext.jsx'
+import { usePrereqModal } from '../context/PrereqModalContext.jsx'
 
 import callout2 from '../assets/images/callout2.png';
 
@@ -8,7 +8,7 @@ const RegisterNow = () => {
 
     const sectionWrapper = "w-full mx-auto px-6 lg:px-16";
 
-    const { openModal } = useModal();
+    const { openModal } = usePrereqModal();
     
     return (
       <div className={`${sectionWrapper} relative bg-brand_beige py-30`}>

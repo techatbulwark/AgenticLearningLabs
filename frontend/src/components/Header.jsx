@@ -33,7 +33,7 @@ const Header = () => {
   }, [navOpen, setNavOpen])
 
   return (
-    <header className={`fixed z-20 transition-colors duration-500 ${navOpen ? "w-full h-full" : "top-10 right-10"}`}>
+    <header className={`fixed z-30 transition-colors duration-500 ${navOpen ? "w-full h-full" : "top-10 right-10"}`}>
       <div
         className={`flex ${navOpen ? "justify-start text-left px-10 py-30 h-full bg-brand_black" : "justify-center items-center bg-[#231F20]/55 border rounded-xl lg:rounded-full px-5 lg:px-30 py-3"}`}>
         <nav className={`${navOpen ? "flex flex-col space-y-15 text-3xl": "hidden lg:flex flex-row space-x-15 text-lg"}`}>
@@ -61,16 +61,6 @@ const Header = () => {
             />
           </svg>
         </button>
-        {/*<div
-          className={`${navOpen ? "" : "hidden"} lg:hidden text-white py-4 px-6 rounded-md`}>
-          <nav className="flex flex-col items-center space-y-10">
-            {links.map((item, index) => {
-              return (
-                <a href={item.link} className="[font-family:'Unageo-SemiBold'] text-2xl hover:opacity-80" onClick={() => setNavOpen(false)}>{item.name}</a>
-              )
-            })}
-          </nav>
-        </div>*/}
 
       </div>
     </header>

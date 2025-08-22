@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useModal } from '../context/PrereqModalContext.jsx'
+import { usePrereqModal } from '../context/PrereqModalContext.jsx'
 
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
@@ -13,7 +13,7 @@ const SalesMarketing = () => {
     
     const sectionWrapper = "w-full mx-auto px-outer_sm lg:px-outer_lg";
 
-    const { openModal } = useModal();
+    const { openModal } = usePrereqModal();
     
     return (
         <div className="min-h-screen max-w-[1600px] mx-auto relative overflow-hidden flex flex-col">

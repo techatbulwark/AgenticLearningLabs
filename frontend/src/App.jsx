@@ -11,6 +11,7 @@ import PrereqModal from './components/PrereqModal'
 import ScrollLink from './components/ScrollLink'
 import CustomerExperience from './pages/CustomerExperience'
 import SalesMarketing from './pages/SalesMarketing'
+import InquiryModal from './components/InquiryModal'
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
         <Route path='/register' element={<Register/>}/>
       </Routes>
       <PrereqModal />
+      <InquiryModal />
     </>
   )
 }

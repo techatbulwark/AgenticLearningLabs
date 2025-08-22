@@ -30,7 +30,7 @@ const Courses = () => {
         link: "/customer-experience",
     },
     {
-        title: "Data Analytics for Decision Making",
+        title: "AI for Data Analytics for Decision Making",
         subtitle: "Use AI to turn data into knowledge and knowledge into action.",
         body: "In business, data is power. Learn the practical skills on how to apply AI to analytical data and use it for real time decision making, such as market trend analysis, demand forecasting, supplier management, and streamlining of logistics and distribution. Great for logistics, admin and analyst roles.",
         link: "/data-analytics",

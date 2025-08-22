@@ -4,14 +4,14 @@ import agentics from '../assets/images/agentics.png';
 import instagram from '../assets/images/instagram.png';
 import linkedin from '../assets/images/linkedin.png';
 import { Link } from "react-router-dom";
-import { useModal } from "../context/PrereqModalContext";
+import { usePrereqModal } from "../context/PrereqModalContext";
 
 const INSTAGRAM_URL = "https://www.instagram.com/agenticlabs/";
 const LINKEDIN_URL = "https://www.instagram.com/agenticlabs/";
 
 const Footer = () => {
 
-const { openModal } = useModal();
+const { openModal } = usePrereqModal();
     const pageLinks = [
     {
         name: "About",
@@ -105,7 +105,9 @@ const { openModal } = useModal();
                     <img src={linkedin} className="w-5 h-5" />
                 </a>
             </div>
-            <img src={agentics} loading="lazy" className="w-28 h-auto" />
+            <a href="/">
+                <img src={agentics} loading="lazy" className="w-28 h-auto" />
+            </a>
         </div>
 
         </div>

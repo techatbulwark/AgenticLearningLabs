@@ -2,9 +2,9 @@ import React, { createContext, useContext, useState } from "react";
 
 const ModalContext = createContext();
 
-export const PrereqModalProvider = ({ children }) => {
+export const InquiryModalProvider = ({ children }) => {
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(true);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -16,4 +16,4 @@ export const PrereqModalProvider = ({ children }) => {
   );
 };
 
-export const usePrereqModal = () => useContext(ModalContext);
+export const useInquiryModal = () => useContext(ModalContext);

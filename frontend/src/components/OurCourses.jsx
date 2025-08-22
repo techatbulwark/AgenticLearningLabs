@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { useModal } from '../context/PrereqModalContext.jsx'
+import { usePrereqModal } from '../context/PrereqModalContext.jsx'
 
 import course1 from '../assets/images/course1.png';
 import course2 from '../assets/images/course2.png';
@@ -14,7 +14,7 @@ const OurCourses = () => {
 
   const sectionWrapper = "w-full mx-auto px-6 lg:px-16";
 
-  const { openModal } = useModal();
+  const { openModal } = usePrereqModal();
 
   const [activeTab, setActiveTab] = useState(0);
   

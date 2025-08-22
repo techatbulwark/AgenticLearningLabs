@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useModal } from '../context/PrereqModalContext.jsx';
+import { usePrereqModal } from '../context/PrereqModalContext.jsx';
 import axios from 'axios';
 
 const API_BASE_URL = import.meta.env.MODE === 'production' 
@@ -24,7 +24,7 @@ const PrereqModal = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSecondarySubmitted, setIsSecondarySubmitted] = useState(false);
-  const { isModalOpen, closeModal } = useModal();
+  const { isModalOpen, closeModal } = usePrereqModal();
   const navigate = useNavigate();
 
   const handleAnswerChange = (index, value) => {
@@ -51,7 +51,6 @@ const PrereqModal = () => {
     } catch (error) {
       console.error(error);
     }
-
     // course update preferences -> info@agentics
     if (updatePref && email !== "") {
       try {
@@ -125,7 +124,7 @@ const PrereqModal = () => {
               </svg>
             </button>
             <h2 className="[font-family:'Unageo-SemiBold'] text-3xl text-black">We received your email!</h2>
-            <p className="text-lg text-black text-left">We will promptly be in touch to help you find an accommodation to participate if possible.  Please watch for an email from <b className="[font-family:'Unageo-Bold']">info@agenticlearninglabs.com.</b></p>
+            <p className="text-lg text-black text-left">Please watch for an email from <b className="[font-family:'Unageo-Bold']">info@agenticlearninglabs.com.</b></p>
           </div>
         </div>
       ) : isSubmitted ? (
@@ -260,7 +259,7 @@ const PrereqModal = () => {
             <button
               type="submit"
               className={`text-lg rounded-3xl w-[226px] py-2 transition duration-200
-              ${isLoading ? "bg-gray-200" : "text-black bg-brand_yellow hover:text-white hover:bg-brand_black"}`}>
+              ${isLoading ? "bg-gray-200 text-brand_gray" : "text-black bg-brand_yellow hover:text-white hover:bg-brand_black"}`}>
               {isLoading ? "Submitting..." : "Submit"}
             </button>
           </div>

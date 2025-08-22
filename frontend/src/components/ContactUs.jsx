@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useInquiryModal } from '../context/InquiryModalContext.jsx'
 
 import img3 from '../assets/images/img3.png';
 import contactus from '../assets/images/contactus.png';
@@ -15,9 +16,12 @@ const ContactUs = () => {
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+    const { openModal } = useInquiryModal();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setIsLoading(true);
         try {
         console.log('Sending inquiry message');
         const response = await axios.post(
@@ -32,6 +36,8 @@ const ContactUs = () => {
         } catch (error) {
         console.error(error);
         }
+        setIsLoading(false);
+        openModal();
     }
     return (
         <div id="contactus" className={`${sectionWrapper} relative z-10 flex flex-col lg:flex-row justify-center items-send bg-brand_black bg-[radial-gradient(#2B2B2B_5px,transparent_1px)] [background-size:45px_45px] py-16 border-t-2 border-white`}>
@@ -73,8 +79,9 @@ const ContactUs = () => {
                     />
                     <button
                         type="submit"
-                        className="bg-brand_yellow hover:bg-white text-black py-2 px-24 mx-auto lg:mr-0 lg:ml-auto rounded-full transition-colors">
-                        Send
+                        className={`py-2 px-24 mx-auto lg:mr-0 lg:ml-auto rounded-full transition-colors
+                        ${isLoading ? "bg-gray-200 text-brand_gray" : "bg-brand_yellow hover:bg-white text-black"}`}>
+                        {isLoading ? "Sending..." : "Send"}
                     </button>
                 </form>
             </div>
