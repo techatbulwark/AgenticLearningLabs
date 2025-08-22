@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { Analytics } from "@vercel/analytics/next"
 
 import './App.css'
 import Home from './pages/Home'
@@ -19,7 +18,6 @@ function App() {
 
   return (
     <>
-      <Analytics />
       <ScrollLink />
       <Routes>
         <Route path='/' element={<Home/>}/>
