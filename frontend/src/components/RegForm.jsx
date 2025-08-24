@@ -12,12 +12,14 @@ const FORM_CONFIG = {
         id: "lastName",
         label: "Last name", 
         type: "text",
+        required: true,
         gridClass: "lg:col-span-2"
       },
       {
         id: "firstName",
         label: "First name",
         type: "text",
+        required: true,
         gridClass: "lg:col-span-2"
       },
       {
@@ -37,12 +39,14 @@ const FORM_CONFIG = {
         id: "dob",
         label: "Date of birth",
         type: "date",
+        required: true,
         gridClass: "lg:col-span-1"
       },
       {
         id: "gender",
         label: "I identify as:",
         type: "radio",
+        required: true,
         gridClass: "col-span-full",
         options: [
           { value: "Man", label: "Man" },
@@ -77,6 +81,7 @@ const FORM_CONFIG = {
         id: "statusCanada",
         label: "Status in Canada:",
         type: "radio",
+        required: true,
         gridClass: "col-span-full",
         options: [
           { value: "canadian_citizen", label: "Canadian citizen" },
@@ -88,7 +93,7 @@ const FORM_CONFIG = {
         ]
       },
       {
-        id: "immigrated_to_canada",
+        id: "immigratedToCanada",
         label: "If you have immigrated to Canada, please indicate:",
         type: "paragraph",
         gridClass: "col-span-full",
@@ -110,6 +115,7 @@ const FORM_CONFIG = {
         id: "prefLanguage",
         label: "Preferred language:",
         type: "radio",
+        required: true,
         gridClass: "col-span-full",
         options: [
           { value: "english", label: "English" },
@@ -120,6 +126,7 @@ const FORM_CONFIG = {
         id: "prefCommunication",
         label: "Preferred communication:",
         type: "radio",
+        required: true,
         gridClass: "col-span-full",
         options: [
           { value: "phone", label: "Phone" },
@@ -131,6 +138,7 @@ const FORM_CONFIG = {
         id: "maritalStatus",
         label: "Marital status:",
         type: "radio",
+        required: true,
         gridClass: "col-span-full",
         options: [
           { value: "married", label: "Married" },
@@ -164,12 +172,14 @@ const FORM_CONFIG = {
         id: "streetNum", 
         label: "Street number",
         type: "number",
+        required: true,
         gridClass: "lg:col-span-1"
       },
       {
         id: "streetName",
         label: "Street name", 
         type: "text",
+        required: true,
         gridClass: "lg:col-span-2"
       },
       {
@@ -182,18 +192,21 @@ const FORM_CONFIG = {
         id: "city",
         label: "City",
         type: "text",
+        required: true,
         gridClass: "lg:col-span-2"
       },
       {
         id: "province",
         label: "Province",
         type: "text",
+        required: true,
         gridClass: "lg:col-span-2"
       },
       {
         id: "postalCode",
         label: "Postal code",
         type: "text",
+        required: true,
         gridClass: "lg:col-span-1"
       },
       {
@@ -249,6 +262,7 @@ const FORM_CONFIG = {
         id: "primaryPhone",
         label: "Primary phone number",
         type: "radio",
+        required: true,
         gridClass: "col-span-3",
         options: [
           { value: "home", label: "Home" },
@@ -260,6 +274,7 @@ const FORM_CONFIG = {
         id: "phoneNum",
         label: "Telephone number",
         type: "text",
+        required: true,
         maxLength: 11,
         gridClass: "lg:col-span-2"
       },
@@ -296,6 +311,7 @@ const FORM_CONFIG = {
         id: "labourForce",
         label: "Labour force attachment",
         type: "radio",
+        required: true,
         gridClass: "col-span-full ",
         options: [
           { value: "employed", label: "Employed" },
@@ -319,6 +335,7 @@ const FORM_CONFIG = {
         id: "sourceIncome",
         label: "Source of income",
         type: "radio",
+        required: true,
         gridClass: "col-span-full ",
         options: [
           { value: "employment_insurance", label: "Employment Insurance (EI) *" },
@@ -343,6 +360,7 @@ const FORM_CONFIG = {
         id: "sinNum",
         label: "Social insurance number",
         type: "text",
+        required: true,
         maxLength: 9,
         gridClass: "lg:col-span-2"
       },
@@ -371,6 +389,7 @@ const FORM_CONFIG = {
         id: "education",
         label: "Indicate your highest level of education/qualification:",
         type: "radio",
+        required: true,
         gridClass: "col-span-full ",
         options: [
           { value: "0_8", label: "Grade 0 - 8" },
@@ -470,6 +489,7 @@ const FORM_CONFIG = {
         id: "wageAmount",
         label: "Wage amount ($)",
         type: "number",
+        required: true,
         gridClass: "col-span-3",
         step: "0.01"
       },
@@ -477,6 +497,7 @@ const FORM_CONFIG = {
         id: "hourlyWage",
         label: "Hourly wage (including tips and commissions) ($)",
         type: "number",
+        required: true,
         gridClass: "col-span-3",
         step: "0.01"
       },
@@ -484,6 +505,7 @@ const FORM_CONFIG = {
         id: "paidHoursWeek",
         label: "Average paid hours per week (excluding overtime)",
         type: "number",
+        required: true,
         gridClass: "col-span-3",
         step: "0.1"
       },
@@ -610,18 +632,21 @@ const FORM_CONFIG = {
         id: "serviceAcknowledge",
         label: "I/we acknowledge that my Service Provider has explained its use and disclosure of my personal information for its purpose.",
         type: "checkbox", 
+        required: true,
         gridClass: "lg:col-span-full"
       },
       {
         id: "serviceParticipantName",
         label: "Participant's name", 
         type: "text",
+        required: true,
         gridClass: "lg:col-span-4"
       },
       {
         id: "serviceParticipantDate",
         label: "Date",
         type: "date",
+        required: true,
         gridClass: "lg:col-span-1"
       },
       {
@@ -640,18 +665,21 @@ const FORM_CONFIG = {
         id: "ministryAcknowledge",
         label: "I/we give consent to the Ministry to indirectly collect, use and disclose my personal information for the purposes set out above.",
         type: "checkbox", 
+        required: true,
         gridClass: "lg:col-span-full"
       },
       {
         id: "ministryParticipantName",
         label: "Participant's name", 
         type: "text",
+        required: true,
         gridClass: "lg:col-span-4"
       },
       {
         id: "ministryParticipantDate",
         label: "Date",
         type: "date",
+        required: true,
         gridClass: "lg:col-span-1"
       },
       {
@@ -922,15 +950,15 @@ const RegistrationForm = () => {
               </div>
             </div>
           ))}
+          <pre className="[font-family:'Unageo'] text-sm text-black text-left text-foreground whitespace-pre-wrap break-words">
+            {content}
+          </pre>
           <div className="flex flex-col items-center lg:items-end">
             <button
               type="submit"
               className="w-[250px] bg-black text-white text-lg py-3 px-6 rounded-2xl hover:opacity-85 transition-colors">
               Submit
             </button>
-          </div>
-          <div className="text-sm text-black text-left text-foreground mb-8">
-            {content}
           </div>
         </form>
       </div>
