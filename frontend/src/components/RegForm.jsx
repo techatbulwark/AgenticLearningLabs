@@ -439,7 +439,14 @@ const FORM_CONFIG = {
         id: "empEndDate",
         label: "Employment end date", 
         type: "date",
+        hideWhen: "empCurrentlyEmployed",
         gridClass: "col-span-2",
+      },
+      {
+        id: "empCurrentlyEmployed",
+        label: "Currently employed",
+        type: "checkbox",
+        gridClass: "col-span-1"
       },
       {
         id: "empCountry",
@@ -527,7 +534,14 @@ const FORM_CONFIG = {
         id: "additionalEmpEndDate",
         label: "Employment end date", 
         type: "date",
+        hideWhen: "additionalCurrentlyEmployed",
         gridClass: "col-span-2",
+      },
+      {
+        id: "additionalCurrentlyEmployed",
+        label: "Currently employed",
+        type: "checkbox",
+        gridClass: "col-span-1"
       },
       {
         id: "additionalEmpCountry",
@@ -689,11 +703,26 @@ const RegistrationForm = () => {
       ...prev,
       [fieldId]: checked
     }));
+    if (fieldId === "empCurrentlyEmployed" && checked) {
+
+    }
   };
+
+  const hideField = (checkedField) => {
+    return formData[checkedField];
+  }
 
   const renderField = (field) => {
     const commonClasses = "w-full px-4 py-1 border border-input bg-background rounded-md text-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent";
+    const fieldDependencies = {
+      empEndDate: "empCurrentlyEmployed",
+      additionalEmpEndDate: "additionalCurrentlyEmployed",
+    }
     
+    if (field.id in fieldDependencies && hideField(fieldDependencies[field.id])) {
+      return null;
+    }
+
     switch (field.type) {
       case 'text':
       case 'email':
@@ -771,7 +800,7 @@ const RegistrationForm = () => {
       case 'checkbox':
         return (
           <div className="space-y-2">
-            <div className="flex flex-row items-center space-x-2">
+            <div className="flex flex-row items-center space-x-2 mt-9">
               <input 
                 type="checkbox" 
                 id={field.id}
@@ -878,22 +907,25 @@ const RegistrationForm = () => {
                 {section.title}
               </h3>
               <div className="grid grid-cols-1 lg:grid-cols-5 gap-7 mb-20">
-                {section.fields.map(field => (
+                {section.fields.map(field => {
+                  const fieldComponent = renderField(field);
+                  if (fieldComponent === null) return null;
+                  return (
                   <div 
-                    key={field.id} 
-                    className={`space-y-2 ${field.gridClass || ''}`}>
-                    {field.type !== 'paragraph' && field.type !== 'checkbox'?
-                    <label 
-                      htmlFor={field.id} 
-                      className="block text-md text-left text-foreground">
-                      {field.label}
-                      {field.required && <span className="text-red-500 ml-1">*</span>}
-                    </label>
-                    : null
-                    }
-                    {renderField(field)}
-                  </div>
-                ))}
+                      key={field.id} 
+                      className={`space-y-2 ${field.gridClass || ''}`}>
+                      {field.type !== 'paragraph' && field.type !== 'checkbox'?
+                      <label 
+                        htmlFor={field.id} 
+                        className="block text-md text-left text-foreground">
+                        {field.label}
+                        {field.required && <span className="text-red-500 ml-1">*</span>}
+                      </label>
+                      : null
+                      }
+                      {renderField(field)}
+                    </div>)
+                })}
               </div>
             </div>
           ))}

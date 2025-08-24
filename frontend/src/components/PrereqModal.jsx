@@ -124,7 +124,7 @@ const PrereqModal = () => {
               </svg>
             </button>
             <h2 className="[font-family:'Unageo-SemiBold'] text-3xl text-black">We received your email!</h2>
-            <p className="text-lg text-black text-left">Please watch for an email from <b className="[font-family:'Unageo-Bold']">info@agenticlearninglabs.com.</b></p>
+            <p className="text-lg text-black">Please watch for an email from <b className="[font-family:'Unageo-Bold']">info@agenticlearninglabs.com.</b></p>
           </div>
         </div>
       ) : isSubmitted ? (

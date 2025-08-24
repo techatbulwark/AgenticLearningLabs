@@ -8,6 +8,7 @@ import course_header3 from '../assets/images/course_header3.jpg';
 import business from '../assets/images/business.png';
 import businessMobile from '../assets/images/business_mobile.png';
 import HeaderLogo from '../components/HeaderLogo.jsx';
+import CourseUpdate from '../components/CourseUpdate.jsx';
 
 const SalesMarketing = () => {
     
@@ -118,23 +119,7 @@ const SalesMarketing = () => {
                     <img src={businessMobile} className="lg:hidden object-cover" />
                 </div>
             </section>
-            <div className="w-full lg:px-outer_lg py-20 relative bg-brand_gray border-t border-white">
-                <div className="flex flex-col justify-between items-start px-inner">
-                    <div className="w-full lg:w-1/2 text-left">
-                        <h2 className="[font-family:'Unageo-SemiBold'] text-4xl mb-5">Please notify me of new course dates when they are available</h2>
-                    </div>
-                    <div className="flex flex-row items-center w-full lg:w-4/5 gap-5">
-                        <input className="flex-grow h-10 bg-white rounded-md text-black p-3" placeholder="Email"></input>
-                        <button
-                            onClick={() => toggleTab(index)}
-                            className="flex bg-brand_yellow rounded-full 
-                            w-12 h-12 text-black text-3xl items-center justify-center 
-                            transition-all duration-300 ease-in-out">
-                            →
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <CourseUpdate />
             <Footer />
         </div>
     );
