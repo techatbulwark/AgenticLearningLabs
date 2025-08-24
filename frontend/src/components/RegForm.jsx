@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { lazy, useEffect, useState } from "react";
 import axios from "axios";
 
 const API_BASE_URL = import.meta.env.MODE === 'production' 
@@ -197,7 +197,7 @@ const FORM_CONFIG = {
         gridClass: "lg:col-span-1"
       },
       {
-        id: "alternate_mailing_address",
+        id: "altMailingAddress",
         label: "Alternate Mailing Address",
         type: "paragraph",
         style: "bold",
@@ -393,13 +393,13 @@ const FORM_CONFIG = {
     title: "Employment",
     fields: [
       {
-        id: "selected_ei",
+        id: "selectedEI",
         label: "List your work experience, including volunteer work. Start with the most recent job/volunteer activity",
         type: "paragraph",
         gridClass: "col-span-full",
       },
       {
-        id: "work_experience",
+        id: "workExperience",
         label: "Work experience 1",
         type: "paragraph",
         style: "bold",
@@ -494,7 +494,7 @@ const FORM_CONFIG = {
         gridClass: "md:col-span-full"
       },      
       {
-        id: "additional_work_experience",
+        id: "additionalWorkExperience",
         label: "Additional work experience (if applicable)",
         type: "paragraph",
         style: "bold",
@@ -512,6 +512,7 @@ const FORM_CONFIG = {
           { value: "volunteer", label: "Volunteer Work" }
         ]
       },
+      
       {
         id: "additionalEmpName",
         label: "Name of employer",
@@ -586,7 +587,7 @@ const FORM_CONFIG = {
         id: "additionalReasonLeaving",
         label: "Reason for leaving",
         type: "text",
-        gridClass: "md:col-span-full"
+        gridClass: "lg:col-span-full"
       },      
       {
         id: "noc",
@@ -669,8 +670,20 @@ const FORM_CONFIG = {
   },
 };
 
+const FIELD_DEPENDENCIES = {
+  empEndDate: "empCurrentlyEmployed",
+  additionalEmpEndDate: "additionalCurrentlyEmployed",
+}
+
 const RegistrationForm = () => {
   const sectionWrapper = "w-full mx-auto px-outer_sm lg:px-outer_lg";
+
+  const [content, setContent] = useState("");
+  useEffect(() => {
+    fetch("/sdf_notice.txt")
+      .then((res) => res.text())
+      .then(setContent);
+  }, []);
 
   const initializeFormData = () => {
     const initialData = {};
@@ -699,13 +712,19 @@ const RegistrationForm = () => {
   };
 
   const handleCheckboxChange = (fieldId, checked) => {
-    setFormData(prev => ({
-      ...prev,
-      [fieldId]: checked
-    }));
-    if (fieldId === "empCurrentlyEmployed" && checked) {
-
-    }
+    setFormData(prev => {
+      const updateData = {
+        ...prev,
+        [fieldId]: checked
+      };
+      const dep = Object.entries(FIELD_DEPENDENCIES).find(
+        ([k, v]) => v === fieldId
+      );
+      if (dep && checked) {
+        updateData[dep[0] ]= '';
+      }      
+      return updateData;
+    });
   };
 
   const hideField = (checkedField) => {
@@ -714,12 +733,8 @@ const RegistrationForm = () => {
 
   const renderField = (field) => {
     const commonClasses = "w-full px-4 py-1 border border-input bg-background rounded-md text-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent";
-    const fieldDependencies = {
-      empEndDate: "empCurrentlyEmployed",
-      additionalEmpEndDate: "additionalCurrentlyEmployed",
-    }
     
-    if (field.id in fieldDependencies && hideField(fieldDependencies[field.id])) {
+    if (field.id in FIELD_DEPENDENCIES && hideField(FIELD_DEPENDENCIES[field.id])) {
       return null;
     }
 
@@ -744,57 +759,36 @@ const RegistrationForm = () => {
         );        
       case 'radio':
         return (
-          <div className="space-y-2">
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-y-5">
-              {field.options.slice(0, 4).map(option => (
-                <div key={option.value} className={`${option.hasInput ? "col-span-2" : "col-span-1"} flex items-center text-left space-x-2`}>
-                  <input
-                    type="radio"
-                    id={`${field.id}-${option.value}`}
-                    name={field.id}
-                    value={option.value}
-                    checked={formData[field.id] === option.value}
-                    onChange={(e) => handleInputChange(field.id, e.target.value)}
-                    className="accent-primary"
-                  />
-                  <label htmlFor={`${field.id}-${option.value}`} className="text-md text-foreground">
-                    {option.label}
-                    {option.hasInput && (
-                      <input 
-                        type="text" 
-                        className="ml-5 border border-input rounded-md text-foreground px-2 py-1"
+          <div className="space-y-5">
+            {Array.from({ length: Math.ceil(field.options.length / 4) }, (_, rowIndex) => (
+              <div key={rowIndex} className="grid grid-cols-1 lg:grid-cols-4 gap-y-5">
+                {field.options
+                  .slice(rowIndex * 4, (rowIndex + 1) * 4)
+                  .map(option => (
+                    <div key={option.value} className={`${option.hasInput ? "col-span-2" : "col-span-1"} flex items-center text-left space-x-2`}>
+                      <input
+                        type="radio"
+                        id={`${field.id}-${option.value}`}
+                        name={field.id}
+                        value={option.value}
+                        checked={formData[field.id] === option.value}
+                        onChange={(e) => handleInputChange(field.id, e.target.value)}
+                        className="accent-primary"
                       />
-                    )}
-                  </label>
-                </div>
-              ))}
-            </div>
-            {field.options.length > 4 && (
-              <div className="grid grid-cols-1 lg:grid-cols-4 gap-y-5">
-                {field.options.slice(4).map(option => (
-                  <div key={option.value} className={`${option.hasInput ? "col-span-2" : "col-span-1"} flex items-center text-left space-x-2`}>
-                    <input
-                      type="radio"
-                      id={`${field.id}-${option.value}`}
-                      name={field.id}
-                      value={option.value}
-                      checked={formData[field.id] === option.value}
-                      onChange={(e) => handleInputChange(field.id, e.target.value)}
-                      className="accent-primary"
-                    />
-                    <label htmlFor={`${field.id}-${option.value}`} className="text-md text-foreground">
-                      {option.label}
-                      {option.hasInput && (
-                        <input 
-                          type="text" 
-                          className="ml-5 border border-input rounded-md text-foreground px-2 py-1"
-                        />
-                      )}
-                    </label>
-                  </div>
-                ))}
+                      <label htmlFor={`${field.id}-${option.value}`} className="text-md text-foreground">
+                        {option.label}
+                        {option.hasInput && (
+                          <input
+                            type="text"
+                            className="ml-5 border border-input rounded-md text-foreground px-2 py-1"
+                          />
+                        )}
+                      </label>
+                    </div>
+                  ))}
               </div>
-            )}
+            ))}
+
           </div>
         );
       case 'checkbox':
@@ -858,7 +852,6 @@ const RegistrationForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      //console.log('Sending registration data:', registrationData);
       const registrationData = transformFormDataForAPI(formData);
       const response = await axios.post(
         `${API_BASE_URL}/register`,
@@ -929,13 +922,15 @@ const RegistrationForm = () => {
               </div>
             </div>
           ))}
-          
           <div className="flex flex-col items-center lg:items-end">
             <button
               type="submit"
               className="w-[250px] bg-black text-white text-lg py-3 px-6 rounded-2xl hover:opacity-85 transition-colors">
               Submit
             </button>
+          </div>
+          <div className="text-sm text-black text-left text-foreground mb-8">
+            {content}
           </div>
         </form>
       </div>

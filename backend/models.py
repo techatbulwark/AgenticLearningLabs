@@ -21,8 +21,17 @@ class Registration(BaseModel):
     province: str
     postal_code: str
     po_box: str
+    alt_unit_num: int
+    alt_street_num: int
+    alt_street_name: str
+    alt_city: str
+    alt_province: str
+    alt_postal_code: str
+    alt_po_box: str
     primary_phone: str
     phone_num: str
+    alt_phone: str
+    alt_phone_num: str
     email: str
     labour_force: str
     source_income: str
@@ -34,12 +43,25 @@ class Registration(BaseModel):
     job_title: str
     emp_start_date: str
     emp_end_date: str
+    emp_currently_employed: str
     emp_country: str
     pref_wage_method: str
     wage_amount: str
     hourly_wage: str
     paid_hours_week: str
     reason_leaving: str
+    additional_emp_type: str
+    additional_emp_name: str
+    additional_job_title: str
+    additional_emp_start_date: str
+    additional_emp_end_date: str
+    additional_currently_employed: str
+    additional_emp_country: str
+    additional_pref_wage_method: str
+    additional_wage_amount: str
+    additional_hourly_wage: str
+    additional_paid_hours_week: str
+    additional_reason_leaving: str
     noc: str
     naics: str
     service_acknowledge: str
