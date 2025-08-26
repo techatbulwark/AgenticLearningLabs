@@ -27,4 +27,6 @@ frontend/READ_ME.md
 frontend/.env
 frontend/SDFForm.jsx
 backend/test.py
+backend/test_script.py
 backend/.env
+backend/__pycache__/*

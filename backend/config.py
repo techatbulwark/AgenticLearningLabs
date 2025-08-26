@@ -7,12 +7,17 @@ class Settings(BaseSettings):
     supabase_url: Optional[str] = None
     supabase_secret_key: Optional[str] = None
     
-    # email
+    # smtp
     smtp_host: Optional[str] = None
     smtp_port: Optional[int] = 587
     smtp_user: Optional[str] = None
     smtp_password: Optional[str] = None
-    recipient_emails: List[str] = None
+    recipient_emails: Optional[str] = None
+
+    # resend
+    resend_key: Optional[str] = None
+    resend_sender: Optional[str] = None
+    resend_recipients: Optional[str] = None
     
     # url
     frontend_url: Optional[str] = None
