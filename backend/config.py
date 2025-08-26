@@ -17,7 +17,7 @@ class Settings(BaseSettings):
     # resend
     resend_key: Optional[str] = None
     resend_sender: Optional[str] = None
-    resend_recipients: Optional[str] = None
+    resend_recipients: List[str] = None
     
     # url
     frontend_url: Optional[str] = None
