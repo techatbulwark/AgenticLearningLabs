@@ -1,6 +1,6 @@
 from functools import lru_cache
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from typing import Optional
+from typing import Optional, List
 
 class Settings(BaseSettings):
     # database
@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     smtp_port: Optional[int] = 587
     smtp_user: Optional[str] = None
     smtp_password: Optional[str] = None
-    recipient_email: Optional[str] = None
+    recipient_emails: List[str] = None
     
     # url
     frontend_url: Optional[str] = None

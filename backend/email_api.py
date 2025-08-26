@@ -12,7 +12,7 @@ email_router = APIRouter()
 async def send_email(inq: InquiryBody):
     msg = EmailMessage()
     msg["From"] = settings.smtp_user
-    msg["To"] = settings.recipient_email
+    msg["To"] = settings.recipient_emails
     msg["Subject"] = f"AGENTIC LEARNING LABS: New inquiry from {inq.first_name} {inq.last_name}"
     msg.set_content(
         f"Name: {inq.first_name} {inq.last_name}\n"
@@ -71,7 +71,7 @@ async def course_updates(email: Email):
 async def participant_accomodation(email: Email):
     msg = EmailMessage()
     msg["From"] = settings.smtp_user
-    msg["To"] = settings.recipient_email
+    msg["To"] = settings.recipient_emails
     msg["Subject"] = f"AGENTIC LEARNING LABS: Course accomodation request from {email.email}"
     msg.set_content( f"Participant has answered no to one or more of the prerequisite requirements and requested to receive accomodation via {email.email}" )
     try:
