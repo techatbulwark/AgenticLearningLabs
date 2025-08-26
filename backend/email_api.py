@@ -44,11 +44,10 @@ async def send_email(inq: InquiryBody):
 async def course_updates(email: Email):
     msg = EmailMessage()
     msg["From"] = settings.smtp_user
-    msg["To"] = settings.recipient_email
+    msg["To"] = ", ".join(settings.recipient_emails)
     msg["Subject"] = f"AGENTIC LEARNING LABS: Course update subscription from {email.email}"
     msg.set_content( f"Participant subscribed to receive updates on Agentics Learning Labs courses and training via {email.email}" )
     try:
-        # Create a secure SSL context
         ssl_context = ssl.create_default_context()
         await aiosmtplib.send(
             msg,

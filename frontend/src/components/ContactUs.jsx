@@ -23,7 +23,6 @@ const ContactUs = () => {
         event.preventDefault();
         setIsLoading(true);
         try {
-        console.log('Sending inquiry message');
         const response = await axios.post(
             `${API_BASE_URL}/send_inquiry`,
             {
