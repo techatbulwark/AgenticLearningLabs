@@ -15,9 +15,9 @@ async def send_email(inq: InquiryBody):
         resend.api_key = settings.resend_key
         r = resend.Emails.send({
         "from": settings.resend_sender,
-        "to": settings.resend_recipients,
+        "to": settings.resend_recipients_list,
         "subject": f"AGENTIC LEARNING LABS: New inquiry from {inq.email}",
-        "html": f"""<p>Name: {inq.first_name} {inq.last_name}\nEmail: {inq.email}\nMessage:{inq.message}</p>"""
+        "html": f"""<p>Name: {inq.first_name} {inq.last_name}<br />Email: {inq.email}<br />Message:{inq.message}</p>"""
         })        
         return {"status": "Email sent successfully"}
     except Exception as e:
@@ -30,7 +30,7 @@ async def course_updates(email: Email):
         resend.api_key = settings.resend_key
         r = resend.Emails.send({
         "from": settings.resend_sender,
-        "to": settings.resend_recipients,
+        "to": settings.resend_recipients_list,
         "subject": f"AGENTIC LEARNING LABS: Course update subscription from {email.email}",
         "html": f"""<p>Participant subscribed to receive updates on Agentics Learning Labs courses and training via {email.email}</p>"""
         })        
@@ -44,7 +44,7 @@ async def participant_accomodation(email: Email):
         resend.api_key = settings.resend_key
         r = resend.Emails.send({
         "from": settings.resend_sender,
-        "to": settings.resend_recipients,
+        "to": settings.resend_recipients_list,
         "subject": f"AGENTIC LEARNING LABS: Course accomodation request from {email.email}",
         "html": f"""<p>Participant has answered no to one or more of the prerequisite requirements and requested to receive accomodation via {email.email}</p>"""
         })        
