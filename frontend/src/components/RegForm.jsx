@@ -856,24 +856,13 @@ const RegistrationForm = () => {
 
   const transformFormDataForAPI = (data) => {
     const transformed = {};
-    
+
     Object.entries(data).forEach(([key, value]) => {
       const snakeKey = toSnakeCase(key);
-      
-      if (['unit_num', 'street_num'].includes(snakeKey)) {
-        transformed[snakeKey] = value === '' || value === null ? 0 : parseInt(value, 10) || 0;
-      }
-      else if (['wage_amount', 'hourly_wage', 'paid_hours_week'].includes(snakeKey)) {
-        transformed[snakeKey] = value === '' || value === null ? '' : String(value);
-      }
-      else if (typeof value === 'boolean') {
-        transformed[snakeKey] = String(value);
-      }
-      else {
-        transformed[snakeKey] = value === null || value === undefined ? '' : String(value);
-      }
+
+      transformed[snakeKey] = value === null || value === undefined ? '' : String(value);
     });
-    
+
     return transformed;
   };
 

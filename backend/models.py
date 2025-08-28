@@ -14,15 +14,15 @@ class Registration(BaseModel):
     pref_language: str
     pref_communication: str
     marital_status: str
-    unit_num: int
-    street_num: int
+    unit_num: str
+    street_num: str
     street_name: str
     city: str
     province: str
     postal_code: str
     po_box: str
-    alt_unit_num: int
-    alt_street_num: int
+    alt_unit_num: str
+    alt_street_num: str
     alt_street_name: str
     alt_city: str
     alt_province: str
