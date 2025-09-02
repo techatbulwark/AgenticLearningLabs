@@ -74,6 +74,7 @@ class Registration(BaseModel):
     ministry_participant_date: str
     ministry_guardian_name: str
     ministry_guardian_date: str
+    course_selection: str
     
 
 class PrereqResponse(BaseModel):

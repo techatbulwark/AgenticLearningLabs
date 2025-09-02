@@ -90,6 +90,7 @@ def register(registration: Registration):
                 'ministry_participant_date': registration.ministry_participant_date,
                 'ministry_guardian_name': registration.ministry_guardian_name,
                 'ministry_guardian_date': registration.ministry_guardian_date,
+                'course_selection': registration.course_selection,
             }).execute()
         )
         return response

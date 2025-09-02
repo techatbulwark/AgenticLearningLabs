@@ -5,6 +5,23 @@ const API_BASE_URL = import.meta.env.MODE === 'production'
   ? import.meta.env.VITE_PROD_API : import.meta.env.VITE_DEV_API;
 
 const FORM_CONFIG = {
+  courseSelection: {
+    title: "",
+    fields: [
+      {
+        id: "courseSelection",
+        label: "Choose the course you are registering for:",
+        type: "radio",
+        required: true,
+        gridClass: "col-span-full",
+        options: [
+          { value: "dataAnalytics", label: "AI for Data Analytics for Decision Making" },
+          { value: "customerExperience", label: "AI for Customer Experience and Product Innovation" },
+          { value: "salesMarketing", label: "AI for Sales, Marketing & Business Development" },
+        ],
+      },
+    ]
+  },
   personalInfo: {
     title: "Personal Information",
     fields: [
@@ -300,6 +317,7 @@ const FORM_CONFIG = {
         id: "email",
         label: "Email",
         type: "email",
+        required: true,
         gridClass: "lg:col-span-full"
       },
     ]
@@ -786,12 +804,14 @@ const RegistrationForm = () => {
           />
         );        
       case 'radio':
+        const cols = (field.id === "courseSelection") ? 1 : 4; 
+        const gridClass = (field.id === "courseSelection") ? "lg:grid-cols-1" : "lg:grid-cols-4"; 
         return (
           <div className="space-y-5">
-            {Array.from({ length: Math.ceil(field.options.length / 4) }, (_, rowIndex) => (
-              <div key={rowIndex} className="grid grid-cols-1 lg:grid-cols-4 gap-y-5">
+            {Array.from({ length: Math.ceil(field.options.length / cols) }, (_, rowIndex) => (
+              <div key={rowIndex} className={`grid grid-cols-1 gap-y-5 ${gridClass}`}>
                 {field.options
-                  .slice(rowIndex * 4, (rowIndex + 1) * 4)
+                  .slice(rowIndex * cols, (rowIndex + 1) * cols)
                   .map(option => (
                     <div key={option.value} className={`${option.hasInput ? "col-span-2" : "col-span-1"} flex items-center text-left space-x-2`}>
                       <input
@@ -923,7 +943,7 @@ const RegistrationForm = () => {
                   return (
                   <div 
                       key={field.id} 
-                      className={`space-y-2 ${field.gridClass || ''}`}>
+                      className={`space-y-3 ${field.gridClass || ''}`}>
                       {field.type !== 'paragraph' && field.type !== 'checkbox'?
                       <label 
                         htmlFor={field.id} 
