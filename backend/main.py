@@ -14,12 +14,11 @@ if settings.environment == "development":
         'http://localhost:5173',
     ])    
 else:
-    origins.append(settings.frontend_url)
+    origins.extend([
+        settings.frontend_url,
+        'http://localhost:4173',
+    ])    
 
-origins.extend([
-    'http://localhost:4173',
-])    
-print(origins)
 
 app = FastAPI(debug=settings.environment == "development")
 app.include_router(router)

@@ -38,7 +38,7 @@ const Home = () => {
       {/* headings */}
       <section className={`${sectionWrapper} relative z-10 flex flex-col lg:flex-row items-center justify-between py-24`}>
         <div className="flex-shrink-0 w-auto text-left z-10">
-          <h1 className="[font-family:'Unageo-SemiBold'] text-6xl lg:text-7xl max-w-3/4 lg:max-w-full leading-tight tracking-tight mb-5">
+          <h1 className="[font-family:'Unageo-SemiBold'] text-5xl lg:text-7xl max-w-3/4 lg:max-w-full leading-tight tracking-tight mb-5">
             AGENTIC<br />LEARNING LABS
           </h1>
           <h2 className="[font-family:'Unageo-SemiBold'] text-4xl font-light tracking-wide mb-5">
@@ -52,8 +52,7 @@ const Home = () => {
           </a>
         </div>
         <div className="flex justify-center">
-          <img src={bulwarkLogoA} loading="lazy" className="absolute w-[250px] lg:hidden top-30 -right-20 animate-spin-slow" />
-          <img src={bulwarkLogoA} loading="lazy" className="absolute w-[550px] hidden lg:block top-20 right-50 animate-spin-slow" />
+          <img src={bulwarkLogoA} loading="lazy" className="absolute w-[300px] md:w-[350px] lg:w-[550px] top-30 lg:top-20 -right-20 md:right-30 lg:right-50 animate-spin-slow" />
           <img src={bulwarkLogoL} loading="lazy" className="absolute w-[220px] rotate-270 hidden lg:block bottom-30 right-0 animate-spin-reverse" />
           <img src={bulwarkLogoL} loading="lazy" className="absolute w-[220px] rotate-20 hidden lg:block bottom-0 right-70 animate-spin-slow" />
         </div>
