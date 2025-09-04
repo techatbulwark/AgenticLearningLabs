@@ -217,21 +217,27 @@ const FORM_CONFIG = {
     title: "Signatures",
     fields: [
       {
-        id: "serviceAcknowledge",
-        label: "I/we acknowledge that my Service Provider has explained its use and disclosure of my personal information for its purpose.",
-        type: "checkbox", 
-        required: true,
-        gridClass: "lg:col-span-full"
+        id: "referralQuestion",
+        label: "How did you hear about us?",
+        type: "radio",
+        gridClass: "col-span-full ",
+        options: [
+          { value: "linkedin", label: "LinkedIn" },
+          { value: "instagram", label: "Instagram" },
+          { value: "web_search", label: "Web search" },
+          { value: "friend", label: "Friend" },
+          { value: "other", label: "Other", hasInput: true },
+        ]
       },
       {
-        id: "serviceParticipantName",
+        id: "signatureName",
         label: "Participant's name", 
         type: "text",
         required: true,
         gridClass: "lg:col-span-4"
       },
       {
-        id: "serviceParticipantDate",
+        id: "signatureDate",
         label: "Date",
         type: "date",
         required: true,
@@ -259,20 +265,24 @@ const RegistrationForm = () => {
 
   const initializeFormData = () => {
     const initialData = {};
-    
-    Object.values(FORM_CONFIG).forEach(section => {
-      section.fields.forEach(field => {
-        if (field.type === 'number') {
-          initialData[field.id] = '';
-        } else if (field.type === 'checkbox') {
-          initialData[field.id] = false;
-        } else {
-          initialData[field.id] = '';
-        }
+      
+      Object.values(FORM_CONFIG).forEach(section => {
+        section.fields.forEach(field => {
+          if (field.type === 'number') {
+            initialData[field.id] = '';
+          } else if (field.type === 'checkbox') {
+            initialData[field.id] = false;
+          } else {
+            initialData[field.id] = '';
+          }
+          
+          // Initialize "other" text fields for radio buttons that have them
+          if (field.type === 'radio' && field.options?.some(opt => opt.hasInput)) {
+            initialData[`${field.id}_other_text`] = '';
+          }
+        });
       });
-    });
-    return initialData;
-  };
+      return initialData;  };
 
   const [formData, setFormData] = useState(initializeFormData);
 
@@ -280,6 +290,14 @@ const RegistrationForm = () => {
     setFormData(prev => ({
       ...prev,
       [fieldId]: value
+    }));
+  };
+
+  const handleOtherInputChange = (fieldId, value) => {
+    setFormData(prev => ({
+      ...prev,
+      [`${fieldId}_other_text`]: value,
+      [fieldId]: 'other'
     }));
   };
 
@@ -329,42 +347,46 @@ const RegistrationForm = () => {
             required={field.required}
           />
         );        
-      case 'radio':
-        const cols = (field.id === "courseSelection") ? 1 : 4; 
-        const gridClass = (field.id === "courseSelection") ? "lg:grid-cols-1" : "lg:grid-cols-4"; 
-        return (
-          <div className="space-y-5">
-            {Array.from({ length: Math.ceil(field.options.length / cols) }, (_, rowIndex) => (
-              <div key={rowIndex} className={`grid grid-cols-1 gap-y-5 ${gridClass}`}>
-                {field.options
-                  .slice(rowIndex * cols, (rowIndex + 1) * cols)
-                  .map(option => (
-                    <div key={option.value} className={`${option.hasInput ? "col-span-2" : "col-span-1"} flex items-center text-left space-x-2`}>
-                      <input
-                        type="radio"
-                        id={`${field.id}-${option.value}`}
-                        name={field.id}
-                        value={option.value}
-                        checked={formData[field.id] === option.value}
-                        onChange={(e) => handleInputChange(field.id, e.target.value)}
-                        className="accent-primary"
-                      />
-                      <label htmlFor={`${field.id}-${option.value}`} className="text-md text-foreground">
-                        {option.label}
-                        {option.hasInput && (
-                          <input
-                            type="text"
-                            className="ml-5 border border-input rounded-md text-foreground px-2 py-1"
-                          />
-                        )}
-                      </label>
-                    </div>
-                  ))}
+case 'radio':
+  const cols = (field.id === "courseSelection") ? 1 : 4; 
+  const gridClass = (field.id === "courseSelection") ? "lg:grid-cols-1" : "lg:grid-cols-4"; 
+  return (
+    <div className="space-y-5">
+      {Array.from({ length: Math.ceil(field.options.length / cols) }, (_, rowIndex) => (
+        <div key={rowIndex} className={`grid grid-cols-1 gap-y-5 ${gridClass}`}>
+          {field.options
+            .slice(rowIndex * cols, (rowIndex + 1) * cols)
+            .map(option => (
+              <div key={option.value} className={`${option.hasInput ? "col-span-2" : "col-span-1"} flex items-center text-left space-x-2`}>
+                <input
+                  type="radio"
+                  id={`${field.id}-${option.value}`}
+                  name={field.id}
+                  value={option.value}
+                  checked={formData[field.id] === option.value}
+                  onChange={(e) => handleInputChange(field.id, e.target.value)}
+                  className="accent-primary"
+                />
+                <label htmlFor={`${field.id}-${option.value}`} className="text-md text-foreground">
+                  {option.label}
+                  {option.hasInput && (
+                    <input
+                      type="text"
+                      value={formData[`${field.id}_other_text`] || ''}
+                      onChange={(e) => handleOtherInputChange(field.id, e.target.value)}
+                      onFocus={() => handleInputChange(field.id, 'other')}
+                      className="ml-5 border border-input rounded-md text-foreground px-2 py-1"
+                      placeholder="Please specify..."
+                    />
+                  )}
+                </label>
               </div>
             ))}
+        </div>
+      ))}
+    </div>
+  );
 
-          </div>
-        );
       case 'checkbox':
         return (
           <div className="space-y-2">
@@ -404,18 +426,37 @@ const RegistrationForm = () => {
     const transformed = {};
 
     Object.entries(data).forEach(([key, value]) => {
+      if (key.endsWith('_other_text')) {
+        const baseKey = key.replace('_other_text', '');
+        const snakeBaseKey = toSnakeCase(baseKey);
+        
+        if (data[baseKey] === 'other' && value && value.trim() !== '') {
+          transformed[snakeBaseKey] = String(value).trim();
+        }
+        return;
+      }
+      
       const snakeKey = toSnakeCase(key);
-
-      transformed[snakeKey] = value === null || value === undefined ? '' : String(value);
+      
+      if (value === 'other') {
+        const otherTextValue = data[`${key}_other_text`];
+        if (otherTextValue && otherTextValue.trim() !== '') {
+          transformed[snakeKey] = String(otherTextValue).trim();
+        } else {
+          transformed[snakeKey] = 'other';
+        }
+      } else {
+        transformed[snakeKey] = value === null || value === undefined ? '' : String(value);
+      }
     });
 
     return transformed;
   };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const registrationData = transformFormDataForAPI(formData);
+      console.log(registrationData);
       const response = await axios.post(
         `${API_BASE_URL}/register`,
         registrationData,

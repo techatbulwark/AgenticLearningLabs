@@ -21,7 +21,13 @@ export const theme = {
         animation: {
             'spin-slow': 'spin 50s linear infinite',
             'spin-reverse': 'spin 40s linear infinite reverse',
-        }
+        },
+        screens: {
+        sm: "640px",
+        md: "1200px",
+        lg: "1060px",
+        xl: "1280px",
+        },
     },
 };
 export const plugins = [];

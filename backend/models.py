@@ -19,10 +19,10 @@ class Registration(BaseModel):
     email: str
     source_income: str
     education: str
-    service_acknowledge: str
-    service_participant_name: str
-    service_participant_date: str
+    signature_name: str
+    signature_date: str
     course_selection: str
+    referral_question: str
     
 
 class PrereqResponse(BaseModel):
