@@ -13,9 +13,7 @@ if settings.environment == "development":
 else:
     origins.extend([
         settings.frontend_url,
-        'http://localhost:4173',
     ])    
-print(f'CORS origins {origins}')
 
 app = FastAPI(debug=settings.environment == "development")
 app.add_middleware(
