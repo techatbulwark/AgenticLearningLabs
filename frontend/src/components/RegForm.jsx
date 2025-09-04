@@ -17,15 +17,22 @@ const FORM_CONFIG = {
         options: [
           { value: "dataAnalytics", label: "AI for Data Analytics for Decision Making" },
           { value: "customerExperience", label: "AI for Customer Experience and Product Innovation" },
-          { value: "salesMarketing", label: "AI for Sales, Marketing & Business Development" },
+          { value: "salesMarketing", label: "AI for Sales, Marketing and Business Development" },
         ],
       },
       {
         id: "commMessage",
-        label: "These courses are complimentary thanks to support from the Employment Ontario program, which is funded in part by the Government of Canada and the Government of Ontario.  Communications and course information will come from Agentic Learning Labs and programs@agenticlearninglabs.com.",
+        label: "These courses are complimentary thanks to support from the Employment Ontario program, which is funded in part by the Government of Canada and the Government of Ontario. Communications and course information will come from Agentic Learning Labs and ",
         type: "paragraph",
-        style: "italic",
         gridClass: "col-span-full",
+        links: [
+          {
+            text: "programs@agenticlearninglabs.com",
+            href: "mailto:programs@agenticlearninglabs.com",
+            italic: true
+          }
+        ],
+        linkSuffix: "."
       },
     ]
   },
@@ -347,45 +354,45 @@ const RegistrationForm = () => {
             required={field.required}
           />
         );        
-case 'radio':
-  const cols = (field.id === "courseSelection") ? 1 : 4; 
-  const gridClass = (field.id === "courseSelection") ? "lg:grid-cols-1" : "lg:grid-cols-4"; 
-  return (
-    <div className="space-y-5">
-      {Array.from({ length: Math.ceil(field.options.length / cols) }, (_, rowIndex) => (
-        <div key={rowIndex} className={`grid grid-cols-1 gap-y-5 ${gridClass}`}>
-          {field.options
-            .slice(rowIndex * cols, (rowIndex + 1) * cols)
-            .map(option => (
-              <div key={option.value} className={`${option.hasInput ? "col-span-2" : "col-span-1"} flex items-center text-left space-x-2`}>
-                <input
-                  type="radio"
-                  id={`${field.id}-${option.value}`}
-                  name={field.id}
-                  value={option.value}
-                  checked={formData[field.id] === option.value}
-                  onChange={(e) => handleInputChange(field.id, e.target.value)}
-                  className="accent-primary"
-                />
-                <label htmlFor={`${field.id}-${option.value}`} className="text-md text-foreground">
-                  {option.label}
-                  {option.hasInput && (
-                    <input
-                      type="text"
-                      value={formData[`${field.id}_other_text`] || ''}
-                      onChange={(e) => handleOtherInputChange(field.id, e.target.value)}
-                      onFocus={() => handleInputChange(field.id, 'other')}
-                      className="ml-5 border border-input rounded-md text-foreground px-2 py-1"
-                      placeholder="Please specify..."
-                    />
-                  )}
-                </label>
+      case 'radio':
+        const cols = (field.id === "courseSelection") ? 1 : 4; 
+        const gridClass = (field.id === "courseSelection") ? "lg:grid-cols-1" : "lg:grid-cols-4"; 
+        return (
+          <div className="space-y-5">
+            {Array.from({ length: Math.ceil(field.options.length / cols) }, (_, rowIndex) => (
+              <div key={rowIndex} className={`grid grid-cols-1 gap-y-5 ${gridClass}`}>
+                {field.options
+                  .slice(rowIndex * cols, (rowIndex + 1) * cols)
+                  .map(option => (
+                    <div key={option.value} className={`${option.hasInput ? "col-span-2" : "col-span-1"} flex items-center text-left space-x-2`}>
+                      <input
+                        type="radio"
+                        id={`${field.id}-${option.value}`}
+                        name={field.id}
+                        value={option.value}
+                        checked={formData[field.id] === option.value}
+                        onChange={(e) => handleInputChange(field.id, e.target.value)}
+                        className="accent-primary"
+                      />
+                      <label htmlFor={`${field.id}-${option.value}`} className="text-md text-foreground">
+                        {option.label}
+                        {option.hasInput && (
+                          <input
+                            type="text"
+                            value={formData[`${field.id}_other_text`] || ''}
+                            onChange={(e) => handleOtherInputChange(field.id, e.target.value)}
+                            onFocus={() => handleInputChange(field.id, 'other')}
+                            className="ml-5 border border-input rounded-md text-foreground px-2 py-1"
+                            placeholder="Please specify..."
+                          />
+                        )}
+                      </label>
+                    </div>
+                  ))}
               </div>
             ))}
-        </div>
-      ))}
-    </div>
-  );
+          </div>
+        );
 
       case 'checkbox':
         return (
@@ -402,20 +409,30 @@ case 'radio':
           </div>
         );
 
-      case 'paragraph':
-        return (
-          <div className="space-y-2">
-            <div className="flex flex-row items-center space-x-2">
-              <p
-                className={`text-black text-md text-foreground text-left
-                ${field.style === "bold" ? "[font-family:'Unageo-Bold']": ""}
-                ${field.style === "italic" ? "[font-family:'Unageo-Italic']": ""}`}>
-                  {field.label}
-              </p>
+        case 'paragraph':
+          return (
+            <div className="space-y-2">
+              <div className="flex flex-row items-center space-x-2">
+                <p
+                  className={`text-black text-md text-foreground text-left
+                  ${field.style === "bold" ? "[font-family:'Unageo-Bold']": ""}
+                  ${field.style === "italic" ? "[font-family:'Unageo-Italic']": ""}`}>
+                    {field.label}
+                    {field.links && field.links.map((link, index) => (
+                      <a 
+                        key={index}
+                        href={link.href}
+                        className={`text-blue-600 hover:text-blue-800 underline`}
+                      >
+                        {link.text}
+                      </a>
+                    ))}
+                    {field.linkSuffix}
+                </p>
               </div>
             </div>
-        )
-      }
+          );
+        }
   };
 
   const toSnakeCase = (str) => {
@@ -456,7 +473,6 @@ case 'radio':
     event.preventDefault();
     try {
       const registrationData = transformFormDataForAPI(formData);
-      console.log(registrationData);
       const response = await axios.post(
         `${API_BASE_URL}/register`,
         registrationData,
@@ -466,7 +482,6 @@ case 'radio':
           } 
         }
       );
-      console.log('Registration successful:', response.data);
       alert('Registration submitted successfully!');
       
     } catch (error) {
