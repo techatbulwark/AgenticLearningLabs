@@ -5,23 +5,6 @@ const API_BASE_URL = import.meta.env.MODE === 'production'
   ? import.meta.env.VITE_PROD_API : import.meta.env.VITE_DEV_API;
 
 const FORM_CONFIG = {
-  courseSelection: {
-    title: "",
-    fields: [
-      {
-        id: "courseSelection",
-        label: "Choose the course you are registering for:",
-        type: "radio",
-        required: true,
-        gridClass: "col-span-full",
-        options: [
-          { value: "dataAnalytics", label: "AI for Data Analytics for Decision Making" },
-          { value: "customerExperience", label: "AI for Customer Experience and Product Innovation" },
-          { value: "salesMarketing", label: "AI for Sales, Marketing & Business Development" },
-        ],
-      },
-    ]
-  },
   personalInfo: {
     title: "Personal Information",
     fields: [
@@ -733,20 +716,23 @@ const RegistrationForm = () => {
 
   const initializeFormData = () => {
     const initialData = {};
-    
-    Object.values(FORM_CONFIG).forEach(section => {
-      section.fields.forEach(field => {
-        if (field.type === 'number') {
-          initialData[field.id] = '';
-        } else if (field.type === 'checkbox') {
-          initialData[field.id] = false;
-        } else {
-          initialData[field.id] = '';
-        }
+      
+      Object.values(FORM_CONFIG).forEach(section => {
+        section.fields.forEach(field => {
+          if (field.type === 'number') {
+            initialData[field.id] = '';
+          } else if (field.type === 'checkbox') {
+            initialData[field.id] = false;
+          } else {
+            initialData[field.id] = '';
+          }
+          
+          if (field.type === 'radio' && field.options?.some(opt => opt.hasInput)) {
+            initialData[`${field.id}_other_text`] = '';
+          }
+        });
       });
-    });
-    return initialData;
-  };
+      return initialData;  };
 
   const [formData, setFormData] = useState(initializeFormData);
 
@@ -754,6 +740,14 @@ const RegistrationForm = () => {
     setFormData(prev => ({
       ...prev,
       [fieldId]: value
+    }));
+  };
+
+  const handleOtherInputChange = (fieldId, value) => {
+    setFormData(prev => ({
+      ...prev,
+      [`${fieldId}_other_text`]: value,
+      [fieldId]: 'other'
     }));
   };
 
@@ -828,6 +822,9 @@ const RegistrationForm = () => {
                         {option.hasInput && (
                           <input
                             type="text"
+                            value={formData[`${field.id}_other_text`] || ''}
+                            onChange={(e) => handleOtherInputChange(field.id, e.target.value)}
+                            onFocus={() => handleInputChange(field.id, 'other')} // Auto-select "other" when typing
                             className="ml-5 border border-input rounded-md text-foreground px-2 py-1"
                           />
                         )}
@@ -836,7 +833,6 @@ const RegistrationForm = () => {
                   ))}
               </div>
             ))}
-
           </div>
         );
       case 'checkbox':
@@ -878,9 +874,28 @@ const RegistrationForm = () => {
     const transformed = {};
 
     Object.entries(data).forEach(([key, value]) => {
+      if (key.endsWith('_other_text')) {
+        const baseKey = key.replace('_other_text', '');
+        const snakeBaseKey = toSnakeCase(baseKey);
+        
+        if (data[baseKey] === 'other' && value && value.trim() !== '') {
+          transformed[snakeBaseKey] = String(value).trim();
+        }
+        return;
+      }
+      
       const snakeKey = toSnakeCase(key);
-
-      transformed[snakeKey] = value === null || value === undefined ? '' : String(value);
+      
+      if (value === 'other') {
+        const otherTextValue = data[`${key}_other_text`];
+        if (otherTextValue && otherTextValue.trim() !== '') {
+          transformed[snakeKey] = String(otherTextValue).trim();
+        } else {
+          transformed[snakeKey] = 'other';
+        }
+      } else {
+        transformed[snakeKey] = value === null || value === undefined ? '' : String(value);
+      }
     });
 
     return transformed;
@@ -891,7 +906,7 @@ const RegistrationForm = () => {
     try {
       const registrationData = transformFormDataForAPI(formData);
       const response = await axios.post(
-        `${API_BASE_URL}/register`,
+        `${API_BASE_URL}/register_sdf`,
         registrationData,
         { 
           headers: { 
@@ -923,13 +938,6 @@ const RegistrationForm = () => {
         <h1 className="[font-family:'Unageo-SemiBold'] text-3xl text-black text-foreground text-center mb-8">
           Skills Development Fund Training Stream (SDF-TS) Participant Registration
         </h1>
-        <p className="text-black text-lg text-left mb-5">
-          Thank you for your interest in the Agentic Learning Labs' AI courses. These courses are offered at no cost to Ontario residents thanks to support from the Ontario Government and Government of Canada.
-          As part of our commitment to deliver fully accessible and no cost programs, learners need to complete the attached form for Employment Ontario. Your information is kept <b className="[font-family:'Unageo-Bold']">secure and confidential</b>, and is only used to monitor the program's success which helps us continue to offer it for free.
-        </p>
-        <p className="[font-family:'Unageo-Bold'] text-black text-lg text-left mb-10">
-          Please take a few minutes to complete this form.
-        </p>
         <form onSubmit={handleSubmit} className="space-y-8 text-black">
           {Object.entries(FORM_CONFIG).map(([sectionKey, section]) => (
             <div key={sectionKey} className="space-y-2">

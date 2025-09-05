@@ -26,6 +26,8 @@ dist-ssr
 frontend/READ_ME.md
 frontend/.env
 frontend/src/components/SDFForm.jsx
+backend/api_backup.py
+backend/models_backup.py
 backend/test.py
 backend/test_script.py
 backend/.env

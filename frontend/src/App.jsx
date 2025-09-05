@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Home from './pages/Home'
 import Register from './pages/Register'
+import SDFRegister from './pages/SDFRegister'
 import Courses from './pages/Courses'
 import Team from './pages/Team'
 import FAQ from './pages/FAQ'
@@ -28,6 +29,7 @@ function App() {
         <Route path='/customer-experience' element={<CustomerExperience/>}/>
         <Route path='/sales-marketing' element={<SalesMarketing/>}/>
         <Route path='/register' element={<Register/>}/>
+        <Route path='/sdf-register-full' element={<SDFRegister/>}/>
       </Routes>
       <PrereqModal />
       <InquiryModal />

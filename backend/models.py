@@ -1,6 +1,81 @@
 from pydantic import BaseModel
 
-class Registration(BaseModel):
+class SDFRegistration(BaseModel):
+    last_name: str
+    first_name: str
+    middle_initial: str
+    pref_name: str
+    dob: str
+    gender: str
+    transgender: str
+    status_canada: str
+    country_origin: str
+    date_entry_canada: str
+    pref_language: str
+    pref_communication: str
+    marital_status: str
+    unit_num: str
+    street_num: str
+    street_name: str
+    city: str
+    province: str
+    postal_code: str
+    po_box: str
+    alt_unit_num: str
+    alt_street_num: str
+    alt_street_name: str
+    alt_city: str
+    alt_province: str
+    alt_postal_code: str
+    alt_po_box: str
+    primary_phone: str
+    phone_num: str
+    alt_phone: str
+    alt_phone_num: str
+    email: str
+    labour_force: str
+    source_income: str
+    sin_num: str
+    desg_group: str
+    education: str
+    emp_type: str
+    emp_name: str
+    job_title: str
+    emp_start_date: str
+    emp_end_date: str
+    emp_currently_employed: str
+    emp_country: str
+    pref_wage_method: str
+    wage_amount: str
+    hourly_wage: str
+    paid_hours_week: str
+    reason_leaving: str
+    additional_emp_type: str
+    additional_emp_name: str
+    additional_job_title: str
+    additional_emp_start_date: str
+    additional_emp_end_date: str
+    additional_currently_employed: str
+    additional_emp_country: str
+    additional_pref_wage_method: str
+    additional_wage_amount: str
+    additional_hourly_wage: str
+    additional_paid_hours_week: str
+    additional_reason_leaving: str
+    noc: str
+    naics: str
+    service_acknowledge: str
+    service_participant_name: str
+    service_participant_date: str
+    service_guardian_name: str
+    service_guardian_date: str
+    ministry_acknowledge: str
+    ministry_participant_name: str
+    ministry_participant_date: str
+    ministry_guardian_name: str
+    ministry_guardian_date: str
+    
+class CourseRegistration(BaseModel):
     last_name: str
     first_name: str
     pref_name: str
@@ -23,7 +98,6 @@ class Registration(BaseModel):
     signature_date: str
     course_selection: str
     referral_question: str
-    
 
 class PrereqResponse(BaseModel):
     in_person: str

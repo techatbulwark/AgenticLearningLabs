@@ -9,11 +9,13 @@ from config import settings
 
 origins = []
 if settings.environment == "development":
-    origins.extend('http://localhost:5173')    
+    origins.extend([
+        'http://localhost:5173'
+    ])
 else:
     origins.extend([
         settings.frontend_url,
-    ])    
+    ])
 
 app = FastAPI(debug=settings.environment == "development")
 app.add_middleware(

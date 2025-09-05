@@ -283,7 +283,6 @@ const RegistrationForm = () => {
             initialData[field.id] = '';
           }
           
-          // Initialize "other" text fields for radio buttons that have them
           if (field.type === 'radio' && field.options?.some(opt => opt.hasInput)) {
             initialData[`${field.id}_other_text`] = '';
           }
@@ -383,7 +382,6 @@ const RegistrationForm = () => {
                             onChange={(e) => handleOtherInputChange(field.id, e.target.value)}
                             onFocus={() => handleInputChange(field.id, 'other')}
                             className="ml-5 border border-input rounded-md text-foreground px-2 py-1"
-                            placeholder="Please specify..."
                           />
                         )}
                       </label>
@@ -469,12 +467,13 @@ const RegistrationForm = () => {
 
     return transformed;
   };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const registrationData = transformFormDataForAPI(formData);
       const response = await axios.post(
-        `${API_BASE_URL}/register`,
+        `${API_BASE_URL}/register_course`,
         registrationData,
         { 
           headers: { 
