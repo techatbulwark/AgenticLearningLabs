@@ -15,9 +15,9 @@ const FORM_CONFIG = {
         required: true,
         gridClass: "col-span-full",
         options: [
-          { value: "dataAnalytics", label: "AI for Data Analytics for Decision Making" },
-          { value: "customerExperience", label: "AI for Customer Experience and Product Innovation" },
-          { value: "salesMarketing", label: "AI for Sales, Marketing and Business Development" },
+          { value: "dataAnalytics", label: "AI for Data Analytics for Decision Making (September 22)" },
+          { value: "customerExperience", label: "AI for Customer Experience and Product Innovation (September 22)" },
+          { value: "salesMarketing", label: "AI for Sales, Marketing and Business Development (November 3)" },
         ],
       },
       {
