@@ -23,9 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
-frontend/READ_ME.md
+frontend/README.md
 frontend/.env
-frontend/src/components/SDFForm.jsx
 backend/api_backup.py
 backend/models_backup.py
 backend/test.py
