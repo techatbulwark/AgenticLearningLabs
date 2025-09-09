@@ -17,8 +17,6 @@ else:
         settings.frontend_url,
     ])
 
-print(origins)
-
 app = FastAPI(debug=settings.environment == "development")
 app.add_middleware(
     CORSMiddleware,
