@@ -1,8 +1,17 @@
 import { lazy, useEffect, useState } from "react";
-import axios from "axios";
+import { createClient } from "@supabase/supabase-js";
 
+// Initialize Supabase client if credentials are available
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supabase = supabaseUrl && supabaseKey 
+  ? createClient(supabaseUrl, supabaseKey)
+  : null;
+
+// Fallback to Railway API if no Supabase credentials
 const API_BASE_URL = import.meta.env.MODE === 'production' 
-  ? import.meta.env.VITE_PROD_API : import.meta.env.VITE_DEV_API;
+  ? import.meta.env.VITE_PROD_API 
+  : import.meta.env.VITE_DEV_API;
 
 const FORM_CONFIG = {
   courseSelection: {
@@ -252,7 +261,6 @@ const FORM_CONFIG = {
       },
     ]
   },
-
 };
 
 const FIELD_DEPENDENCIES = {
@@ -261,34 +269,35 @@ const FIELD_DEPENDENCIES = {
 }
 
 const RegistrationForm = () => {
-  const sectionWrapper = "w-full mx-auto px-outer_sm lg:px-outer_lg";
-
   const [content, setContent] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
   useEffect(() => {
     fetch("/sdf_notice.txt")
       .then((res) => res.text())
-      .then(setContent);
+      .then(setContent)
+      .catch(console.error);
   }, []);
 
   const initializeFormData = () => {
     const initialData = {};
-      
-      Object.values(FORM_CONFIG).forEach(section => {
-        section.fields.forEach(field => {
-          if (field.type === 'number') {
-            initialData[field.id] = '';
-          } else if (field.type === 'checkbox') {
-            initialData[field.id] = false;
-          } else {
-            initialData[field.id] = '';
-          }
-          
-          if (field.type === 'radio' && field.options?.some(opt => opt.hasInput)) {
-            initialData[`${field.id}_other_text`] = '';
-          }
-        });
+    Object.values(FORM_CONFIG).forEach(section => {
+      section.fields.forEach(field => {
+        if (field.type === 'number') {
+          initialData[field.id] = '';
+        } else if (field.type === 'checkbox') {
+          initialData[field.id] = false;
+        } else {
+          initialData[field.id] = '';
+        }
+        
+        if (field.type === 'radio' && field.options?.some(opt => opt.hasInput)) {
+          initialData[`${field.id}_other_text`] = '';
+        }
       });
-      return initialData;  };
+    });
+    return initialData;
+  };
 
   const [formData, setFormData] = useState(initializeFormData);
 
@@ -317,7 +326,7 @@ const RegistrationForm = () => {
         ([k, v]) => v === fieldId
       );
       if (dep && checked) {
-        updateData[dep[0] ]= '';
+        updateData[dep[0]] = '';
       }      
       return updateData;
     });
@@ -407,30 +416,30 @@ const RegistrationForm = () => {
           </div>
         );
 
-        case 'paragraph':
-          return (
-            <div className="space-y-2">
-              <div className="flex flex-row items-center space-x-2">
-                <p
-                  className={`text-black text-md text-foreground text-left
-                  ${field.style === "bold" ? "[font-family:'Unageo-Bold']": ""}
-                  ${field.style === "italic" ? "[font-family:'Unageo-Italic']": ""}`}>
-                    {field.label}
-                    {field.links && field.links.map((link, index) => (
-                      <a 
-                        key={index}
-                        href={link.href}
-                        className={`text-blue-600 hover:text-blue-800 underline`}
-                      >
-                        {link.text}
-                      </a>
-                    ))}
-                    {field.linkSuffix}
-                </p>
-              </div>
+      case 'paragraph':
+        return (
+          <div className="space-y-2">
+            <div className="flex flex-row items-center space-x-2">
+              <p
+                className={`text-black text-md text-foreground text-left
+                ${field.style === "bold" ? "[font-family:'Unageo-Bold']": ""}
+                ${field.style === "italic" ? "[font-family:'Unageo-Italic']": ""}`}>
+                  {field.label}
+                  {field.links && field.links.map((link, index) => (
+                    <a 
+                      key={index}
+                      href={link.href}
+                      className={`text-blue-600 hover:text-blue-800 underline`}
+                    >
+                      {link.text}
+                    </a>
+                  ))}
+                  {field.linkSuffix}
+              </p>
             </div>
-          );
-        }
+          </div>
+        );
+    }
   };
 
   const toSnakeCase = (str) => {
@@ -465,41 +474,89 @@ const RegistrationForm = () => {
       }
     });
 
+    // Add missing field that exists in database
+    transformed.middle_initial = '';
+
     return transformed;
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsSubmitting(true);
+    
     try {
       const registrationData = transformFormDataForAPI(formData);
-      const response = await axios.post(
-        `${API_BASE_URL}/register_course`,
-        registrationData,
-        { 
-          headers: { 
-            "Content-Type": "application/json" 
-          } 
+      console.log('Submitting registration data:', registrationData);
+      
+      if (supabase) {
+        // Use direct Supabase connection
+        console.log('Using direct Supabase connection...');
+        
+        const { data, error } = await supabase
+          .from('course_registrations')
+          .insert([registrationData])
+          .select();
+        
+        if (error) {
+          throw error;
         }
-      );
-      alert('Registration submitted successfully!');
+        
+        console.log('Success via Supabase:', data);
+        alert('Registration submitted successfully!');
+        setFormData(initializeFormData());
+        
+      } else if (API_BASE_URL) {
+        // Fallback to Railway API if configured
+        console.log('Attempting Railway API at:', `${API_BASE_URL}/register_course`);
+        
+        const response = await fetch(`${API_BASE_URL}/register_course`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(registrationData)
+        });
+        
+        if (!response.ok) {
+          throw new Error(`API request failed: ${response.status}`);
+        }
+        
+        const result = await response.json();
+        console.log('Success via API:', result);
+        alert('Registration submitted successfully!');
+        setFormData(initializeFormData());
+        
+      } else {
+        throw new Error('No backend configured. Please add Supabase credentials or API URL.');
+      }
       
     } catch (error) {
       console.error('Registration failed:', error);
-      if (error.response) {
-        console.error('Server error:', error.response.data);
-        alert('Registration failed. Please check the console for details.');
-      } else if (error.request) {
-        console.error('Network error:', error.request);
-        alert('Network error. Please check your connection.');
+      
+      // Provide helpful error messages
+      if (error.code === '23505') {
+        alert('This email is already registered.');
+      } else if (error.message.includes('fetch')) {
+        alert('Network error. The backend server may be down. Please try again later.');
       } else {
-        console.error('Error:', error.message);
-        alert('An error occurred during registration.');
+        alert(`Registration failed: ${error.message}`);
       }
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
     <div className="min-h-screen relative overflow-hidden flex flex-col bg-white">
+      {/* Debug info - remove in production */}
+      {import.meta.env.MODE === 'development' && (
+        <div className="fixed bottom-2 right-2 bg-black text-white p-2 rounded text-xs z-50">
+          <div>Mode: {import.meta.env.MODE}</div>
+          <div>Supabase: {supabase ? '✅' : '❌'}</div>
+          <div>API: {API_BASE_URL || 'Not set'}</div>
+        </div>
+      )}
+      
       <div className="max-w-6xl mx-auto my-20 px-10 bg-card">
         <h1 className="[font-family:'Unageo-SemiBold'] text-3xl text-black text-foreground text-center mb-8">
           Agentic Learning Labs Registration Form
@@ -512,20 +569,21 @@ const RegistrationForm = () => {
                   const fieldComponent = renderField(field);
                   if (fieldComponent === null) return null;
                   return (
-                  <div 
+                    <div 
                       key={field.id} 
                       className={`space-y-3 ${field.gridClass || ''}`}>
-                      {field.type !== 'paragraph' && field.type !== 'checkbox'?
-                      <label 
-                        htmlFor={field.id} 
-                        className="block text-md text-left text-foreground">
-                        {field.label}
-                        {field.required && <span className="text-red-500 ml-1">*</span>}
-                      </label>
-                      : null
+                      {field.type !== 'paragraph' && field.type !== 'checkbox' ?
+                        <label 
+                          htmlFor={field.id} 
+                          className="block text-md text-left text-foreground">
+                          {field.label}
+                          {field.required && <span className="text-red-500 ml-1">*</span>}
+                        </label>
+                        : null
                       }
                       {renderField(field)}
-                    </div>)
+                    </div>
+                  );
                 })}
               </div>
             </div>
@@ -533,8 +591,9 @@ const RegistrationForm = () => {
           <div className="flex flex-col items-center lg:items-end">
             <button
               type="submit"
-              className="w-[250px] bg-black text-white text-lg py-3 px-6 rounded-2xl hover:opacity-85 transition-colors">
-              Submit
+              disabled={isSubmitting}
+              className={`w-[250px] ${isSubmitting ? 'bg-gray-500' : 'bg-black hover:opacity-85'} text-white text-lg py-3 px-6 rounded-2xl transition-colors`}>
+              {isSubmitting ? 'Submitting...' : 'Submit'}
             </button>
           </div>
         </form>
@@ -544,3 +603,4 @@ const RegistrationForm = () => {
 };
 
 export default RegistrationForm;
+
