@@ -450,6 +450,11 @@ const RegistrationForm = () => {
     const transformed = {};
 
     Object.entries(data).forEach(([key, value]) => {
+      // Skip display-only fields
+      if (key === 'commMessage' || key === 'primary_mailing_address') {
+        return;
+      }
+      
       if (key.endsWith('_other_text')) {
         const baseKey = key.replace('_other_text', '');
         const snakeBaseKey = toSnakeCase(baseKey);
