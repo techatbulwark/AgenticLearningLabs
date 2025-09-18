@@ -11,6 +11,14 @@ PREREQ_TABLE = 'prereq_responses'
 
 router = APIRouter()
 
+@router.get('/health')
+def health_check():
+    return {
+        "status": "healthy",
+        "service": "Agentic Learning Labs API",
+    }
+
+
 @router.post('/register_sdf')
 def register(registration: SDFRegistration):
     try:
