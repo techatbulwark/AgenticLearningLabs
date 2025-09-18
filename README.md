@@ -1,1 +1,1 @@
-Agentics Learning Lab
+Agentics Learning Labs

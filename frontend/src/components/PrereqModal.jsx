@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { usePrereqModal } from '../context/PrereqModalContext.jsx';
-import axios from 'axios';
+import { createClient } from '@supabase/supabase-js';
 
-const API_BASE_URL = import.meta.env.MODE === 'production' 
-  ? import.meta.env.VITE_PROD_API : import.meta.env.VITE_DEV_API;
+// Initialize Supabase
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supabase = supabaseUrl && supabaseKey 
+  ? createClient(supabaseUrl, supabaseKey)
+  : null;
 
 const PrereqModal = () => {
   const requirements = [
@@ -42,26 +46,32 @@ const PrereqModal = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
+    
     try {
-      await axios.post(`${API_BASE_URL}/prereq`, {
-        in_person: answers[0].answer,
-        online_programs: answers[1].answer,
-        email: email,
-      });
-    } catch (error) {
-      console.error(error);
-    }
-    // course update preferences -> info@agentics
-    if (updatePref && email !== "") {
-      try {
-        await axios.post(`${API_BASE_URL}/course_updates`, {
-          email: email,
-        });
-      } catch (error) {
-        console.error(error);
+      if (!supabase) {
+        throw new Error('Database connection not configured');
       }
+      
+      // Submit prereq responses to the only existing table
+      const { error } = await supabase
+        .from('prereq_responses')
+        .insert([{
+          in_person_availability: answers[0].answer,
+          complete_online_programs: answers[1].answer,
+          email: email
+        }]);
+      
+      if (error) throw error;
+      
+      // Note: Email notifications would need to be handled separately
+      // since Railway backend is not being used
+      
+    } catch (error) {
+      console.error('Submission error:', error);
     }
+    
     setIsLoading(false);
+    
     if (answers.every((ans) => ans.answer === "yes")) {
       closeModal();
       resetForm();
@@ -74,17 +84,32 @@ const PrereqModal = () => {
   const handleUpdateSubmit = async(event) => {
     event.preventDefault();
     setIsLoading(true);
+    
     try {
-      await axios.post(`${API_BASE_URL}/participant_accomodation`, {
-        email: email,
-      });
+      if (!supabase) {
+        throw new Error('Database connection not configured');
+      }
+      
+      // Store accommodation requests in prereq_responses with special values
+      const { error } = await supabase
+        .from('prereq_responses')
+        .insert([{
+          in_person_availability: 'accommodation_requested',
+          complete_online_programs: 'accommodation_requested',
+          email: email
+        }]);
+      
+      if (error) throw error;
       setIsSecondarySubmitted(true);
+      
     } catch (error) {
       console.error(error);
       alert('There was an error submitting your email. Please try again.');
     }
+    
     setIsLoading(false);
   }
+  
   if (!isModalOpen) return null;
 
   return (
