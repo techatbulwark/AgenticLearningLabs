@@ -15,7 +15,7 @@ router = APIRouter()
 def health_check():
     return {
         "status": "healthy",
-        "service": "Agentic Learning Labs API",
+        "service": "Agentic Learning Labs API"
     }
 
 
