@@ -8,7 +8,7 @@ const supabase = supabaseUrl && supabaseKey
   ? createClient(supabaseUrl, supabaseKey)
   : null;
 
-// Fallback to Railway API if no Supabase credentials
+// need to remove railway Fallback to Railway API if no Supabase credentials
 const API_BASE_URL = import.meta.env.MODE === 'production' 
   ? import.meta.env.VITE_PROD_API 
   : import.meta.env.VITE_DEV_API;
