@@ -25,9 +25,9 @@ const FORM_CONFIG = {
         gridClass: "col-span-full",
         validationMessage: "Please select a course to continue",
         options: [
-          { value: "dataAnalytics", label: "AI for Data Analytics for Decision Making (September 22)" },
-          { value: "customerExperience", label: "AI for Customer Experience and Product Innovation (September 22)" },
-          { value: "salesMarketing", label: "AI for Sales, Marketing and Business Development (November 3)" },
+          { value: "dataAnalytics", label: "AI for Data Analytics for Decision Making (October 27)" },
+          { value: "customerExperience", label: "AI for Customer Experience and Product Innovation (September 29)" },
+          { value: "salesMarketing", label: "AI for Sales, Marketing and Business Development (October 27)" },
         ],
       },
       {
