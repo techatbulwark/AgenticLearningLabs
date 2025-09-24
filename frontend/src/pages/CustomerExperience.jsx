@@ -46,12 +46,17 @@ const CustomerExperience = () => {
                     <div className="flex flex-col gap-5">
                         <h2 className="[font-family:'Unageo-SemiBold'] text-4xl">Learn how to:</h2>
                         <ul className="list-disc pl-7 text-xl text-left">
-                            <li>Create AI prompts and solve for business questions</li>
-                            <li>Build dashboards and visualize data for reporting</li>
-                            <li>Analyze market trends and forecast demand </li>
-                            <li>Streamline supply chain logistics and distribution</li>
-                            <li>Create AI-generated reports to support real-time decision-making</li>
-                            <li>Automate manual data tasks to save time and improve accuracy</li>
+ 
+
+
+                            <li>Use AI to brainstorm customized product ideas and minimum viable products (MVPs)</li>
+                            <li>Product development planning</li>
+                            <li>Data first research for product evaluation and validation</li>
+                            <li>Create customer personas and value propositions</li>
+                            <li>Build brand visuals, promotional content with AI tools</li>
+                            <li>Design pitch decks for your new product</li>
+
+                            
                         </ul>
                     </div>
                     <div className="flex flex-col gap-5">
