@@ -5,9 +5,10 @@ import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 
 import customer_experience from '../assets/images/customer_experience.png';
-import product from '../assets/images/product.png';
+// import product from '../assets/images/product.png';
 // import productMobile from '../assets/images/product_mobile.png';
 import productMobile from '../assets/images/SMBD.jpg';
+import product from '../assets/images/SMBD.jpg';
 import HeaderLogo from '../components/HeaderLogo.jsx';
 import CourseUpdate from '../components/CourseUpdate.jsx';
 

@@ -5,8 +5,9 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 import course_header1 from '../assets/images/course_header1.jpg';
-import data from '../assets/images/data.png';
+// import data from '../assets/images/data.png';
 // import dataMobile from '../assets/images/data_mobile.png';
+import data from '../assets/images/DADM.jpg';
 import dataMobile from '../assets/images/DADM.jpg';
 
 import HeaderLogo from '../components/HeaderLogo';
