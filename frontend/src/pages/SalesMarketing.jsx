@@ -5,8 +5,11 @@ import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 
 import course_header3 from '../assets/images/course_header3.jpg';
-import business from '../assets/images/business.png';
-import businessMobile from '../assets/images/business_mobile.png';
+// import business from '../assets/images/business.png';
+// import businessMobile from '../assets/images/business_mobile.png';
+import business from '../assets/images/SMBD.jpg';
+import businessMobile from '../assets/images/SMBD.jpg';
+
 import HeaderLogo from '../components/HeaderLogo.jsx';
 import CourseUpdate from '../components/CourseUpdate.jsx';
 
