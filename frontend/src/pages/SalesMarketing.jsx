@@ -117,10 +117,10 @@ const SalesMarketing = () => {
                     </a>
                 </div>
                 {/* calendar */}
-                <div className="bg-gray-100 text-black flex items-center justify-center text-2xl font-bold mt-6">
+                {/* <div className="bg-gray-100 text-black flex items-center justify-center text-2xl font-bold mt-6">
                     <img src={business} className="hidden lg:block object-cover" />
                     <img src={businessMobile} className="lg:hidden object-cover" />
-                </div>
+                </div> */}
             </section>
             <CourseUpdate />
             <Footer />
