@@ -27,13 +27,6 @@ const FORM_CONFIG = {
         gridClass: "lg:col-span-2"
       },
       {
-        id: "middleInitial",
-        label: "Middle initial",
-        type: "text",
-        maxLength: 1,
-        gridClass: "lg:col-span-1"
-      },
-      {
         id: "prefName",
         label: "Preferred name",
         type: "text",
@@ -44,7 +37,15 @@ const FORM_CONFIG = {
         label: "Date of birth",
         type: "date",
         required: true,
-        gridClass: "lg:col-span-1"
+        gridClass: "lg:col-span-2"
+      },
+      {
+        id: "sinNum",
+        label: "Social insurance number",
+        type: "text",
+        required: true,
+        maxLength: 9,
+        gridClass: "lg:col-span-2"
       },
       {
         id: "gender",
@@ -159,6 +160,13 @@ const FORM_CONFIG = {
   addresscontactInfo: {
     title: "Participant Address and Contact Information",
     fields: [
+      {
+        id: "ontario_residency_note",
+        label: "All participants of this program must reside in the Province of Ontario",
+        type: "paragraph",
+        style: "italic",
+        gridClass: "col-span-full",
+      },
       {
         id: "primary_mailing_address",
         label: "Primary Mailing Address",
@@ -315,6 +323,7 @@ const FORM_CONFIG = {
       {
         id: "labourForce",
         label: "Labour force attachment",
+        labelBold: true,
         type: "radio",
         required: true,
         gridClass: "col-span-full ",
@@ -339,6 +348,7 @@ const FORM_CONFIG = {
       {
         id: "sourceIncome",
         label: "Source of income",
+        labelBold: true,
         type: "radio",
         required: true,
         gridClass: "col-span-full ",
@@ -351,7 +361,6 @@ const FORM_CONFIG = {
           { value: "employed_with_employer", label: "Employed with employer" },
           { value: "self_employed", label: "Self-Employed" },
           { value: "non_ei", label: "Non-EI (other)", },
-          { value: "other", label: "Other", hasInput: true },
         ]
       },
       {
@@ -362,17 +371,9 @@ const FORM_CONFIG = {
         gridClass: "col-span-full",
       },
       {
-        id: "sinNum",
-        label: "Social insurance number",
-        type: "text",
-        required: true,
-        maxLength: 9,
-        gridClass: "lg:col-span-2"
-      },
-      {
         id: "desgGroup",
         label: "Please complete if you wish to self-identify as a member of a designated group(s). Your response to this question is entirely voluntary and will not affect your eligibility. This information will be used by the Governments of Ontario and Canada for policy analysis and statistical purposes related to employment programs and services. (You may select more than one option):",
-        type: "radio",
+        type: "checkbox",
         gridClass: "col-span-full ",
         options: [
           { value: "women", label: "Women" },
@@ -382,7 +383,6 @@ const FORM_CONFIG = {
           { value: "newcomers", label: "Newcomers to Canada" },
           { value: "youth", label: "Youth" },
           { value: "older-workers", label: "Older Workers" },
-          { value: "none", label: "None" }
         ]
       },
     ]
@@ -411,223 +411,6 @@ const FORM_CONFIG = {
           { value: "other", label: "Other" },
         ]
       },
-    ]
-  },
-  employment: {
-    title: "Employment",
-    fields: [
-      {
-        id: "selectedEI",
-        label: "List your work experience, including volunteer work. Start with the most recent job/volunteer activity",
-        type: "paragraph",
-        gridClass: "col-span-full",
-      },
-      {
-        id: "workExperience",
-        label: "Work experience 1",
-        type: "paragraph",
-        style: "bold",
-        gridClass: "col-span-full",
-      },
-      {
-        id: "empType",
-        label: "Employment type",
-        type: "radio",
-        gridClass: "col-span-full",
-        options: [
-          { value: "paid", label: "Paid" },
-          { value: "self_employed", label: "Self-Employed" },
-          { value: "unpaid", label: "Unpaid" },
-          { value: "volunteer", label: "Volunteer" },
-        ]
-      },
-      {
-        id: "empName",
-        label: "Name of employer",
-        type: "text",
-        gridClass: "col-span-full",
-      },
-      {
-        id: "jobTitle",
-        label: "Job Title/Duties",
-        type: "text",
-        gridClass: "col-span-full",
-      },
-      {
-        id: "empStartDate",
-        label: "Employment start date",
-        type: "date",
-        gridClass: "col-span-2",
-      },
-      {
-        id: "empEndDate",
-        label: "Employment end date", 
-        type: "date",
-        hideWhen: "empCurrentlyEmployed",
-        gridClass: "col-span-2",
-      },
-      {
-        id: "empCurrentlyEmployed",
-        label: "Currently employed",
-        type: "checkbox",
-        gridClass: "col-span-1"
-      },
-      {
-        id: "empCountry",
-        label: "Country of employment",
-        type: "text",
-        gridClass: "col-span-full",
-      },
-      {
-        id: "prefWageMethod",
-        label: "Preferred method of reporting wage:",
-        type: "radio",
-        gridClass: "col-span-full",
-        options: [
-          { value: "hourly", label: "Hourly" },
-          { value: "weekly", label: "Weekly" },
-          { value: "biweekly", label: "Bi-weekly" },
-          { value: "monthly", label: "Monthly" }
-        ]
-      },
-      {
-        id: "wageAmount",
-        label: "Wage amount ($)",
-        type: "number",
-        required: true,
-        gridClass: "col-span-3",
-        step: "0.01"
-      },
-      {
-        id: "hourlyWage",
-        label: "Hourly wage (including tips and commissions) ($)",
-        type: "number",
-        required: true,
-        gridClass: "col-span-3",
-        step: "0.01"
-      },
-      {
-        id: "paidHoursWeek",
-        label: "Average paid hours per week (excluding overtime)",
-        type: "number",
-        required: true,
-        gridClass: "col-span-3",
-        step: "0.1"
-      },
-      {
-        id: "reasonLeaving",
-        label: "Reason for leaving",
-        type: "text",
-        gridClass: "md:col-span-full"
-      },      
-      {
-        id: "additionalWorkExperience",
-        label: "Additional work experience (if applicable)",
-        type: "paragraph",
-        style: "bold",
-        gridClass: "col-span-full",
-      },
-      {
-        id: "additionalEmpType",
-        label: "Employment type",
-        type: "radio",
-        gridClass: "col-span-full",
-        options: [
-          { value: "paid", label: "Paid Employment" },
-          { value: "selfEmployed", label: "Self-employed" },
-          { value: "unpaid", label: "Unpaid Work" },
-          { value: "volunteer", label: "Volunteer Work" }
-        ]
-      },
-      
-      {
-        id: "additionalEmpName",
-        label: "Name of employer",
-        type: "text",
-        gridClass: "col-span-full",
-      },
-      {
-        id: "additionalJobTitle",
-        label: "Job Title",
-        type: "text",
-        gridClass: "col-span-full",
-      },
-      {
-        id: "additionalEmpStartDate",
-        label: "Employment start date",
-        type: "date",
-        gridClass: "col-span-2",
-      },
-      {
-        id: "additionalEmpEndDate",
-        label: "Employment end date", 
-        type: "date",
-        hideWhen: "additionalCurrentlyEmployed",
-        gridClass: "col-span-2",
-      },
-      {
-        id: "additionalCurrentlyEmployed",
-        label: "Currently employed",
-        type: "checkbox",
-        gridClass: "col-span-1"
-      },
-      {
-        id: "additionalEmpCountry",
-        label: "Country of employment",
-        type: "text",
-        gridClass: "col-span-full",
-      },
-      {
-        id: "additionalPrefWageMethod",
-        label: "Preferred method of reporting wage:",
-        type: "radio",
-        gridClass: "col-span-full",
-        options: [
-          { value: "hourly", label: "Hourly" },
-          { value: "weekly", label: "Weekly" },
-          { value: "biweekly", label: "Bi-weekly" },
-          { value: "monthly", label: "Monthly" }
-        ]
-      },
-      {
-        id: "additionalWageAmount",
-        label: "Wage amount ($)",
-        type: "number",
-        gridClass: "col-span-3",
-        step: "0.01"
-      },
-      {
-        id: "additionalHourlyWage",
-        label: "Hourly wage (including tips and commissions) ($)",
-        type: "number",
-        gridClass: "col-span-3",
-        step: "0.01"
-      },
-      {
-        id: "additionalPaidHoursWeek",
-        label: "Average paid hours per week (excluding overtime)",
-        type: "number",
-        gridClass: "col-span-3",
-        step: "0.1"
-      },
-      {
-        id: "additionalReasonLeaving",
-        label: "Reason for leaving",
-        type: "text",
-        gridClass: "lg:col-span-full"
-      },      
-      {
-        id: "noc",
-        label: "NOC",
-        type: "text",
-        gridClass: "md:col-span-1"
-      },      
-      {
-        id: "naics",
-        label: "NAICS",
-        type: "text",
-        gridClass: "md:col-span-1"
-      },      
     ]
   },
   signatures: {
@@ -703,11 +486,6 @@ const FORM_CONFIG = {
   },
 };
 
-const FIELD_DEPENDENCIES = {
-  empEndDate: "empCurrentlyEmployed",
-  additionalEmpEndDate: "additionalCurrentlyEmployed",
-}
-
 const RegistrationForm = () => {
   const sectionWrapper = "w-full mx-auto px-outer_sm lg:px-outer_lg";
 
@@ -729,7 +507,16 @@ const RegistrationForm = () => {
         if (field.type === 'number') {
           initialData[field.id] = '';
         } else if (field.type === 'checkbox') {
-          initialData[field.id] = false;
+          // For checkbox groups, initialize as object to track multiple selections
+          if (field.options) {
+            initialData[field.id] = {};
+            field.options.forEach(opt => {
+              initialData[field.id][opt.value] = false;
+            });
+          } else {
+            // Single checkbox
+            initialData[field.id] = false;
+          }
         } else {
           initialData[field.id] = '';
         }
@@ -740,11 +527,43 @@ const RegistrationForm = () => {
       });
     });
     
+    // Set default values
+    initialData.prefLanguage = 'english'; // Default to English
+    
     // Initialize fields that are not in form but exist in database
     initialData.courseSelection = '';
     initialData.referralQuestion = '';
     initialData.signatureName = '';
     initialData.signatureDate = '';
+    
+    // Initialize employment fields with empty strings (they still exist in DB)
+    initialData.middle_initial = '';
+    initialData.emp_type = '';
+    initialData.emp_name = '';
+    initialData.job_title = '';
+    initialData.emp_start_date = '';
+    initialData.emp_end_date = '';
+    initialData.emp_country = '';
+    initialData.pref_wage_method = '';
+    initialData.wage_amount = '';
+    initialData.hourly_wage = '';
+    initialData.paid_hours_week = '';
+    initialData.reason_leaving = '';
+    initialData.noc = '';
+    initialData.naics = '';
+    initialData.additional_emp_type = '';
+    initialData.additional_emp_name = '';
+    initialData.additional_job_title = '';
+    initialData.additional_emp_start_date = '';
+    initialData.additional_emp_end_date = '';
+    initialData.additional_emp_country = '';
+    initialData.additional_pref_wage_method = '';
+    initialData.additional_wage_amount = '';
+    initialData.additional_hourly_wage = '';
+    initialData.additional_paid_hours_week = '';
+    initialData.additional_reason_leaving = '';
+    initialData.emp_currently_employed = '';
+    initialData.additional_currently_employed = '';
     
     return initialData;  
   };
@@ -767,31 +586,14 @@ const RegistrationForm = () => {
   };
 
   const handleCheckboxChange = (fieldId, checked) => {
-    setFormData(prev => {
-      const updateData = {
-        ...prev,
-        [fieldId]: checked
-      };
-      const dep = Object.entries(FIELD_DEPENDENCIES).find(
-        ([k, v]) => v === fieldId
-      );
-      if (dep && checked) {
-        updateData[dep[0]] = '';
-      }      
-      return updateData;
-    });
+    setFormData(prev => ({
+      ...prev,
+      [fieldId]: checked
+    }));
   };
-
-  const hideField = (checkedField) => {
-    return formData[checkedField];
-  }
 
   const renderField = (field) => {
     const commonClasses = "w-full px-4 py-1 border border-input bg-background rounded-md text-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent";
-    
-    if (field.id in FIELD_DEPENDENCIES && hideField(FIELD_DEPENDENCIES[field.id])) {
-      return null;
-    }
 
     switch (field.type) {
       case 'text':
@@ -851,19 +653,53 @@ const RegistrationForm = () => {
           </div>
         );
       case 'checkbox':
-        return (
-          <div className="space-y-2">
-            <div className="flex flex-row items-center space-x-2 mt-9">
-              <input 
-                type="checkbox" 
-                id={field.id}
-                checked={formData[field.id]}
-                onChange={(e) => handleCheckboxChange(field.id, e.target.checked)}
-              />
-              <label htmlFor={field.id}>{field.label}</label>
+        // Handle checkbox group (multiple selections) vs single checkbox
+        if (field.options) {
+          // Checkbox group for desgGroup
+          return (
+            <div className="space-y-3">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                {field.options.map(option => (
+                  <div key={option.value} className="flex items-center space-x-2">
+                    <input
+                      type="checkbox"
+                      id={`${field.id}-${option.value}`}
+                      checked={formData[field.id]?.[option.value] || false}
+                      onChange={(e) => {
+                        setFormData(prev => ({
+                          ...prev,
+                          [field.id]: {
+                            ...prev[field.id],
+                            [option.value]: e.target.checked
+                          }
+                        }));
+                      }}
+                      className="accent-primary"
+                    />
+                    <label htmlFor={`${field.id}-${option.value}`} className="text-md text-foreground">
+                      {option.label}
+                    </label>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        );
+          );
+        } else {
+          // Single checkbox
+          return (
+            <div className="space-y-2">
+              <div className="flex flex-row items-center space-x-2 mt-9">
+                <input 
+                  type="checkbox" 
+                  id={field.id}
+                  checked={formData[field.id]}
+                  onChange={(e) => handleCheckboxChange(field.id, e.target.checked)}
+                />
+                <label htmlFor={field.id}>{field.label}</label>
+              </div>
+            </div>
+          );
+        }
 
       case 'paragraph':
         return (
@@ -893,7 +729,7 @@ const RegistrationForm = () => {
     // Skip display-only paragraph fields
     const skipFields = ['transgender_definition', 'immigratedToCanada', 'selected_ei', 
                        'selectedEI', 'workExperience', 'additionalWorkExperience',
-                       'primary_mailing_address', 'altMailingAddress'];
+                       'primary_mailing_address', 'altMailingAddress', 'ontario_residency_note'];
 
     Object.entries(data).forEach(([key, value]) => {
       // Skip display-only fields
@@ -913,8 +749,15 @@ const RegistrationForm = () => {
       
       const snakeKey = toSnakeCase(key);
       
-      // Handle checkbox fields - convert boolean to string
-      if (key === 'serviceAcknowledge' || key === 'ministryAcknowledge' || 
+      // Handle desgGroup checkbox group - convert to comma-separated string
+      if (key === 'desgGroup' && typeof value === 'object') {
+        const selectedGroups = Object.entries(value)
+          .filter(([k, v]) => v === true)
+          .map(([k, v]) => k);
+        transformed[snakeKey] = selectedGroups.join(',');
+      }
+      // Handle single checkbox fields - convert boolean to string
+      else if (key === 'serviceAcknowledge' || key === 'ministryAcknowledge' || 
           key === 'empCurrentlyEmployed' || key === 'additionalCurrentlyEmployed') {
         transformed[snakeKey] = value ? 'true' : 'false';
       } else if (value === 'other') {
@@ -1015,7 +858,7 @@ const RegistrationForm = () => {
                       {field.type !== 'paragraph' && field.type !== 'checkbox' ?
                         <label 
                           htmlFor={field.id} 
-                          className="block text-md text-left text-foreground">
+                          className={`block text-md text-left text-foreground ${field.labelBold ? "[font-family:'Unageo-Bold']" : ""}`}>
                           {field.label}
                           {field.required && <span className="text-red-500 ml-1">*</span>}
                         </label>
