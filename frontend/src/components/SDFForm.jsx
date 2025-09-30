@@ -807,23 +807,38 @@ const RegistrationForm = () => {
       setFormData(initializeFormData());
       
     } catch (error) {
-      console.error('Registration failed:', error);
-      
-      // Provide helpful error messages
-      if (error.code === '23505') {
-        alert('This registration already exists. Please check if you have already submitted.');
-      } else if (error.code === '23502') {
-        alert('A required field is missing. Please check all required fields and try again.');
-      } else if (error.message.includes('Database connection not configured')) {
-        alert('The registration system is not properly configured. Please contact the administrator.');
-      } else if (error.message.includes('fetch')) {
-        alert('Network error. Please check your internet connection and try again.');
-      } else {
-        alert(`Registration failed: ${error.message}`);
-      }
-    } finally {
-      setIsSubmitting(false);
-    }
+  console.error('Registration failed:', error);
+  console.error('Error details:', {
+    message: error.message,
+    code: error.code,
+    details: error.details,
+    hint: error.hint,
+    status: error.status
+  });
+  
+  // Handle specific error cases
+  if (error.status === 401) {
+    alert('Authentication error. This may be due to:\n' +
+          '1. Anonymous sign-ins not enabled in Supabase\n' +
+          '2. Incorrect API key in environment variables\n' +
+          '3. RLS policy not configured correctly\n\n' +
+          'Please contact the administrator.');
+  } else if (error.code === '23505') {
+    alert('This registration already exists. Please check if you have already submitted.');
+  } else if (error.code === '23502') {
+    alert('A required field is missing. Please check all required fields and try again.');
+  } else if (error.code === 'PGRST301') {
+    alert('Database permissions error. The anonymous user may not have permission to insert records.');
+  } else if (error.message.includes('Database connection not configured')) {
+    alert('The registration system is not properly configured. Please contact the administrator.');
+  } else if (error.message.includes('fetch')) {
+    alert('Network error. Please check your internet connection and try again.');
+  } else {
+    alert(`Registration failed: ${error.message || 'Unknown error occurred'}`);
+  }
+} finally {
+  setIsSubmitting(false);
+}
   };
 
   return (
