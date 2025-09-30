@@ -48,6 +48,35 @@ const TestSupabase = () => {
     }
   };
 
+  // Test Anonymous Auth
+  const testAnonymousAuth = async () => {
+    setLoading(true);
+    setStatus('Testing anonymous authentication...');
+    
+    if (!supabase) {
+      setStatus('❌ Supabase not configured');
+      setLoading(false);
+      return;
+    }
+    
+    try {
+      const { data, error } = await supabase.auth.signInAnonymously();
+      
+      if (error) {
+        setStatus(`❌ Anonymous auth failed: ${error.message}`);
+        setResponse({ error });
+      } else {
+        setStatus(`✅ Anonymous auth successful! Session: ${data.session ? 'Active' : 'None'}`);
+        setResponse({ data });
+      }
+    } catch (err) {
+      setStatus(`❌ Auth error: ${err.message}`);
+      setResponse({ error: err });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   // Test 2: Simple Insert
   const testSimpleInsert = async () => {
     setLoading(true);
@@ -57,6 +86,13 @@ const TestSupabase = () => {
       setStatus('❌ Supabase not configured');
       setLoading(false);
       return;
+    }
+    
+    // First ensure anonymous auth
+    try {
+      await supabase.auth.signInAnonymously();
+    } catch (err) {
+      console.log('Anonymous auth error:', err);
     }
     
     const testData = {
@@ -151,6 +187,13 @@ const TestSupabase = () => {
       setStatus('❌ Supabase not configured');
       setLoading(false);
       return;
+    }
+    
+    // First ensure anonymous auth
+    try {
+      await supabase.auth.signInAnonymously();
+    } catch (err) {
+      console.log('Anonymous auth error:', err);
     }
     
     const minimalData = {
@@ -263,38 +306,50 @@ const TestSupabase = () => {
         {/* Test Buttons */}
         <div className="bg-white rounded-lg p-6 mb-6 shadow">
           <h2 className="text-xl font-semibold mb-4">Connection Tests</h2>
-          <div className="space-x-4">
-            <button
-              onClick={testConnection}
-              disabled={loading}
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 disabled:bg-gray-400"
-            >
-              Test Connection
-            </button>
+          <div className="space-y-4">
+            <div className="space-x-4">
+              <button
+                onClick={testConnection}
+                disabled={loading}
+                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 disabled:bg-gray-400"
+              >
+                Test Connection
+              </button>
+              
+              <button
+                onClick={testAnonymousAuth}
+                disabled={loading}
+                className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 disabled:bg-gray-400"
+              >
+                Enable Anonymous Auth
+              </button>
+            </div>
             
-            <button
-              onClick={testMinimalInsert}
-              disabled={loading}
-              className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 disabled:bg-gray-400"
-            >
-              Test Minimal Insert
-            </button>
-            
-            <button
-              onClick={testSimpleInsert}
-              disabled={loading}
-              className="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600 disabled:bg-gray-400"
-            >
-              Test Full Insert
-            </button>
-            
-            <button
-              onClick={testDirectAPI}
-              disabled={loading}
-              className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 disabled:bg-gray-400"
-            >
-              Test Direct API
-            </button>
+            <div className="space-x-4">
+              <button
+                onClick={testMinimalInsert}
+                disabled={loading}
+                className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 disabled:bg-gray-400"
+              >
+                Test Minimal Insert
+              </button>
+              
+              <button
+                onClick={testSimpleInsert}
+                disabled={loading}
+                className="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600 disabled:bg-gray-400"
+              >
+                Test Full Insert
+              </button>
+              
+              <button
+                onClick={testDirectAPI}
+                disabled={loading}
+                className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 disabled:bg-gray-400"
+              >
+                Test Direct API
+              </button>
+            </div>
           </div>
         </div>
 
