@@ -48,10 +48,10 @@ const TestSupabase = () => {
     }
   };
 
-  // Test Anonymous Auth
-  const testAnonymousAuth = async () => {
+  // Test Clear Session (SignOut)
+  const testClearSession = async () => {
     setLoading(true);
-    setStatus('Testing anonymous authentication...');
+    setStatus('Testing session clearing (signOut)...');
     
     if (!supabase) {
       setStatus('❌ Supabase not configured');
@@ -60,27 +60,32 @@ const TestSupabase = () => {
     }
     
     try {
-      const { data, error } = await supabase.auth.signInAnonymously();
+      const { error } = await supabase.auth.signOut();
       
       if (error) {
-        setStatus(`❌ Anonymous auth failed: ${error.message}`);
+        setStatus(`⚠️ SignOut returned error: ${error.message} (this might be normal)`);
         setResponse({ error });
       } else {
-        setStatus(`✅ Anonymous auth successful! Session: ${data.session ? 'Active' : 'None'}`);
-        setResponse({ data });
+        setStatus(`✅ Session cleared successfully! Ready for anonymous inserts.`);
+        setResponse({ message: 'Signed out successfully' });
       }
+      
+      // Check current session
+      const { data: { session } } = await supabase.auth.getSession();
+      console.log('Current session after signOut:', session);
+      
     } catch (err) {
-      setStatus(`❌ Auth error: ${err.message}`);
+      setStatus(`❌ SignOut error: ${err.message}`);
       setResponse({ error: err });
     } finally {
       setLoading(false);
     }
   };
 
-  // Test 2: Simple Insert
+  // Test 2: Simple Insert with signOut
   const testSimpleInsert = async () => {
     setLoading(true);
-    setStatus('Testing simple insert...');
+    setStatus('Testing simple insert with signOut...');
     
     if (!supabase) {
       setStatus('❌ Supabase not configured');
@@ -88,11 +93,12 @@ const TestSupabase = () => {
       return;
     }
     
-    // First ensure anonymous auth
+    // Clear any existing sessions
     try {
-      await supabase.auth.signInAnonymously();
+      await supabase.auth.signOut();
+      console.log('Signed out successfully');
     } catch (err) {
-      console.log('Anonymous auth error:', err);
+      console.log('SignOut error (continuing anyway):', err);
     }
     
     const testData = {
@@ -178,10 +184,10 @@ const TestSupabase = () => {
     }
   };
 
-  // Test 3: Minimal Insert (only truly required fields)
+  // Test 3: Minimal Insert with signOut
   const testMinimalInsert = async () => {
     setLoading(true);
-    setStatus('Testing minimal insert...');
+    setStatus('Testing minimal insert with signOut...');
     
     if (!supabase) {
       setStatus('❌ Supabase not configured');
@@ -189,11 +195,12 @@ const TestSupabase = () => {
       return;
     }
     
-    // First ensure anonymous auth
+    // Clear any existing sessions
     try {
-      await supabase.auth.signInAnonymously();
+      await supabase.auth.signOut();
+      console.log('Signed out successfully');
     } catch (err) {
-      console.log('Anonymous auth error:', err);
+      console.log('SignOut error (continuing anyway):', err);
     }
     
     const minimalData = {
@@ -317,11 +324,11 @@ const TestSupabase = () => {
               </button>
               
               <button
-                onClick={testAnonymousAuth}
+                onClick={testClearSession}
                 disabled={loading}
                 className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 disabled:bg-gray-400"
               >
-                Enable Anonymous Auth
+                Clear Session (SignOut)
               </button>
             </div>
             
