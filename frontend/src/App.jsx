@@ -5,6 +5,7 @@ import './App.css'
 import Home from './pages/Home'
 import Register from './pages/Register'
 import SDFRegister from './pages/SDFRegister'
+import BakSDFRegister  from './pages/BakSDFRegister'
 import Courses from './pages/Courses'
 import Team from './pages/Team'
 import FAQ from './pages/FAQ'
@@ -30,11 +31,12 @@ function App() {
         <Route path='/sales-marketing' element={<SalesMarketing/>}/>
         <Route path='/register' element={<Register/>}/>
         <Route path='/sdf-register-full' element={<SDFRegister/>}/>
+        <Route path='/bak-register-full' element={<BakSDFRegister/>}/>
       </Routes>
       <PrereqModal />
       <InquiryModal />
     </>
   )
 }
-3
+
 export default App
