@@ -1,8 +1,12 @@
 import { lazy, useEffect, useState } from "react";
-import axios from "axios";
+import { createClient } from "@supabase/supabase-js";
 
-const API_BASE_URL = import.meta.env.MODE === 'production' 
-  ? import.meta.env.VITE_PROD_API : import.meta.env.VITE_DEV_API;
+// Initialize Supabase client
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supabase = supabaseUrl && supabaseKey 
+  ? createClient(supabaseUrl, supabaseKey)
+  : null;
 
 const FORM_CONFIG = {
   personalInfo: {
@@ -708,31 +712,42 @@ const RegistrationForm = () => {
   const sectionWrapper = "w-full mx-auto px-outer_sm lg:px-outer_lg";
 
   const [content, setContent] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
   useEffect(() => {
     fetch("/sdf_notice.txt")
       .then((res) => res.text())
-      .then(setContent);
+      .then(setContent)
+      .catch(console.error);
   }, []);
 
   const initializeFormData = () => {
     const initialData = {};
       
-      Object.values(FORM_CONFIG).forEach(section => {
-        section.fields.forEach(field => {
-          if (field.type === 'number') {
-            initialData[field.id] = '';
-          } else if (field.type === 'checkbox') {
-            initialData[field.id] = false;
-          } else {
-            initialData[field.id] = '';
-          }
-          
-          if (field.type === 'radio' && field.options?.some(opt => opt.hasInput)) {
-            initialData[`${field.id}_other_text`] = '';
-          }
-        });
+    Object.values(FORM_CONFIG).forEach(section => {
+      section.fields.forEach(field => {
+        if (field.type === 'number') {
+          initialData[field.id] = '';
+        } else if (field.type === 'checkbox') {
+          initialData[field.id] = false;
+        } else {
+          initialData[field.id] = '';
+        }
+        
+        if (field.type === 'radio' && field.options?.some(opt => opt.hasInput)) {
+          initialData[`${field.id}_other_text`] = '';
+        }
       });
-      return initialData;  };
+    });
+    
+    // Initialize fields that are not in form but exist in database
+    initialData.courseSelection = '';
+    initialData.referralQuestion = '';
+    initialData.signatureName = '';
+    initialData.signatureDate = '';
+    
+    return initialData;  
+  };
 
   const [formData, setFormData] = useState(initializeFormData);
 
@@ -761,7 +776,7 @@ const RegistrationForm = () => {
         ([k, v]) => v === fieldId
       );
       if (dep && checked) {
-        updateData[dep[0] ]= '';
+        updateData[dep[0]] = '';
       }      
       return updateData;
     });
@@ -860,10 +875,12 @@ const RegistrationForm = () => {
                 ${field.style === "italic" ? "[font-family:'Unageo-Italic']": ""}`}>
                   {field.label}
               </p>
-              </div>
             </div>
-        )
-      }
+          </div>
+        );
+      default:
+        return null;
+    }
   };
 
   const toSnakeCase = (str) => {
@@ -873,7 +890,17 @@ const RegistrationForm = () => {
   const transformFormDataForAPI = (data) => {
     const transformed = {};
 
+    // Skip display-only paragraph fields
+    const skipFields = ['transgender_definition', 'immigratedToCanada', 'selected_ei', 
+                       'selectedEI', 'workExperience', 'additionalWorkExperience',
+                       'primary_mailing_address', 'altMailingAddress'];
+
     Object.entries(data).forEach(([key, value]) => {
+      // Skip display-only fields
+      if (skipFields.includes(key)) {
+        return;
+      }
+      
       if (key.endsWith('_other_text')) {
         const baseKey = key.replace('_other_text', '');
         const snakeBaseKey = toSnakeCase(baseKey);
@@ -886,7 +913,11 @@ const RegistrationForm = () => {
       
       const snakeKey = toSnakeCase(key);
       
-      if (value === 'other') {
+      // Handle checkbox fields - convert boolean to string
+      if (key === 'serviceAcknowledge' || key === 'ministryAcknowledge' || 
+          key === 'empCurrentlyEmployed' || key === 'additionalCurrentlyEmployed') {
+        transformed[snakeKey] = value ? 'true' : 'false';
+      } else if (value === 'other') {
         const otherTextValue = data[`${key}_other_text`];
         if (otherTextValue && otherTextValue.trim() !== '') {
           transformed[snakeKey] = String(otherTextValue).trim();
@@ -903,37 +934,66 @@ const RegistrationForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsSubmitting(true);
+    
     try {
+      // Check if Supabase is configured
+      if (!supabase) {
+        throw new Error('Database connection not configured. Please contact support.');
+      }
+      
       const registrationData = transformFormDataForAPI(formData);
-      const response = await axios.post(
-        `${API_BASE_URL}/register_sdf`,
-        registrationData,
-        { 
-          headers: { 
-            "Content-Type": "application/json" 
-          } 
-        }
-      );
-      console.log('Registration successful:', response.data);
+      console.log('Submitting registration data:', registrationData);
+      
+      // Use direct Supabase connection
+      console.log('Using Supabase connection...');
+      
+      const { data, error } = await supabase
+        .from('sdf_registrations')
+        .insert([registrationData])
+        .select();
+      
+      if (error) {
+        throw error;
+      }
+      
+      console.log('Success via Supabase:', data);
       alert('Registration submitted successfully!');
+      
+      // Reset form
+      setFormData(initializeFormData());
       
     } catch (error) {
       console.error('Registration failed:', error);
-      if (error.response) {
-        console.error('Server error:', error.response.data);
-        alert('Registration failed. Please check the console for details.');
-      } else if (error.request) {
-        console.error('Network error:', error.request);
-        alert('Network error. Please check your connection.');
+      
+      // Provide helpful error messages
+      if (error.code === '23505') {
+        alert('This registration already exists. Please check if you have already submitted.');
+      } else if (error.code === '23502') {
+        alert('A required field is missing. Please check all required fields and try again.');
+      } else if (error.message.includes('Database connection not configured')) {
+        alert('The registration system is not properly configured. Please contact the administrator.');
+      } else if (error.message.includes('fetch')) {
+        alert('Network error. Please check your internet connection and try again.');
       } else {
-        console.error('Error:', error.message);
-        alert('An error occurred during registration.');
+        alert(`Registration failed: ${error.message}`);
       }
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
     <div className="min-h-screen relative overflow-hidden flex flex-col bg-white">
+      {/* Debug info - remove in production */}
+      {import.meta.env.MODE === 'development' && (
+        <div className="fixed bottom-2 right-2 bg-black text-white p-2 rounded text-xs z-50">
+          <div>Mode: {import.meta.env.MODE}</div>
+          <div>Supabase: {supabase ? '✅' : '❌'}</div>
+          {!supabase && <div className="text-red-400">Missing Supabase config!</div>}
+        </div>
+      )}
+      
       <div className="max-w-6xl mx-auto my-20 px-10 bg-card">
         <h1 className="[font-family:'Unageo-SemiBold'] text-3xl text-black text-foreground text-center mb-8">
           Skills Development Fund Training Stream (SDF-TS) Participant Registration
@@ -949,20 +1009,21 @@ const RegistrationForm = () => {
                   const fieldComponent = renderField(field);
                   if (fieldComponent === null) return null;
                   return (
-                  <div 
+                    <div 
                       key={field.id} 
                       className={`space-y-3 ${field.gridClass || ''}`}>
-                      {field.type !== 'paragraph' && field.type !== 'checkbox'?
-                      <label 
-                        htmlFor={field.id} 
-                        className="block text-md text-left text-foreground">
-                        {field.label}
-                        {field.required && <span className="text-red-500 ml-1">*</span>}
-                      </label>
-                      : null
+                      {field.type !== 'paragraph' && field.type !== 'checkbox' ?
+                        <label 
+                          htmlFor={field.id} 
+                          className="block text-md text-left text-foreground">
+                          {field.label}
+                          {field.required && <span className="text-red-500 ml-1">*</span>}
+                        </label>
+                        : null
                       }
                       {renderField(field)}
-                    </div>)
+                    </div>
+                  );
                 })}
               </div>
             </div>
@@ -973,8 +1034,9 @@ const RegistrationForm = () => {
           <div className="flex flex-col items-center lg:items-end">
             <button
               type="submit"
-              className="w-[250px] bg-black text-white text-lg py-3 px-6 rounded-2xl hover:opacity-85 transition-colors">
-              Submit
+              disabled={isSubmitting}
+              className={`w-[250px] ${isSubmitting ? 'bg-gray-500' : 'bg-black hover:opacity-85'} text-white text-lg py-3 px-6 rounded-2xl transition-colors`}>
+              {isSubmitting ? 'Submitting...' : 'Submit'}
             </button>
           </div>
         </form>
