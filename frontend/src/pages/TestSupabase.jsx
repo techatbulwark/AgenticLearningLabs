@@ -4,6 +4,7 @@ import { createClient } from "@supabase/supabase-js";
 // ADD THESE TWO LINES FOR DEBUGGING
 console.log("VITE_SUPABASE_URL from env:", import.meta.env.VITE_SUPABASE_URL);
 console.log("VITE_SUPABASE_ANON_KEY from env:", import.meta.env.VITE_SUPABASE_ANON_KEY ? "Key Loaded" : "Key is MISSING or UNDEFINED");
+console.log("VITE_SUPABASE_ANON_KEY:", import.meta.env.VITE_SUPABASE_ANON_KEY);
 
 // Initialize Supabase client
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
