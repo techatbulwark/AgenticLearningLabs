@@ -16,6 +16,8 @@ import CustomerExperience from './pages/CustomerExperience'
 import SalesMarketing from './pages/SalesMarketing'
 import InquiryModal from './components/InquiryModal'
 
+import TestSupabase from './pages/TestSupabase'
+
 function App() {
 
   return (
@@ -32,6 +34,7 @@ function App() {
         <Route path='/register' element={<Register/>}/>
         <Route path='/sdf-register-full' element={<SDFRegister/>}/>
         <Route path='/bak-register-full' element={<BakSDFRegister/>}/>
+        <Route path='/test-supabase' element={<TestSupabase/>}/>
       </Routes>
       <PrereqModal />
       <InquiryModal />
