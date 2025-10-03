@@ -1,8 +1,5 @@
 import { lazy, useEffect, useState } from "react";
-import axios from "axios";
-
-const API_BASE_URL = import.meta.env.MODE === 'production' 
-  ? import.meta.env.VITE_PROD_API : import.meta.env.VITE_DEV_API;
+import supabase from "../lib/supabase";
 
 const FORM_CONFIG = {
   personalInfo: {
@@ -873,19 +870,36 @@ const RegistrationForm = () => {
   const transformFormDataForAPI = (data) => {
     const transformed = {};
 
+    // Fields that are just labels/paragraphs and shouldn't be included in the database
+    const excludeFields = [
+      'transgender_definition',
+      'primary_mailing_address',
+      'alt_mailing_address',
+      'immigrated_to_canada',
+      'selected_ei',
+      'selected_e_i', // This is the snake_case version of selectedEI
+      'work_experience',
+      'additional_work_experience'
+    ];
+
     Object.entries(data).forEach(([key, value]) => {
       if (key.endsWith('_other_text')) {
         const baseKey = key.replace('_other_text', '');
         const snakeBaseKey = toSnakeCase(baseKey);
-        
+
         if (data[baseKey] === 'other' && value && value.trim() !== '') {
           transformed[snakeBaseKey] = String(value).trim();
         }
         return;
       }
-      
+
       const snakeKey = toSnakeCase(key);
-      
+
+      // Skip fields that are just labels/paragraphs
+      if (excludeFields.includes(snakeKey)) {
+        return;
+      }
+
       if (value === 'other') {
         const otherTextValue = data[`${key}_other_text`];
         if (otherTextValue && otherTextValue.trim() !== '') {
@@ -905,30 +919,21 @@ const RegistrationForm = () => {
     event.preventDefault();
     try {
       const registrationData = transformFormDataForAPI(formData);
-      const response = await axios.post(
-        `${API_BASE_URL}/register_sdf`,
-        registrationData,
-        { 
-          headers: { 
-            "Content-Type": "application/json" 
-          } 
-        }
-      );
-      console.log('Registration successful:', response.data);
+
+      const { data, error } = await supabase
+        .from('sdf_registrations')
+        .insert([registrationData]);
+
+      if (error) {
+        throw error;
+      }
+
+      console.log('Registration successful:', data);
       alert('Registration submitted successfully!');
-      
+
     } catch (error) {
       console.error('Registration failed:', error);
-      if (error.response) {
-        console.error('Server error:', error.response.data);
-        alert('Registration failed. Please check the console for details.');
-      } else if (error.request) {
-        console.error('Network error:', error.request);
-        alert('Network error. Please check your connection.');
-      } else {
-        console.error('Error:', error.message);
-        alert('An error occurred during registration.');
-      }
+      alert(`Registration failed: ${error.message}`);
     }
   };
 
