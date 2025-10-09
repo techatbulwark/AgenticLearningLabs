@@ -27,7 +27,7 @@ const InquiryModal = () => {
                     </svg>
                     </button>
                     <h2 className="[font-family:'Unageo-Semibold'] text-2xl text-black">We received your message!<br /></h2>
-                    <p className="[font-family:'Unageo'] text-xl text-black text-center">We will reach out to you shortly. Please watch for an email from <b className="[font-family:'Unageo-Bold']">program@agenticlearninglabs.com. </b></p>
+                    <p className="[font-family:'Unageo'] text-xl text-black text-center">We will reach out to you shortly. Please watch for an email from <b className="[font-family:'Unageo-Bold']">program@agenticlearninglabs.com.</b></p>
                 </div>
             </div>
         </div>
