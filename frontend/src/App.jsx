@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Route, Routes, useLocation } from 'react-router-dom'
 
 import './App.css'
 import Home from './pages/Home'
@@ -14,8 +14,23 @@ import ScrollLink from './components/ScrollLink'
 import CustomerExperience from './pages/CustomerExperience'
 import SalesMarketing from './pages/SalesMarketing'
 import InquiryModal from './components/InquiryModal'
+import { initGA, trackPageView, trackCampaignData } from './lib/analytics'
 
 function App() {
+  const location = useLocation();
+
+  // Initialize Google Analytics on mount
+  useEffect(() => {
+    initGA();
+    // Track initial page view and campaign data
+    trackCampaignData();
+    trackPageView(location.pathname + location.search, document.title);
+  }, []);
+
+  // Track page views on route change
+  useEffect(() => {
+    trackPageView(location.pathname + location.search, document.title);
+  }, [location]);
 
   return (
     <>
