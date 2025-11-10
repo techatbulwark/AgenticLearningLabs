@@ -499,10 +499,9 @@ const RegistrationForm = () => {
                           value={option.value}
                           checked={formData[field.id] === option.value}
                           onChange={(e) => {
+                            // Only call handleInputChange, which already validates correctly.
                             handleInputChange(field.id, e.target.value, field);
-                            if (option.value !== 'other') {
-                              handleFieldBlur(field.id);
-                            }
+                            // The handleFieldBlur call that caused the issue has been removed.
                           }}
                           className="accent-primary"
                           // Add required attribute to first radio button in required groups
