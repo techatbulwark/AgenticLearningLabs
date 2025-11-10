@@ -769,11 +769,13 @@ const RegistrationForm = () => {
     <div className="min-h-screen relative overflow-hidden flex flex-col bg-white">
       {/* Success Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-start z-50 p-4 pl-16">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full p-8">
-            <h2 className="text-2xl font-bold text-center mb-6">Thank you. One last step</h2>
+            <h2 className="text-2xl font-bold mb-6 text-left">
+              Thank you. One more step.
+            </h2>
             
-            <div className="space-y-4 text-gray-700 mb-6">
+            <div className="space-y-4 text-gray-700 mb-6 text-left">
               <p>
                 This program is offered thanks to generous funding from the Ontario Government's Skills Development Fund (SDF).
               </p>
@@ -800,13 +802,7 @@ const RegistrationForm = () => {
               </p>
             </div>
             
-            <div className="flex gap-4 justify-center">
-              <button
-                onClick={() => window.location.href = 'https://agenticlearninglabs.com/sdf-register-full'}
-                className="bg-black text-white px-8 py-3 rounded-2xl hover:opacity-85 transition-opacity text-lg"
-              >
-                Continue
-              </button>
+            <div className="flex gap-4 justify-end">
               <button
                 onClick={() => {
                   setShowModal(false);
@@ -818,6 +814,12 @@ const RegistrationForm = () => {
                 className="bg-gray-300 text-gray-700 px-8 py-3 rounded-2xl hover:bg-gray-400 transition-colors text-lg"
               >
                 Exit
+              </button>
+              <button
+                onClick={() => window.location.href = 'https://agenticlearninglabs.com/sdf-register-full'}
+                className="bg-green-600 text-white px-8 py-3 rounded-2xl hover:bg-green-700 transition-colors text-lg"
+              >
+                Continue
               </button>
             </div>
           </div>
