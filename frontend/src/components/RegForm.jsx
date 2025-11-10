@@ -769,7 +769,7 @@ const RegistrationForm = () => {
     <div className="min-h-screen relative overflow-hidden flex flex-col bg-white">
       {/* Success Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-start z-50 p-4 pl-16">
           <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full p-8">
             <h2 className="text-2xl font-bold text-center mb-6">Thank you. One last step</h2>
             
