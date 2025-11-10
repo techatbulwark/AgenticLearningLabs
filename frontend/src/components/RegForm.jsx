@@ -25,9 +25,9 @@ const FORM_CONFIG = {
         gridClass: "col-span-full",
         validationMessage: "Please select a course to continue",
         options: [
-          { value: "dataAnalytics", label: "AI for Data Analytics for Decision Making (October 27)" },
-          { value: "customerExperience", label: "AI for Customer Experience and Product Innovation (September 29)" },
-          { value: "salesMarketing", label: "AI for Sales, Marketing and Business Development (October 27)" },
+          { value: "dataAnalytics", label: "AI for Data Analytics for Decision Making " },
+          { value: "customerExperience", label: "AI for Customer Experience and Product Innovation " },
+          { value: "salesMarketing", label: "AI for Sales, Marketing and Business Development " },
         ],
       },
       {
@@ -295,6 +295,7 @@ const RegistrationForm = () => {
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const [submitAttempted, setSubmitAttempted] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   
   useEffect(() => {
     fetch("/sdf_notice.txt")
@@ -498,10 +499,9 @@ const RegistrationForm = () => {
                           value={option.value}
                           checked={formData[field.id] === option.value}
                           onChange={(e) => {
+                            // Only call handleInputChange, which already validates correctly.
                             handleInputChange(field.id, e.target.value, field);
-                            if (option.value !== 'other') {
-                              handleFieldBlur(field.id);
-                            }
+                            // The handleFieldBlur call that caused the issue has been removed.
                           }}
                           className="accent-primary"
                           // Add required attribute to first radio button in required groups
@@ -719,13 +719,9 @@ const RegistrationForm = () => {
         }
         
         console.log('Success via Supabase:', data);
-        alert('Registration submitted successfully!');
         
-        // Reset form
-        setFormData(initializeFormData());
-        setErrors({});
-        setTouched({});
-        setSubmitAttempted(false);
+        // Show modal instead of alert
+        setShowModal(true);
         
       } else if (API_BASE_URL) {
         // Fallback to Railway API if configured
@@ -745,13 +741,9 @@ const RegistrationForm = () => {
         
         const result = await response.json();
         console.log('Success via API:', result);
-        alert('Registration submitted successfully!');
         
-        // Reset form
-        setFormData(initializeFormData());
-        setErrors({});
-        setTouched({});
-        setSubmitAttempted(false);
+        // Show modal instead of alert
+        setShowModal(true);
         
       } else {
         throw new Error('No backend configured. Please add Supabase credentials or API URL.');
@@ -775,6 +767,65 @@ const RegistrationForm = () => {
 
   return (
     <div className="min-h-screen relative overflow-hidden flex flex-col bg-white">
+      {/* Success Modal */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full p-8">
+            <h2 className="text-2xl font-bold mb-6 text-left text-gray-700">
+              Thank you. One more step.
+            </h2>
+            
+            <div className="space-y-4 text-gray-700 mb-6 text-left">
+              <p>
+                This program is offered thanks to generous funding from the Ontario Government's Skills Development Fund (SDF).
+              </p>
+              
+              <p>
+                To secure your spot, we require all participants to complete the SDF form on the next page.
+              </p>
+              
+              <p>
+                This is to ensure their funding supports Ontarians towards meaningful jobs and requires some personal information including your social insurance number (SIN). Please rest assured that protecting your privacy and data security is a top priority.
+              </p>
+              
+              <ul className="list-disc pl-6 space-y-2">
+                <li>Your information is kept strictly confidential and transmitted through a secure, encrypted system.</li>
+                <li>Your SIN is only used by Ontario Government to verify your participation in the course and it enables you to complete the course at no cost.</li>
+              </ul>
+              
+              <p>
+                We're excited to have you join us in building new AI skills, and if you have any questions about the course – or the form – please reach out at{' '}
+                <a href="mailto:program@agenticlearninglabs.com" className="text-blue-600 hover:underline">
+                  program@agenticlearninglabs.com
+                </a>
+                . We are here to help!
+              </p>
+            </div>
+            
+            <div className="flex gap-4 justify-end">
+              <button
+                onClick={() => {
+                  setShowModal(false);
+                  setFormData(initializeFormData());
+                  setErrors({});
+                  setTouched({});
+                  setSubmitAttempted(false);
+                }}
+                className="bg-gray-300 text-gray-700 px-8 py-3 rounded-2xl hover:bg-gray-400 transition-colors text-lg"
+              >
+                Exit
+              </button>
+              <button
+                onClick={() => window.location.href = 'https://agenticlearninglabs.com/sdf-register-full'}
+                className="bg-green-600 text-white px-8 py-3 rounded-2xl hover:bg-green-700 transition-colors text-lg"
+              >
+                Continue
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      
       {/* Debug info - remove in production */}
       {import.meta.env.MODE === 'development' && (
         <div className="fixed bottom-2 right-2 bg-black text-white p-2 rounded text-xs z-50">

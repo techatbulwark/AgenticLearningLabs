@@ -9,5 +9,5 @@ Welcome to **Agentic Learning Labs** — practical AI education for solving real
 * Visit the [Agentic Learning Labs website](https://www.agenticlearninglabs.com/)
 * Browse the course catalog and register
 
-  Sep 25 version !
+Mov 10
  
