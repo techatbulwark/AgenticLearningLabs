@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:health": "echo 'Starting dev server... Open http://localhost:5173/test-health.html in your browser' && npm run dev"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",

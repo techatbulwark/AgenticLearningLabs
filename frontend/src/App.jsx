@@ -14,6 +14,7 @@ import ScrollLink from './components/ScrollLink'
 import CustomerExperience from './pages/CustomerExperience'
 import SalesMarketing from './pages/SalesMarketing'
 import InquiryModal from './components/InquiryModal'
+import HealthCheck from './pages/HealthCheck'
 import { initGA, trackPageView, trackCampaignData } from './lib/analytics'
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
         <Route path='/sales-marketing' element={<SalesMarketing/>}/>
         <Route path='/register' element={<Register/>}/>
         <Route path='/sdf-register-full' element={<SDFRegister/>}/>
+        <Route path='/health-check' element={<HealthCheck/>}/>
       </Routes>
       <PrereqModal />
       <InquiryModal />
