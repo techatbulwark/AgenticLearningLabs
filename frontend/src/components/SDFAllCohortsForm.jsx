@@ -5,12 +5,48 @@ import supabase from "../lib/supabase";
 const BASE_URL = "https://www.agenticlearninglabs.com/";
 
 const COHORT_META = {
-  "cohort-6":  { cohort: "Cohort 6",  courseType: "SMDB", startMonth: "December" },
-  "cohort-7":  { cohort: "Cohort 7",  courseType: "DADM", startMonth: "December" },
-  "cohort-8":  { cohort: "Cohort 8",  courseType: "DADM", startMonth: "December" },
-  "cohort-9":  { cohort: "Cohort 9",  courseType: "DADM", startMonth: "January" },
-  "cohort-10": { cohort: "Cohort 10", courseType: "SMBD", startMonth: "January" },
-  "cohort-11": { cohort: "Cohort 11", courseType: "CEPI", startMonth: "January" },
+  "cohort-6": {
+    cohort: "Cohort 6",
+    courseType: "SMDB",
+    courseName: "Sales, Marketing & Business Development",
+    startMonth: "December",
+    startYear: 2025
+  },
+  "cohort-7": {
+    cohort: "Cohort 7",
+    courseType: "DADM",
+    courseName: "Data Analytics & Decision Making",
+    startMonth: "December",
+    startYear: 2025
+  },
+  "cohort-8": {
+    cohort: "Cohort 8",
+    courseType: "DADM",
+    courseName: "Data Analytics & Decision Making",
+    startMonth: "December",
+    startYear: 2025
+  },
+  "cohort-9": {
+    cohort: "Cohort 9",
+    courseType: "DADM",
+    courseName: "Data Analytics & Decision Making",
+    startMonth: "January",
+    startYear: 2026
+  },
+  "cohort-10": {
+    cohort: "Cohort 10",
+    courseType: "SMBD",
+    courseName: "Sales, Marketing & Business Development",
+    startMonth: "January",
+    startYear: 2026
+  },
+  "cohort-11": {
+    cohort: "Cohort 11",
+    courseType: "CEPI",
+    courseName: "Customer Experience & Product Innovation",
+    startMonth: "January",
+    startYear: 2026
+  }
 };
 
 const FORM_CONFIG = {
@@ -755,9 +791,9 @@ const SDFAllCohortsForm = () => {
 
   const meta = cohortKey && COHORT_META[cohortKey]
     ? COHORT_META[cohortKey]
-    : { cohort: "Cohort 0", courseType: "", startMonth: "January" };
+    : { cohort: "Cohort 0", courseType: "", courseName: "", startMonth: "January", startYear: 2025 };
 
-  const sdfLinkValue = `${BASE_URL}${cohortKey || "cohort-0"}`;
+  const sdfLinkValue = `${BASE_URL}sdf/${cohortKey || "cohort-0"}`;
 
   const [content, setContent] = useState("");
   useEffect(() => {
@@ -1126,9 +1162,14 @@ const SDFAllCohortsForm = () => {
   return (
     <div className="min-h-screen relative overflow-hidden flex flex-col bg-white">
       <div className="max-w-6xl mx-auto my-20 px-10 bg-card">
-        <h1 className="[font-family:'Unageo-SemiBold'] text-3xl text-black text-foreground text-center mb-8">
+        <h1 className="[font-family:'Unageo-SemiBold'] text-3xl text-black text-foreground text-center mb-4">
           Skills Development Fund Training Stream (SDF-TS) Participant Registration
         </h1>
+        {meta.cohort && meta.cohort !== "Cohort 0" && (
+          <h2 className="[font-family:'Unageo-SemiBold'] text-2xl text-black text-foreground text-center mb-8">
+            {meta.cohort} - {meta.courseName}
+          </h2>
+        )}
         <form onSubmit={handleSubmit} className="space-y-8 text-black">
           {Object.entries(FORM_CONFIG).map(([sectionKey, section]) => (
             <div key={sectionKey} className="space-y-2">

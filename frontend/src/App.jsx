@@ -53,7 +53,7 @@ function App() {
         <Route path='/sdf-cohort-5' element={<SDFCohort5/>}/>
         <Route path='/sdf-confirmation' element={<SDFConfirmation/>}/>
         <Route path='/select-course' element={<SelectCourse/>}/>
-        <Route path='/:cohortSlug' element={<SDFAllCohortsForm/>}/>
+        <Route path='/sdf/:cohortSlug' element={<SDFAllCohortsForm/>}/>
         <Route path='/health-check' element={<HealthCheck/>}/>
       </Routes>
       <PrereqModal />

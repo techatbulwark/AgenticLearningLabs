@@ -24,13 +24,13 @@ const Courses = () => {
         link: "/sales-marketing",
     },
     {
-        title: "AI for Customer Experience and Product Innovation",
+        title: "AI for Customer Experience & Product Innovation",
         subtitle: "Use AI to better design products, services and experiences.",
         body: "Learn how to use AI to brainstorm, test and pitch products and service ideas that meet real customer needs, improve the customer experience and drive product innovation.  Great for creative thinkers, innovators and product developers.",
         link: "/customer-experience",
     },
     {
-        title: "AI for Data Analytics for Decision Making",
+        title: "AI for Data Analytics & Decision Making",
         subtitle: "Use AI to turn data into knowledge and knowledge into action.",
         body: "In business, data is power. Learn the practical skills on how to apply AI to analytical data and use it for real time decision making, such as market trend analysis, demand forecasting, supplier management, and streamlining of logistics and distribution. Great for logistics, admin and analyst roles.",
         link: "/data-analytics",
@@ -57,7 +57,7 @@ const Courses = () => {
                         <div className="hidden lg:block relative w-full">
                             <img src={course_header1} loading="lazy" className="relative w-[300px] h-[200px] -right-25" />
                             <div className="absolute -top-8 z-10">
-                                <h2 className="[font-family:'Unageo-SemiBold'] text-4xl leading-12 z-10">AI for Data Analytics for<br />Decision Making</h2>
+                                <h2 className="[font-family:'Unageo-SemiBold'] text-4xl leading-12 z-10">AI for Data Analytics <br />& Decision Making</h2>
                             </div>
                         </div>
                     </div>

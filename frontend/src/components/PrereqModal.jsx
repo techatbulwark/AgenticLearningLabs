@@ -75,7 +75,7 @@ const PrereqModal = () => {
     if (answers.every((ans) => ans.answer === "yes")) {
       closeModal();
       resetForm();
-      navigate('/register');
+      navigate('/select-course');
     } else {
       setIsSubmitted(true);
     }
