@@ -31,3 +31,6 @@ backend/test.py
 backend/test_script.py
 backend/.env
 backend/__pycache__/*
+
+# Claude Code
+/.claude
