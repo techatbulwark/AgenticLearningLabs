@@ -7,8 +7,13 @@ import Footer from '../components/Footer';
 import course_header1 from '../assets/images/course_header1.jpg';
 // import data from '../assets/images/data.png';
 // import dataMobile from '../assets/images/data_mobile.png';
-import data from '../assets/images/DADM.jpg';
-import dataMobile from '../assets/images/DADM.jpg';
+// import data from '../assets/images/DADM.jpg';
+// import dataMobile from '../assets/images/DADM.jpg';
+
+// Updated Nov 2025 
+import data from '../assets/images/course_dates/Cohort 9 Data.png';
+import dataMobile from '../assets/images/course_dates/Cohort 9 Data.png';
+
 
 import HeaderLogo from '../components/HeaderLogo';
 import CourseUpdate from '../components/CourseUpdate.jsx';
