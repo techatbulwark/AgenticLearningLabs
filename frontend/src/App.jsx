@@ -5,6 +5,8 @@ import './App.css'
 import Home from './pages/Home'
 import Register from './pages/Register'
 import SDFRegister from './pages/SDFRegister'
+import SDFCohort5 from './pages/SDFCohort5'
+import SDFAllCohortsForm from './components/SDFAllCohortsForm'
 import Courses from './pages/Courses'
 import Team from './pages/Team'
 import FAQ from './pages/FAQ'
@@ -46,6 +48,8 @@ function App() {
         <Route path='/sales-marketing' element={<SalesMarketing/>}/>
         <Route path='/register' element={<Register/>}/>
         <Route path='/sdf-register-full' element={<SDFRegister/>}/>
+        <Route path='/sdf-cohort-5' element={<SDFCohort5/>}/>
+        <Route path='/:cohortSlug' element={<SDFAllCohortsForm/>}/>
         <Route path='/health-check' element={<HealthCheck/>}/>
       </Routes>
       <PrereqModal />
