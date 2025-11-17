@@ -7,6 +7,8 @@ import Register from './pages/Register'
 import SDFRegister from './pages/SDFRegister'
 import SDFCohort5 from './pages/SDFCohort5'
 import SDFAllCohortsForm from './components/SDFAllCohortsForm'
+import SDFConfirmation from './pages/SDFConfirmation'
+import SelectCourse from './pages/SelectCourse'
 import Courses from './pages/Courses'
 import Team from './pages/Team'
 import FAQ from './pages/FAQ'
@@ -49,6 +51,8 @@ function App() {
         <Route path='/register' element={<Register/>}/>
         <Route path='/sdf-register-full' element={<SDFRegister/>}/>
         <Route path='/sdf-cohort-5' element={<SDFCohort5/>}/>
+        <Route path='/sdf-confirmation' element={<SDFConfirmation/>}/>
+        <Route path='/select-course' element={<SelectCourse/>}/>
         <Route path='/:cohortSlug' element={<SDFAllCohortsForm/>}/>
         <Route path='/health-check' element={<HealthCheck/>}/>
       </Routes>

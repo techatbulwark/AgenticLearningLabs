@@ -1,5 +1,5 @@
 import { lazy, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import supabase from "../lib/supabase";
 
 const BASE_URL = "https://www.agenticlearninglabs.com/";
@@ -750,6 +750,7 @@ const SDFAllCohortsForm = () => {
   const sectionWrapper = "w-full mx-auto px-outer_sm lg:px-outer_lg";
 
   const { cohortSlug } = useParams();
+  const navigate = useNavigate();
   const cohortKey = cohortSlug;
 
   const meta = cohortKey && COHORT_META[cohortKey]
@@ -1114,7 +1115,7 @@ const SDFAllCohortsForm = () => {
       }
 
       console.log('Registration successful:', data);
-      alert('Registration submitted successfully!');
+      navigate('/sdf-confirmation');
 
     } catch (error) {
       console.error('Registration failed:', error);
@@ -1126,7 +1127,7 @@ const SDFAllCohortsForm = () => {
     <div className="min-h-screen relative overflow-hidden flex flex-col bg-white">
       <div className="max-w-6xl mx-auto my-20 px-10 bg-card">
         <h1 className="[font-family:'Unageo-SemiBold'] text-3xl text-black text-foreground text-center mb-8">
-          Skills Development Fund Training Stream (SDF-TS) Participant Registration - Cohort 5
+          Skills Development Fund Training Stream (SDF-TS) Participant Registration
         </h1>
         <form onSubmit={handleSubmit} className="space-y-8 text-black">
           {Object.entries(FORM_CONFIG).map(([sectionKey, section]) => (
