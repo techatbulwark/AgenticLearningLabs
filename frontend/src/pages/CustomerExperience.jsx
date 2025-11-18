@@ -5,12 +5,18 @@ import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 
 import customer_experience from '../assets/images/customer_experience.png';
-import product from '../assets/images/product.png';
-import productMobile from '../assets/images/product_mobile.png';
+// import product from '../assets/images/product.png';
+// import productMobile from '../assets/images/product_mobile.png';
 // import productMobile from '../assets/images/SMBD.jpg';
 // import product from '../assets/images/SMBD.jpg';
 import HeaderLogo from '../components/HeaderLogo.jsx';
 import CourseUpdate from '../components/CourseUpdate.jsx';
+
+
+// Updated Nov 2025 
+import product from '../assets/images/course_dates/Cohort 11 CX.png';
+import productMobile from '../assets/images/course_dates/Cohort 11 CX.png';
+
 
 const CustomerExperience = () => {
     
@@ -121,10 +127,10 @@ const CustomerExperience = () => {
                     </a>
                 </div>
                     {/* calendar */}
-                    {/* <div className="bg-gray-100 text-black flex items-center justify-center text-2xl font-bold mt-6">
+                    <div className="bg-gray-100 text-black flex items-center justify-center text-2xl font-bold mt-6">
                         <img src={product} className="hidden lg:block object-cover" />
                         <img src={productMobile} className="lg:hidden object-cover" />
-                    </div> */}
+                    </div>
             </section>
             <CourseUpdate />
             <Footer />

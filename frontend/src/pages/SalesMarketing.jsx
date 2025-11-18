@@ -7,8 +7,13 @@ import Footer from '../components/Footer.jsx';
 import course_header3 from '../assets/images/course_header3.jpg';
 // import business from '../assets/images/business.png';
 // import businessMobile from '../assets/images/business_mobile.png';
-import business from '../assets/images/SMBD.jpg';
-import businessMobile from '../assets/images/SMBD.jpg';
+// import business from '../assets/images/SMBD.jpg';
+// import businessMobile from '../assets/images/SMBD.jpg';
+
+// Updated Nov 2025 
+import business from '../assets/images/course_dates/Cohort 10 Sales.png';
+import businessMobile from '../assets/images/course_dates/Cohort 10 Sales.png';
+
 
 import HeaderLogo from '../components/HeaderLogo.jsx';
 import CourseUpdate from '../components/CourseUpdate.jsx';

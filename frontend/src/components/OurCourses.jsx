@@ -24,7 +24,7 @@ const OurCourses = () => {
       content: "In just four weeks, gain real-world, practical AI skills that help you stand out, get hired, or move up in your career. Whether you're looking for a new job, re-entering the workforce, or aiming for a promotion Agentic Learning Labs can help you level up fast.",
     },
     { 
-      title: 'AI for Data Analytics for Decision Making', 
+      title: 'AI for Data Analytics & Decision Making', 
       content: 'Use AI to turn data into knowledge and knowledge into action.  This course turns spreadsheet users into confident data analysts. Learn how to use AI to visualize data for reporting and support real-time decision-making including market trend analysis, demand forecasting, and supplier management. Great for people in logistics, admin and analyst roles.',
     },
     { 
