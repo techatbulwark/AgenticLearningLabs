@@ -37,7 +37,7 @@ const DataAnalytics = () => {
                         <img src={course_header1} loading="lazy" className="relative w-[350px] h-[250px]" />
                     </div>
                     <div className="col-span-2 flex flex-col gap-8 z-10">
-                        <h2 className="[font-family:'Unageo-SemiBold'] text-5xl lg:text-7xl text-left leading-tight tracking-tight lg:-ml-40">AI for Data Analytics and <br/>Decision Making</h2>
+                        <h2 className="[font-family:'Unageo-SemiBold'] text-5xl lg:text-7xl text-left leading-tight tracking-tight lg:-ml-40">AI for Data Analytics <br/>& Decision Making</h2>
                         <div className="w-line_width h-2 bg-yellow-500 rounded-full"></div>
                         <h3 className="[font-family:'Unageo-SemiBold'] text-3xl">Use AI to turn data into knowledge<br/>and knowledge into action.</h3>
                         <p className="text-xl">This course will teach you practical skills to apply AI to analytical data and how to use it for real time decision making. Think easier access to market trend analysis, demand forecasting, supplier management and streamlining of logistics and distribution to better handle logistical constraints and to maximize production capacity. In business, data is power. Leveraging your new AI skills, you will bring new tools and perspectives to deliver efficiency and optimization for your employer.</p>

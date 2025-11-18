@@ -10,6 +10,15 @@ const COURSE_OPTIONS = {
   "cohort-11": { courseName: "Customer Experience & Product Innovation", startMonth: "January", startYear: 2026 },
 };
 
+const COURSE_OPTIONS_DATES = {
+  "cohort-6": { courseName: "Sales, Marketing & Business Development", startDate: "December 1, 2025", status: 'full' },
+  "cohort-7": { courseName: "Data Analytics & Decision Making", startDate: "December 8, 2025", status: 'full' },
+  "cohort-8": { courseName: "Data Analytics & Decision Making", startDate: "December 15, 2025", status: 'full' },
+  "cohort-9": { courseName: "Data Analytics & Decision Making", startDate: "January 5, 2026", status: 'open' },
+  "cohort-10": { courseName: "Sales, Marketing & Business Development", startDate: "January 5, 2025", status: 'open' },
+  "cohort-11": { courseName: "Customer Experience & Product Innovation", startDate: "February 2, 2025", status: 'open' },
+};
+
 const SelectCourse = () => {
   const navigate = useNavigate();
   const [selectedCourse, setSelectedCourse] = useState('');
@@ -35,7 +44,7 @@ const SelectCourse = () => {
             Please select your course:
           </h3>
           <div className="space-y-3">
-            {Object.entries(COURSE_OPTIONS).map(([value, { courseName, startMonth, startYear }]) => (
+            {Object.entries(COURSE_OPTIONS_DATES).map(([value, { courseName, startDate, status }]) => (
               <div key={value} className="flex items-center">
                 <input
                   type="radio"
@@ -45,10 +54,14 @@ const SelectCourse = () => {
                   checked={selectedCourse === value}
                   onChange={(e) => setSelectedCourse(e.target.value)}
                   className="accent-green-600 w-5 h-5 mr-3"
+                  disabled={status === 'full'}
                   required
                 />
-                <label htmlFor={value} className="[font-family:'Unageo'] text-lg text-gray-700 cursor-pointer">
-                  {courseName} - {startMonth} {startYear}
+                <label
+                  htmlFor={value}
+                  className={`[font-family:'Unageo'] text-lg ${status === 'full' ? 'text-gray-400 cursor-not-allowed' : 'text-gray-700 cursor-pointer'}`}
+                >
+                  {courseName} - {startDate} {status === 'full' && <span className="text-red-600 font-semibold">(FULL)</span>}
                 </label>
               </div>
             ))}

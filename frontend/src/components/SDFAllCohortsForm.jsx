@@ -58,28 +58,28 @@ const FORM_CONFIG = {
         label: "Cohort",
         type: "text",
         gridClass: "lg:col-span-2",
-
+        hidden: true,
       },
       {
         id: "courseType",
         label: "Course Type",
         type: "text",
         gridClass: "lg:col-span-2",
-
+        hidden: true,
       },
       {
         id: "startMonth",
         label: "Start Month",
         type: "text",
         gridClass: "lg:col-span-1",
-
+        hidden: true,
       },
       {
         id: "sdfLink",
         label: "SDF Link",
         type: "text",
         gridClass: "lg:col-span-1",
-
+        hidden: true,
       },
     ]
   },
@@ -694,13 +694,15 @@ const FORM_CONFIG = {
         id: "noc",
         label: "NOC",
         type: "text",
-        gridClass: "md:col-span-1"
+        gridClass: "md:col-span-1",
+        hidden: true
       },
       {
         id: "naics",
         label: "NAICS",
         type: "text",
-        gridClass: "md:col-span-1"
+        gridClass: "md:col-span-1",
+        hidden: true
       },
     ]
   },
@@ -1165,40 +1167,48 @@ const SDFAllCohortsForm = () => {
         <h1 className="[font-family:'Unageo-SemiBold'] text-3xl text-black text-foreground text-center mb-4">
           Skills Development Fund Training Stream (SDF-TS) Participant Registration
         </h1>
-        {meta.cohort && meta.cohort !== "Cohort 0" && (
-          <h2 className="[font-family:'Unageo-SemiBold'] text-2xl text-black text-foreground text-center mb-8">
-            {meta.cohort} - {meta.courseName}
-          </h2>
-        )}
+        
         <form onSubmit={handleSubmit} className="space-y-8 text-black">
-          {Object.entries(FORM_CONFIG).map(([sectionKey, section]) => (
-            <div key={sectionKey} className="space-y-2">
-              <h3 className="[font-family:'Unageo-SemiBold'] text-2xl text-left text-foreground mb-5">
-                {section.title}
-              </h3>
-              <div className="grid grid-cols-1 lg:grid-cols-5 gap-7 mb-20">
-                {section.fields.map(field => {
-                  const fieldComponent = renderField(field);
-                  if (fieldComponent === null) return null;
-                  return (
-                  <div
-                      key={field.id}
-                      className={`space-y-3 ${field.gridClass || ''}`}>
-                      {field.type !== 'paragraph' && field.type !== 'checkbox'?
-                      <label
-                        htmlFor={field.id}
-                        className="block text-md text-left text-foreground">
-                        {field.label}
-                        {field.required && <span className="text-red-500 ml-1">*</span>}
-                      </label>
-                      : null
-                      }
-                      {renderField(field)}
-                    </div>)
-                })}
+          {Object.entries(FORM_CONFIG).map(([sectionKey, section]) => {
+            // Render hidden fields for cohortInfo without section title/labels
+            if (sectionKey === 'cohortInfo') {
+              return (
+                <div key={sectionKey} className="hidden">
+                  {section.fields.map(field => renderField(field))}
+                </div>
+              );
+            }
+
+            // Normal rendering for other sections
+            return (
+              <div key={sectionKey} className="space-y-2">
+                <h3 className="[font-family:'Unageo-SemiBold'] text-2xl text-left text-foreground mb-5">
+                  {section.title}
+                </h3>
+                <div className="grid grid-cols-1 lg:grid-cols-5 gap-7 mb-20">
+                  {section.fields.map(field => {
+                    const fieldComponent = renderField(field);
+                    if (fieldComponent === null) return null;
+                    return (
+                    <div
+                        key={field.id}
+                        className={`space-y-3 ${field.gridClass || ''}`}>
+                        {field.type !== 'paragraph' && field.type !== 'checkbox'?
+                        <label
+                          htmlFor={field.id}
+                          className="block text-md text-left text-foreground">
+                          {field.label}
+                          {field.required && <span className="text-red-500 ml-1">*</span>}
+                        </label>
+                        : null
+                        }
+                        {renderField(field)}
+                      </div>)
+                  })}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
           <pre className="[font-family:'Unageo'] text-sm text-black text-left text-foreground whitespace-pre-wrap break-words">
             {content}
           </pre>
@@ -1208,12 +1218,6 @@ const SDFAllCohortsForm = () => {
               onClick={handleReset}
               className="w-[250px] bg-gray-500 text-white text-lg py-3 px-6 rounded-2xl hover:opacity-85 transition-colors">
               Reset Form
-            </button>
-            <button
-              type="button"
-              onClick={handleSampleData}
-              className="w-[250px] bg-blue-600 text-white text-lg py-3 px-6 rounded-2xl hover:opacity-85 transition-colors">
-              Sample Data
             </button>
             <button
               type="submit"

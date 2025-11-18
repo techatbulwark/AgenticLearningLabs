@@ -13,11 +13,11 @@ const supabase = supabaseUrl && supabaseKey
 const PrereqModal = () => {
   const requirements = [
     {
-      label: "1. Able to attend at least three of the in-person weekly workshops",
+      label: "1. Able to attend the in-person weekly workshops",
       answer: "",
     },
     {
-      label: "2. Committed to completing the online learning programs prior to your weekly workshops",
+      label: "2. Able to complete online learning modules prior to weekly workshops",
       answer: "",
     },
   ];
