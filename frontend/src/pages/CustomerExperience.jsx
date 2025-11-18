@@ -17,6 +17,7 @@ import CourseUpdate from '../components/CourseUpdate.jsx';
 import product from '../assets/images/course_dates/Cohort 11 CX.png';
 import productMobile from '../assets/images/course_dates/Cohort 11 CX.png';
 
+
 const CustomerExperience = () => {
     
     const sectionWrapper = "w-full mx-auto px-outer_sm lg:px-outer_lg";
@@ -126,10 +127,10 @@ const CustomerExperience = () => {
                     </a>
                 </div>
                     {/* calendar */}
-                    {/* <div className="bg-gray-100 text-black flex items-center justify-center text-2xl font-bold mt-6">
+                    <div className="bg-gray-100 text-black flex items-center justify-center text-2xl font-bold mt-6">
                         <img src={product} className="hidden lg:block object-cover" />
                         <img src={productMobile} className="lg:hidden object-cover" />
-                    </div> */}
+                    </div>
             </section>
             <CourseUpdate />
             <Footer />
