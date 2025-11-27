@@ -25,7 +25,7 @@ const Home = () => {
   
   const sectionWrapper = "w-full mx-auto px-6 lg:px-16";
 
-  const partners = [tribal, bulwark, canada, employmentOnt, ontario];
+  const partners = [tribal, canada, employmentOnt, ontario];
     // const partners = [tribal, bulwark, canada, employmentOnt, ontario];
 
   return (
