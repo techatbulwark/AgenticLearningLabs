@@ -13,11 +13,13 @@ import course_header1 from '../assets/images/course_header1.jpg';
 import team1 from '../assets/images/team1.png';
 import team2 from '../assets/images/team2.png';
 
-import headshot_br from '../assets/images/headshot_br.jpg';
+// import headshot_br from '../assets/images/headshot_br.jpg';
 import headshot_hp from '../assets/images/headshot_hp.jpg';
 import headshot_sj from '../assets/images/headshot_sj.png';
 // import headshot_kr from '../assets/images/headshot_kr.jpg';
 import headshot_kr from '../assets/images/Karim_pic.png';
+import headshot_br from '../assets/images/Bradley_pic.jpeg';
+
 
 const Team = () => {
     
@@ -83,7 +85,7 @@ const Team = () => {
                         </div>
                     </div>
                     <div className="hidden lg:flex items-center">
-                        <img src={team2} loading="lazy" className="w-[510px] h-[280px] object-cover lg:top-0" />
+                        <img src={team2} loading="lazy" className="w-[510px] h-[280px] object-cover lg:top-0 " />
                     </div>
                     <div className="">
                         <img src={bulwarkLogoA} loading="lazy" className="absolute w-[250px] rotate-0 lg:hidden top-50 -right-20" />
@@ -101,7 +103,7 @@ const Team = () => {
                         <span
                             onClick={() => toggle(index)}
                             className="relative flex flex-col items-center">
-                            <img src={instructor.img} loading="lazy" className={`${index == selected ? "w-75 h-75" : "w-60 h-60"} mb-10 lg:mb-0 rounded-full transition-all duration-300`} />
+                            <img src={instructor.img} loading="lazy" className={`${index == selected ? "w-75 h-75" : "w-60 h-60"} mb-10 lg:mb-0 rounded-full transition-all object-cover object-center duration-300`} />
                             <span className="absolute top-5 -right-6 w-20 h-20 bg-brand_yellow rounded-full border-6 border-brand_gray hidden lg:inline-flex justify-center items-center ml-auto p-5">
                                 <div
                                     className={`absolute top-2 right-3 text-black text-6xl rounded-2xl transform transition-transform duration-300 ${selected === index ? "rotate-90" : "rotate-135"}`}>
