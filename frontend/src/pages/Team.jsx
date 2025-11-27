@@ -16,8 +16,8 @@ import team2 from '../assets/images/team2.png';
 import headshot_br from '../assets/images/headshot_br.jpg';
 import headshot_hp from '../assets/images/headshot_hp.jpg';
 import headshot_sj from '../assets/images/headshot_sj.png';
-import headshot_kr from '../assets/images/headshot_kr.jpg';
-
+// import headshot_kr from '../assets/images/headshot_kr.jpg';
+import headshot_kr from '../assets/images/Karim_pic.png';
 
 const Team = () => {
     
