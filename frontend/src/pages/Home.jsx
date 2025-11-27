@@ -26,6 +26,7 @@ const Home = () => {
   const sectionWrapper = "w-full mx-auto px-6 lg:px-16";
 
   const partners = [tribal, bulwark, canada, employmentOnt, ontario];
+    // const partners = [tribal, bulwark, canada, employmentOnt, ontario];
 
   return (
     <div className="min-h-screen max-w-[1600px] mx-auto relative overflow-hidden flex flex-col">
