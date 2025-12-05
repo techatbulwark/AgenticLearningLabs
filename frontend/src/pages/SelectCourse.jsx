@@ -8,6 +8,7 @@ const COURSE_OPTIONS = {
   "cohort-9": { courseName: "Data Analytics & Decision Making", startMonth: "January", startYear: 2026 },
   "cohort-10": { courseName: "Sales, Marketing & Business Development", startMonth: "January", startYear: 2026 },
   "cohort-11": { courseName: "Customer Experience & Product Innovation", startMonth: "January", startYear: 2026 },
+  "cohort-12": { courseName: "Data Analytics & Decision Making", startMonth: "February", startYear: 2026 },
 };
 
 const COURSE_OPTIONS_DATES = {
@@ -17,6 +18,7 @@ const COURSE_OPTIONS_DATES = {
   "cohort-9": { courseName: "Data Analytics & Decision Making", startDate: "January 5, 2026", status: 'open' },
   "cohort-10": { courseName: "Sales, Marketing & Business Development", startDate: "January 5, 2025", status: 'open' },
   "cohort-11": { courseName: "Customer Experience & Product Innovation", startDate: "February 2, 2025", status: 'open' },
+  "cohort-12": { courseName: "Data Analytics & Decision Making", startDate: "February 2026 (pre-register now)", status: 'open' },
 };
 
 const SelectCourse = () => {

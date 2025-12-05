@@ -46,6 +46,13 @@ const COHORT_META = {
     courseName: "Customer Experience & Product Innovation",
     startMonth: "January",
     startYear: 2026
+  },
+  "cohort-12": {
+    cohort: "Cohort 12",
+    courseType: "DADM",
+    courseName: "Data Analytics & Decision Making",
+    startMonth: "February",
+    startYear: 2026
   }
 };
 
