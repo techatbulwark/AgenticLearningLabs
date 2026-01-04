@@ -53,6 +53,13 @@ const COHORT_META = {
     courseName: "Data Analytics & Decision Making",
     startMonth: "February",
     startYear: 2026
+  },
+  "cohort-13": {
+    cohort: "Cohort 13",
+    courseType: "DADM",
+    courseName: "PEC cohort",
+    startMonth: "February",
+    startYear: 2026
   }
 };
 
