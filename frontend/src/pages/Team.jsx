@@ -17,12 +17,12 @@ import team2 from '../assets/images/team2.png';
 import headshot_hp from '../assets/images/headshot_hp.jpg';
 import headshot_sj from '../assets/images/headshot_sj.png';
 // import headshot_kr from '../assets/images/headshot_kr.jpg';
-import headshot_kr from '../assets/images/Karim_pic.png';
+// import headshot_kr from '../assets/images/Karim_pic.png';
 import headshot_br from '../assets/images/Bradley_pic.jpeg';
 
 
 const Team = () => {
-    
+
     const sectionWrapper = "w-full mx-auto px-outer_sm lg:px-outer_lg";
 
     const [selected, setSelected] = useState(0);
@@ -48,14 +48,15 @@ const Team = () => {
             intro: "Sheetal is an entrepreneur and seasoned tech veteran with a passion for innovation and digital transformation. He is the CEO of TribalScale and an avid investor who brings a unique perspective to support and guide companies through their digital evolution.",
             link: "https://www.linkedin.com/in/sheetaljaitly/",
             img: headshot_sj,
-        },
-        {
-            name: "Karim Rahemtulla",
-            title: "Advisor",
-            intro: "A global business strategist known for creating innovative technology solutions to drive business impact. As Principal at Bulwark Impact, Karim helps businesses build practical skills to harness new technologies, including AI, to achieve their objectives and adapt in a rapidly changing world.",
-            link: "https://www.linkedin.com/in/karimrahemtulla/",
-            img: headshot_kr,
-},
+        }
+//             {
+//             name: "Karim Rahemtulla",
+//             title: "Advisor",
+//             intro: "A global business strategist known for creating innovative technology solutions to drive business impact. As Principal at Bulwark Impact, Karim helps businesses build practical skills to harness new technologies, including AI, to achieve their objectives and adapt in a rapidly changing world.",
+//             link: "https://www.linkedin.com/in/karimrahemtulla/",
+//             img: headshot_kr,
+// },
+
     ];
 
     const toggle = (index) => {
