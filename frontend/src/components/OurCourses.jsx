@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-import { usePrereqModal } from '../context/PrereqModalContext.jsx'
-
 import course1 from '../assets/images/course1.png';
 import course2 from '../assets/images/course2.png';
 import course3 from '../assets/images/course3.png';
@@ -13,8 +11,6 @@ const courseImages = [course1, course2, course3, course4, course5];
 const OurCourses = () => {
 
   const sectionWrapper = "w-full mx-auto px-6 lg:px-16";
-
-  const { openModal } = usePrereqModal();
 
   const [activeTab, setActiveTab] = useState(0);
   
@@ -85,9 +81,6 @@ const OurCourses = () => {
                       <p className="[font-family:'Unageo'] text-lg text-white text-muted-foreground mb-10">
                         {activeTab >= 0 ? tabs[activeTab].content : null }
                       </p>
-                      <a onClick={openModal} class="z-10 w-[226px] h-[40px] flex items-center justify-center text-black bg-white hover:bg-brand_yellow rounded-3xl mx-auto lg:mx-0 transition-all duration-200 ease-in-out">
-                        <h3 class="[font-family:'Unageo'] text-lg">Register Now</h3>
-                      </a>
                     </div>
                   </div>
                 );
@@ -103,9 +96,6 @@ const OurCourses = () => {
               <p className="[font-family:'Unageo'] text-lg text-white text-muted-foreground">
                 {activeTab >= 0 ? tabs[activeTab].content : null }
               </p>
-              <a onClick={openModal} class="w-[226px] h-[40px] flex items-center justify-center text-black bg-white hover:bg-brand_yellow rounded-3xl mx-auto lg:mx-0 transition-all duration-200 ease-in-out">
-                <h3 class="[font-family:'Unageo'] text-lg">Register now</h3>
-              </a>
             </div>
           </div>
         </div>

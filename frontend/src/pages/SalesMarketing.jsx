@@ -41,11 +41,6 @@ const SalesMarketing = () => {
                         <div className="w-line_width h-2 bg-yellow-500 rounded-full" />
                         <h3 className="[font-family:'Unageo-SemiBold'] text-3xl">Drive sales and reach new customers with an AI-<br/>powered business strategy.</h3>
                         <p className="text-xl">In this course learn how to apply AI tools to build sales and marketing campaigns, generate leads, and personalize outreach to grow the success of sales and marketing campaigns.</p>
-                        <a
-                            onClick={openModal}
-                            className="shrink-0 bg-brand_yellow hover:bg-white lg:bg-white lg:hover:bg-brand_yellow text-black text-xl w-56 h-10 px-6 flex items-center justify-center rounded-full transition self-center lg:self-end">
-                            Register now
-                        </a>
                     </div>
                 </div>
             </section>
@@ -110,16 +105,11 @@ const SalesMarketing = () => {
             <section className="relative bg-white lg:px-outer_lg">
                 <div className="relative flex flex-col lg:flex-row justify-between items-center gap-y-10 bg-brand_gray rounded-t-3xl px-inner py-15">
                     <div className="text-center lg:text-left">
-                        <h2 className="[font-family:'Unageo-SemiBold'] text-5xl mb-5">Register now!</h2>
+                        <h2 className="[font-family:'Unageo-SemiBold'] text-5xl mb-5">Course Schedule</h2>
                         <p className="text-xl text-gray-200 max-w-xl">
                             AI is now a tool of the job. Learn how to use it and get ahead of the competition.
                         </p>
                     </div>
-                    <a
-                        onClick={ openModal }
-                        className="shrink-0 bg-white hover:bg-brand_yellow text-black text-xl w-56 h-10 px-6 flex items-center justify-center rounded-full transition">
-                        Register now
-                    </a>
                 </div>
                 {/* calendar */}
                 <div className="bg-gray-100 text-black flex items-center justify-center text-2xl font-bold mt-6">

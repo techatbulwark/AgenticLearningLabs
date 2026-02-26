@@ -4,7 +4,6 @@ import Header from '../components/Header';
 import HeaderLogo from '../components/HeaderLogo';
 import Footer from '../components/Footer';
 import OurCourses from '../components/OurCourses';
-import RegisterNow from '../components/RegisterNow';
 
 import callout1 from '../assets/images/callout1.png';
 import callout3 from '../assets/images/callout3.png';
@@ -89,7 +88,6 @@ const Home = () => {
         <OurCourses />
       </section>
 
-      <RegisterNow />
 
       <section className={`${sectionWrapper} relative flex flex-col lg:flex-row justify-center items-center bg-brand_black py-10`}>
         <div className="w-full lg:w-3/5">

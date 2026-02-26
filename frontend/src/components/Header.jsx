@@ -17,10 +17,6 @@ const Header = () => {
       name: "Meet the team",
       link: "/team",
     },
-    {
-      name: "FAQ",
-      link: "/faqs",
-    },
   ]
 
   useEffect(() => {
