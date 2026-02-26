@@ -17,6 +17,7 @@ import ScrollLink from './components/ScrollLink'
 import CustomerExperience from './pages/CustomerExperience'
 import SalesMarketing from './pages/SalesMarketing'
 import InquiryModal from './components/InquiryModal'
+import LearnMore from './pages/LearnMore'
 import HealthCheck from './pages/HealthCheck'
 import { initGA, trackPageView, trackCampaignData } from './lib/analytics'
 
@@ -52,6 +53,7 @@ function App() {
         <Route path='/sdf-confirmation' element={<SDFConfirmation/>}/>
         <Route path='/select-course' element={<SelectCourse/>}/>
         <Route path='/sdf/:cohortSlug' element={<SDFAllCohortsForm/>}/>
+        <Route path='/learn-more' element={<LearnMore/>}/>
         <Route path='/health-check' element={<HealthCheck/>}/>
       </Routes>
       <PrereqModal />

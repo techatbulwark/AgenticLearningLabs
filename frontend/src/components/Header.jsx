@@ -17,6 +17,10 @@ const Header = () => {
       name: "Meet the team",
       link: "/team",
     },
+    {
+      name: "Learn more",
+      link: "/learn-more",
+    },
   ]
 
   useEffect(() => {

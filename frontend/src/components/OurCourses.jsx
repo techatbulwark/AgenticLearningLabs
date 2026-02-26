@@ -17,7 +17,7 @@ const OurCourses = () => {
   const tabs = [
     { 
       title: 'Our courses', 
-      content: "In just four weeks, gain real-world, practical AI skills that help you stand out, get hired, or move up in your career. Whether you're looking for a new job, re-entering the workforce, or aiming for a promotion Agentic Learning Labs can help you level up fast.",
+      content: "AI skills that help you build capacity. Empowering teams to work more efficiently while retaining human judgment and accountability. Agentic Learning Lab can help you or your team level up fast.",
     },
     { 
       title: 'AI for Data Analytics & Decision Making', 

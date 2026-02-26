@@ -1,28 +1,16 @@
-import React, { useState } from 'react';
-import { usePrereqModal } from '../context/PrereqModalContext.jsx'
-
+import React from 'react';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 
 import customer_experience from '../assets/images/customer_experience.png';
-// import product from '../assets/images/product.png';
-// import productMobile from '../assets/images/product_mobile.png';
-// import productMobile from '../assets/images/SMBD.jpg';
-// import product from '../assets/images/SMBD.jpg';
 import HeaderLogo from '../components/HeaderLogo.jsx';
 import CourseUpdate from '../components/CourseUpdate.jsx';
-
-
-// Updated Nov 2025 
-import product from '../assets/images/course_dates/Cohort 11 CX.png';
-import productMobile from '../assets/images/course_dates/Cohort 11 CX.png';
 
 
 const CustomerExperience = () => {
     
     const sectionWrapper = "w-full mx-auto px-outer_sm lg:px-outer_lg";
 
-    const { openModal } = usePrereqModal();
     
     return (
         <div className="min-h-screen max-w-[1600px] mx-auto relative overflow-hidden flex flex-col">
@@ -41,6 +29,7 @@ const CustomerExperience = () => {
                         <div className="w-line_width h-2 bg-yellow-500 rounded-full" />
                         <h3 className="[font-family:'Unageo-SemiBold'] text-3xl">Use AI to better design products, services and<br/>experiences.</h3>
                         <p className="text-xl">In this course, learn how to use AI to brainstorm, test and pitch product and service ideas that meet real customer needs, improve the customer experience and drive product innovation.</p>
+                        <p className="[font-family:'Unageo-SemiBold'] text-2xl lg:text-3xl text-brand_yellow">New Courses Coming April 2026</p>
                     </div>
                 </div>
             </section>
@@ -106,21 +95,6 @@ const CustomerExperience = () => {
                         </ul>
                     </div>
                 </div>
-            </section>
-            <section className="relative bg-white lg:px-outer_lg">
-                <div className="relative flex flex-col lg:flex-row justify-between items-center gap-y-10 bg-brand_gray rounded-t-3xl px-inner py-15">
-                    <div className="text-center lg:text-left">
-                        <h2 className="[font-family:'Unageo-SemiBold'] text-5xl mb-5">Course Schedule</h2>
-                        <p className="text-xl text-gray-200 max-w-xl">
-                            AI is now a tool of the job. Learn how to use it and get ahead of the competition.
-                        </p>
-                    </div>
-                </div>
-                    {/* calendar */}
-                    <div className="bg-gray-100 text-black flex items-center justify-center text-2xl font-bold mt-6">
-                        <img src={product} className="hidden lg:block object-cover" />
-                        <img src={productMobile} className="lg:hidden object-cover" />
-                    </div>
             </section>
             <CourseUpdate />
             <Footer />

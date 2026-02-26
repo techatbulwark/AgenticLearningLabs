@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import OurCourses from '../components/OurCourses';
 
 import callout1 from '../assets/images/callout1.png';
+import callout2 from '../assets/images/callout2.png';
 import callout3 from '../assets/images/callout3.png';
 import bulwarkLogoA from '../assets/images/bulwark_glossy_white_ALL.png';
 import bulwarkLogoL from '../assets/images/bulwark_glossy_white_L.png';
@@ -42,11 +43,11 @@ const Home = () => {
             AGENTIC<br />LEARNING LABS
           </h1>
           <h2 className="[font-family:'Unageo-SemiBold'] text-4xl font-light tracking-wide mb-5">
-            Learn AI. Get hired. Get promoted.
+            AI Training for the Workforce
           </h2>
           <img src={callout1} loading="lazy" className="w-full lg:w-3xl lg:-ml-5 mb-5" />
           <a
-            href="/courses"
+            href="/learn-more"
             className="w-[300px] h-[50px] flex items-center justify-center mx-auto lg:mx-0 bg-brand_yellow hover:bg-white rounded-full transition-all duration-300 ease-in-out">
             <h3 className="[font-family:'Unageo'] text-xl lg:text-2xl text-black">Learn more</h3>
           </a>
@@ -76,9 +77,9 @@ const Home = () => {
             </div>
           </div>
           <div className={`${sectionWrapper} relative w-full lg:w-1/2 h-[800px] bg-brand_gray flex flex-col justify-center text-left`}>
-            <h2 className="[font-family:'Unageo-SemiBold'] text-4xl lg:text-5xl text-white mb-8">AI is not a fad!</h2>
+            <h2 className="[font-family:'Unageo-SemiBold'] text-4xl lg:text-5xl text-white mb-8">Empowering people to excel with AI</h2>
             <p className="text-xl text-white leading-relaxed mb-8">
-              Thanks to funding from Employment Ontario as well as funding from the Government of Ontario and Government of Canada, these courses are free for residents of Ontario.
+              Funded by Employment Ontario, the Government of Ontario and the Government of Canada.
             </p>
             <p className="text-xl text-white leading-relaxed mb-8">
               Companies need talent who understand how to use AI to help them drive business results.  Agentic Learning Labs teaches you how to use AI to solve real business problems, whether you're launching a product, closing a sale, or analyzing data. Learn how to use it and get ahead of the competition.
@@ -88,6 +89,24 @@ const Home = () => {
         <OurCourses />
       </section>
 
+
+      {/* Learn More CTA */}
+      <div className={`${sectionWrapper} relative bg-brand_beige py-30`}>
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-24">
+          <div className="w-full lg:w-1/2 flex flex-col">
+            <img src={callout2} loading="lazy" className="w-full" alt="Learn more" />
+          </div>
+          <div className="w-full lg:w-1/2 flex flex-col lg:text-left">
+            <h2 className="[font-family:'Unageo-SemiBold'] text-4xl lg:text-5xl text-black mb-8">Want to learn more?</h2>
+            <p className="text-lg text-gray-700 leading-relaxed mb-8">
+              Interested in AI training for yourself or your team? Fill out a quick form and we'll be in touch.
+            </p>
+            <a href="/learn-more" className="w-[226px] h-[40px] flex items-center justify-center text-white hover:text-black bg-brand_black hover:bg-brand_yellow rounded-3xl mx-auto lg:mx-0 transition-all duration-200 ease-in-out">
+              <h3 className="[font-family:'Unageo'] text-lg">Learn more</h3>
+            </a>
+          </div>
+        </div>
+      </div>
 
       <section className={`${sectionWrapper} relative flex flex-col lg:flex-row justify-center items-center bg-brand_black py-10`}>
         <div className="w-full lg:w-3/5">
