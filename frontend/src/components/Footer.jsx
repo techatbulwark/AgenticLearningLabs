@@ -4,14 +4,11 @@ import agentics from '../assets/images/agentics.png';
 import instagram from '../assets/images/instagram.png';
 import linkedin from '../assets/images/linkedin.png';
 import { Link } from "react-router-dom";
-import { usePrereqModal } from "../context/PrereqModalContext";
-
 const INSTAGRAM_URL = "https://www.instagram.com/agenticlabs/";
 const LINKEDIN_URL = "https://www.instagram.com/agenticlabs/";
 
 const Footer = () => {
 
-const { openModal } = usePrereqModal();
     const pageLinks = [
     {
         name: "About",
@@ -24,10 +21,6 @@ const { openModal } = usePrereqModal();
     {
         name: "Meet the team",
         link: "/team",
-    },
-    {
-        name: "FAQ",
-        link: "/faqs",
     },
     ]
     const extLinks = [
@@ -74,7 +67,6 @@ const { openModal } = usePrereqModal();
                     <a href={item.link} className="hover:opacity-80">{item.name}</a>
                 )
             })}
-            <a onClick={openModal} className="hover:text-gray-400">Register now</a>
         </div>
 
         {/* small screen layout */}
@@ -93,7 +85,6 @@ const { openModal } = usePrereqModal();
                         <Link to={item.link} className="hover:opacity-80">{item.name}</Link>
                     )
                 })}
-                <a onClick={openModal} className="hover:text-gray-400">Register now</a>
             </div>
         </div>
         <div className="flex flex-col items-center gap-10 lg:hidden w-full">

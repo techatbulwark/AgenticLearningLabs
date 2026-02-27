@@ -1,19 +1,8 @@
-import React, { useState } from 'react';
-import { usePrereqModal } from '../context/PrereqModalContext.jsx'
-
+import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 import course_header1 from '../assets/images/course_header1.jpg';
-// import data from '../assets/images/data.png';
-// import dataMobile from '../assets/images/data_mobile.png';
-// import data from '../assets/images/DADM.jpg';
-// import dataMobile from '../assets/images/DADM.jpg';
-
-// Updated Nov 2025 
-import data from '../assets/images/course_dates/Cohort 9 Data.png';
-import dataMobile from '../assets/images/course_dates/Cohort 9 Data.png';
-
 
 import HeaderLogo from '../components/HeaderLogo';
 import CourseUpdate from '../components/CourseUpdate.jsx';
@@ -22,7 +11,6 @@ const DataAnalytics = () => {
     
     const sectionWrapper = "w-full mx-auto px-outer_sm lg:px-outer_lg";
 
-    const { openModal } = usePrereqModal();
     
     return (
         <div className="min-h-screen max-w-[1600px] mx-auto relative overflow-hidden flex flex-col">
@@ -41,11 +29,7 @@ const DataAnalytics = () => {
                         <div className="w-line_width h-2 bg-yellow-500 rounded-full"></div>
                         <h3 className="[font-family:'Unageo-SemiBold'] text-3xl">Use AI to turn data into knowledge<br/>and knowledge into action.</h3>
                         <p className="text-xl">This course will teach you practical skills to apply AI to analytical data and how to use it for real time decision making. Think easier access to market trend analysis, demand forecasting, supplier management and streamlining of logistics and distribution to better handle logistical constraints and to maximize production capacity. In business, data is power. Leveraging your new AI skills, you will bring new tools and perspectives to deliver efficiency and optimization for your employer.</p>
-                        <a
-                            onClick={openModal}
-                            className="shrink-0 bg-brand_yellow hover:bg-white lg:bg-white lg:hover:bg-brand_yellow text-black text-xl w-56 h-10 px-6 flex items-center justify-center rounded-full transition self-center lg:self-end">
-                            Register now
-                        </a>
+                        <p className="[font-family:'Unageo-SemiBold'] text-2xl lg:text-3xl text-brand_yellow">New Courses Coming April 2026</p>
                     </div>
                 </div>
             </section>
@@ -105,26 +89,6 @@ const DataAnalytics = () => {
                             <li>You don't need AI experience, just curiosity and commitment.</li>
                         </ul>
                     </div>
-                </div>
-            </section>
-            <section className="relative bg-white lg:px-outer_lg">
-                <div className="relative flex flex-col lg:flex-row justify-between items-center gap-y-10 bg-brand_gray rounded-t-3xl px-inner py-15">
-                    <div className="text-center lg:text-left">
-                        <h2 className="[font-family:'Unageo-SemiBold'] text-5xl mb-5">Register now!</h2>
-                        <p className="text-xl text-gray-200 max-w-xl">
-                            AI is now a tool of the job. Learn how to use it and get ahead of the competition.
-                        </p>
-                    </div>
-                    <a
-                        onClick={ openModal }
-                        className="shrink-0 bg-white hover:bg-brand_yellow text-black text-xl w-56 h-10 px-6 flex items-center justify-center rounded-full transition">
-                        Register now
-                    </a>
-                </div>
-                {/* calendar */}
-                <div className="bg-gray-100 text-black flex items-center justify-center mt-6">
-                    <img src={data} className="hidden lg:block object-cover" />
-                    <img src={dataMobile} className="lg:hidden object-cover" />
                 </div>
             </section>
             <CourseUpdate />

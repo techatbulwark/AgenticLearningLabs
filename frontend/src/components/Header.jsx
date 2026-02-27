@@ -18,8 +18,8 @@ const Header = () => {
       link: "/team",
     },
     {
-      name: "FAQ",
-      link: "/faqs",
+      name: "Learn more",
+      link: "/learn-more",
     },
   ]
 

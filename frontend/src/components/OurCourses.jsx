@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-import { usePrereqModal } from '../context/PrereqModalContext.jsx'
-
 import course1 from '../assets/images/course1.png';
 import course2 from '../assets/images/course2.png';
 import course3 from '../assets/images/course3.png';
@@ -14,14 +12,12 @@ const OurCourses = () => {
 
   const sectionWrapper = "w-full mx-auto px-6 lg:px-16";
 
-  const { openModal } = usePrereqModal();
-
   const [activeTab, setActiveTab] = useState(0);
   
   const tabs = [
     { 
       title: 'Our courses', 
-      content: "In just four weeks, gain real-world, practical AI skills that help you stand out, get hired, or move up in your career. Whether you're looking for a new job, re-entering the workforce, or aiming for a promotion Agentic Learning Labs can help you level up fast.",
+      content: "AI skills that help you build capacity. Empowering teams to work more efficiently while retaining human judgment and accountability. Agentic Learning Lab can help you or your team level up fast.",
     },
     { 
       title: 'AI for Data Analytics & Decision Making', 
@@ -85,9 +81,6 @@ const OurCourses = () => {
                       <p className="[font-family:'Unageo'] text-lg text-white text-muted-foreground mb-10">
                         {activeTab >= 0 ? tabs[activeTab].content : null }
                       </p>
-                      <a onClick={openModal} class="z-10 w-[226px] h-[40px] flex items-center justify-center text-black bg-white hover:bg-brand_yellow rounded-3xl mx-auto lg:mx-0 transition-all duration-200 ease-in-out">
-                        <h3 class="[font-family:'Unageo'] text-lg">Register Now</h3>
-                      </a>
                     </div>
                   </div>
                 );
@@ -103,9 +96,6 @@ const OurCourses = () => {
               <p className="[font-family:'Unageo'] text-lg text-white text-muted-foreground">
                 {activeTab >= 0 ? tabs[activeTab].content : null }
               </p>
-              <a onClick={openModal} class="w-[226px] h-[40px] flex items-center justify-center text-black bg-white hover:bg-brand_yellow rounded-3xl mx-auto lg:mx-0 transition-all duration-200 ease-in-out">
-                <h3 class="[font-family:'Unageo'] text-lg">Register now</h3>
-              </a>
             </div>
           </div>
         </div>

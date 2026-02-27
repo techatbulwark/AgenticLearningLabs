@@ -1,19 +1,8 @@
-import React, { useState } from 'react';
-import { usePrereqModal } from '../context/PrereqModalContext.jsx'
-
+import React from 'react';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 
 import course_header3 from '../assets/images/course_header3.jpg';
-// import business from '../assets/images/business.png';
-// import businessMobile from '../assets/images/business_mobile.png';
-// import business from '../assets/images/SMBD.jpg';
-// import businessMobile from '../assets/images/SMBD.jpg';
-
-// Updated Nov 2025 
-import business from '../assets/images/course_dates/Cohort 10 Sales.png';
-import businessMobile from '../assets/images/course_dates/Cohort 10 Sales.png';
-
 
 import HeaderLogo from '../components/HeaderLogo.jsx';
 import CourseUpdate from '../components/CourseUpdate.jsx';
@@ -22,7 +11,6 @@ const SalesMarketing = () => {
     
     const sectionWrapper = "w-full mx-auto px-outer_sm lg:px-outer_lg";
 
-    const { openModal } = usePrereqModal();
     
     return (
         <div className="min-h-screen max-w-[1600px] mx-auto relative overflow-hidden flex flex-col">
@@ -41,11 +29,7 @@ const SalesMarketing = () => {
                         <div className="w-line_width h-2 bg-yellow-500 rounded-full" />
                         <h3 className="[font-family:'Unageo-SemiBold'] text-3xl">Drive sales and reach new customers with an AI-<br/>powered business strategy.</h3>
                         <p className="text-xl">In this course learn how to apply AI tools to build sales and marketing campaigns, generate leads, and personalize outreach to grow the success of sales and marketing campaigns.</p>
-                        <a
-                            onClick={openModal}
-                            className="shrink-0 bg-brand_yellow hover:bg-white lg:bg-white lg:hover:bg-brand_yellow text-black text-xl w-56 h-10 px-6 flex items-center justify-center rounded-full transition self-center lg:self-end">
-                            Register now
-                        </a>
+                        <p className="[font-family:'Unageo-SemiBold'] text-2xl lg:text-3xl text-brand_yellow">New Courses Coming April 2026</p>
                     </div>
                 </div>
             </section>
@@ -105,26 +89,6 @@ const SalesMarketing = () => {
                             <li>You don't need AI experience, just curiosity and commitment.</li>
                         </ul>
                     </div>
-                </div>
-            </section>
-            <section className="relative bg-white lg:px-outer_lg">
-                <div className="relative flex flex-col lg:flex-row justify-between items-center gap-y-10 bg-brand_gray rounded-t-3xl px-inner py-15">
-                    <div className="text-center lg:text-left">
-                        <h2 className="[font-family:'Unageo-SemiBold'] text-5xl mb-5">Register now!</h2>
-                        <p className="text-xl text-gray-200 max-w-xl">
-                            AI is now a tool of the job. Learn how to use it and get ahead of the competition.
-                        </p>
-                    </div>
-                    <a
-                        onClick={ openModal }
-                        className="shrink-0 bg-white hover:bg-brand_yellow text-black text-xl w-56 h-10 px-6 flex items-center justify-center rounded-full transition">
-                        Register now
-                    </a>
-                </div>
-                {/* calendar */}
-                <div className="bg-gray-100 text-black flex items-center justify-center text-2xl font-bold mt-6">
-                    <img src={business} className="hidden lg:block object-cover" />
-                    <img src={businessMobile} className="lg:hidden object-cover" />
                 </div>
             </section>
             <CourseUpdate />

@@ -4,7 +4,6 @@ import Header from '../components/Header';
 import HeaderLogo from '../components/HeaderLogo';
 import Footer from '../components/Footer';
 import ContactUs from '../components/ContactUs';
-import RegisterNow from '../components/RegisterNow';
 
 import bulwarkLogoA from '../assets/images/bulwark_glossy_white_ALL.png';
 import bulwarkLogoL from '../assets/images/bulwark_glossy_white_L.png';
@@ -152,7 +151,6 @@ const Team = () => {
                 </div>
             </section>
                 
-            <RegisterNow />
             <ContactUs />
             <Footer />
         </div>

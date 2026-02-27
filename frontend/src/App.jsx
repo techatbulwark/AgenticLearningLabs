@@ -11,13 +11,13 @@ import SDFConfirmation from './pages/SDFConfirmation'
 import SelectCourse from './pages/SelectCourse'
 import Courses from './pages/Courses'
 import Team from './pages/Team'
-import FAQ from './pages/FAQ'
 import DataAnalytics from './pages/DataAnalytics'
 import PrereqModal from './components/PrereqModal'
 import ScrollLink from './components/ScrollLink'
 import CustomerExperience from './pages/CustomerExperience'
 import SalesMarketing from './pages/SalesMarketing'
 import InquiryModal from './components/InquiryModal'
+import LearnMore from './pages/LearnMore'
 import HealthCheck from './pages/HealthCheck'
 import { initGA, trackPageView, trackCampaignData } from './lib/analytics'
 
@@ -44,7 +44,6 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='/courses' element={<Courses/>}/>
         <Route path='/team' element={<Team/>}/>
-        <Route path='/faqs' element={<FAQ/>}/>
         <Route path='/data-analytics' element={<DataAnalytics/>}/>
         <Route path='/customer-experience' element={<CustomerExperience/>}/>
         <Route path='/sales-marketing' element={<SalesMarketing/>}/>
@@ -54,6 +53,7 @@ function App() {
         <Route path='/sdf-confirmation' element={<SDFConfirmation/>}/>
         <Route path='/select-course' element={<SelectCourse/>}/>
         <Route path='/sdf/:cohortSlug' element={<SDFAllCohortsForm/>}/>
+        <Route path='/learn-more' element={<LearnMore/>}/>
         <Route path='/health-check' element={<HealthCheck/>}/>
       </Routes>
       <PrereqModal />
