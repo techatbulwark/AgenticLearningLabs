@@ -17,7 +17,6 @@ import ScrollLink from './components/ScrollLink'
 import CustomerExperience from './pages/CustomerExperience'
 import SalesMarketing from './pages/SalesMarketing'
 import InquiryModal from './components/InquiryModal'
-import PromptKitModal from './components/PromptKitModal'
 import LearnMore from './pages/LearnMore'
 import HealthCheck from './pages/HealthCheck'
 import { initGA, trackPageView, trackCampaignData } from './lib/analytics'
@@ -59,7 +58,6 @@ function App() {
       </Routes>
       <PrereqModal />
       <InquiryModal />
-      <PromptKitModal />
     </>
   )
 }
