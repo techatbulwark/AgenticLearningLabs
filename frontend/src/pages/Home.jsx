@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { usePromptKitModal } from '../context/PromptKitModalContext.jsx';
 
 import Header from '../components/Header';
 import HeaderLogo from '../components/HeaderLogo';
@@ -22,7 +23,14 @@ import ontario from '../assets/images/ontario.png';
 
 
 const Home = () => {
-  
+  const { openModal } = usePromptKitModal();
+
+  useEffect(() => {
+    if (!localStorage.getItem('promptKitDismissed')) {
+      openModal();
+    }
+  }, []);
+
   const sectionWrapper = "w-full mx-auto px-6 lg:px-16";
 
   const partners = [tribal, canada, employmentOnt, ontario];
@@ -101,9 +109,17 @@ const Home = () => {
             <p className="text-lg text-gray-700 leading-relaxed mb-8">
               Interested in AI training for yourself or your team? Fill out a quick form and we'll be in touch.
             </p>
-            <a href="/learn-more" className="w-[226px] h-[40px] flex items-center justify-center text-white hover:text-black bg-brand_black hover:bg-brand_yellow rounded-3xl mx-auto lg:mx-0 transition-all duration-200 ease-in-out">
-              <h3 className="[font-family:'Unageo'] text-lg">Learn more</h3>
-            </a>
+            <div className="flex flex-col sm:flex-row gap-4 mx-auto lg:mx-0">
+              <a href="/learn-more" className="w-[226px] h-[40px] flex items-center justify-center text-white hover:text-black bg-brand_black hover:bg-brand_yellow rounded-3xl transition-all duration-200 ease-in-out">
+                <h3 className="[font-family:'Unageo'] text-lg">Learn more</h3>
+              </a>
+              <button
+                onClick={() => { localStorage.removeItem('promptKitDismissed'); openModal(); }}
+                className="w-[226px] h-[40px] flex items-center justify-center text-black hover:text-white bg-brand_yellow hover:bg-brand_black rounded-3xl transition-all duration-200 ease-in-out"
+              >
+                <h3 className="[font-family:'Unageo'] text-sm">Free AI Prompt Kit</h3>
+              </button>
+            </div>
           </div>
         </div>
       </div>
