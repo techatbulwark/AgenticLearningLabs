@@ -16,7 +16,7 @@ const PromptKitModal = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleClose = () => {
-    localStorage.setItem('promptKitDismissed', 'true');
+    localStorage.setItem('promptKitDismissed', String(Date.now()));
     closeModal();
   };
 
@@ -30,11 +30,15 @@ const PromptKitModal = () => {
         'email': email,
         'message': `[AI Prompt Kit Request] ${message}`,
       });
-      setIsSubmitted(true);
-      localStorage.setItem('promptKitDismissed', 'true');
     } catch (error) {
       console.error(error);
     }
+    setIsSubmitted(true);
+    localStorage.setItem('promptKitDismissed', String(Date.now()));
+    const link = document.createElement('a');
+    link.href = '/AI_Prompt_Playbook_2026.pdf';
+    link.download = 'AI_Prompt_Playbook_2026.pdf';
+    link.click();
     setIsLoading(false);
   };
 

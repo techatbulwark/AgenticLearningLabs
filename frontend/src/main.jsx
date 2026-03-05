@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { Analytics } from "@vercel/analytics/react"
 import { PrereqModalProvider } from './context/PrereqModalContext.jsx'
 import { InquiryModalProvider } from './context/InquiryModalContext.jsx'
+import { PromptKitModalProvider } from './context/PromptKitModalContext.jsx'
 import App from './App.jsx'
 import './index.css'
 
@@ -13,8 +14,10 @@ createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <PrereqModalProvider>
         <InquiryModalProvider>
-          <App />
-          <Analytics />
+          <PromptKitModalProvider>
+            <App />
+            <Analytics />
+          </PromptKitModalProvider>
         </InquiryModalProvider>
       </PrereqModalProvider>
     </BrowserRouter>

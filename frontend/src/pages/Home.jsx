@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { usePromptKitModal } from '../context/PromptKitModalContext.jsx';
 
 import Header from '../components/Header';
 import HeaderLogo from '../components/HeaderLogo';
@@ -22,12 +23,16 @@ import ontario from '../assets/images/ontario.png';
 
 
 const Home = () => {
+  const { openModal: openPromptKitModal } = usePromptKitModal();
 
-  const openMailchimpPopup = () => {
-    document.cookie = 'MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-    document.cookie = 'MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-    window.location.reload();
-  };
+  useEffect(() => {
+    const dismissed = localStorage.getItem('promptKitDismissed');
+    const showPopup = !dismissed || (Date.now() - Number(dismissed)) > 24 * 60 * 60 * 1000;
+    if (showPopup) {
+      const timer = setTimeout(() => openPromptKitModal(), 2000);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   const sectionWrapper = "w-full mx-auto px-6 lg:px-16";
 
@@ -112,7 +117,7 @@ const Home = () => {
                 <h3 className="[font-family:'Unageo'] text-lg">Learn more</h3>
               </a>
               <button
-                onClick={openMailchimpPopup}
+                onClick={openPromptKitModal}
                 className="w-[226px] h-[40px] flex items-center justify-center text-black hover:text-white bg-brand_yellow hover:bg-brand_black rounded-3xl transition-all duration-200 ease-in-out"
               >
                 <h3 className="[font-family:'Unageo'] text-sm">Free AI Prompt Kit</h3>
