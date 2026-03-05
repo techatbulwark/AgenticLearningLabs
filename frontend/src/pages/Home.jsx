@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { usePromptKitModal } from '../context/PromptKitModalContext.jsx';
 
 import Header from '../components/Header';
@@ -24,6 +24,15 @@ import ontario from '../assets/images/ontario.png';
 
 const Home = () => {
   const { openModal: openPromptKitModal } = usePromptKitModal();
+
+  useEffect(() => {
+    const dismissed = localStorage.getItem('promptKitDismissed');
+    const showPopup = !dismissed || (Date.now() - Number(dismissed)) > 24 * 60 * 60 * 1000;
+    if (showPopup) {
+      const timer = setTimeout(() => openPromptKitModal(), 2000);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   const sectionWrapper = "w-full mx-auto px-6 lg:px-16";
 
